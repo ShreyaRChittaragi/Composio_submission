@@ -1,215 +1,317 @@
-# Composio AI Product Ops Research Agent
+# 🚀 Composio AI Product Ops Research Agent
 
-An agentic research pipeline built for the **Composio AI Product Ops Intern take-home assignment**.
+> **An evidence-aware agentic research pipeline that analyzes 100 apps, validates Composio's existing toolkit coverage, identifies integration opportunities, and turns the findings into a reviewer-ready case study.**
 
-The system researches 100 applications across 10 categories, analyzes their developer/API ecosystem, validates existing Composio toolkit coverage, identifies integration opportunities, and generates a self-contained HTML case study.
+Built for the **Composio AI Product Ops Intern Take-Home Assignment**.
 
-## Overview
+---
 
-Manually researching 100 applications for authentication, API access, MCP support, developer accessibility, and agent-toolkit buildability is slow and difficult to verify consistently.
+## 🎯 The Challenge
 
-This project automates that workflow while preserving evidence and uncertainty.
+Composio turns applications into tools that AI agents can call.
 
-The pipeline performs:
+Before building a toolkit, we need to answer questions like:
 
-1. Automated research across the 100 provided applications
-2. Authentication and API-surface classification
-3. Self-serve vs gated developer-access analysis
-4. Native MCP investigation
-5. Agent-toolkit buildability assessment
-6. Dynamic Composio toolkit coverage checking
-7. Product-level validation to remove false-positive toolkit matches
-8. Targeted re-research for incomplete or low-confidence records
-9. Automated QA and a human-verification framework
-10. Pattern and opportunity analysis
-11. Generation of a self-contained HTML case study
+🔐 **How does the app authenticate?**
+🔓 **Can developers get credentials themselves?**
+🌐 **How mature is the API?**
+🤖 **Does an official/native MCP already exist?**
+🧩 **Does Composio already support it?**
+⚡ **Could we build an agent toolkit today?**
 
-## Final Dataset
+Doing this manually across **100 apps and 10 categories** does not scale.
 
-The final dataset contains **100 unique applications**.
+So I built an agentic research pipeline to do it.
 
-### Composio Coverage
+---
 
-| Status                    | Apps |
-| ------------------------- | ---: |
-| Existing Composio toolkit |   57 |
-| Toolkit gap               |   42 |
-| Unresolved product match  |    1 |
-| Total                     |  100 |
+# 📊 Final Snapshot
 
-The unresolved case is kept explicitly uncertain rather than forcing a potentially incorrect product match.
+The pipeline analyzed:
 
-## Why Product-Level Validation Matters
+| Metric                           |  Result |
+| -------------------------------- | ------: |
+| 🔎 Apps researched               | **100** |
+| 🗂️ Categories                   |  **10** |
+| 🧩 Existing Composio toolkits    |  **57** |
+| 🚧 Toolkit gaps                  |  **42** |
+| ⚠️ Unresolved product match      |   **1** |
+| ⚡ Buildable now                  |  **73** |
+| 🔐 Buildable with constraints    |  **14** |
+| 🌱 Self-serve developer access   |  **78** |
+| 🎯 High-confidence records       |  **81** |
+| 💡 Top integration opportunities |  **23** |
 
-Simple string or catalog matching produced false positives.
-
-For example, similarly named products can belong to completely different platforms. The validation stage therefore checks whether a discovered Composio toolkit actually represents the requested product.
-
-The Composio coverage evolved during verification:
+### 🧩 Composio Coverage
 
 ```text
-Initial detection       → 0
-Static correction       → 23
-Dynamic catalog search  → 61
-Product-level validation→ 57
+████████████████████████████░░░░░░░░░░░░░░░░░░░░
+
+57  Existing Toolkits
+42  Toolkit Gaps
+ 1  Unresolved
 ```
 
-This correction loop is intentional. The pipeline does not assume its first answer is correct.
+The goal wasn't simply finding gaps.
 
-## Research Fields
+The more useful question was:
 
-Each application is analyzed for:
+> **Which gaps are actually worth building?**
 
-* Category
-* One-line product description
-* Authentication methods
-* Developer access model
-* API type
-* API breadth
-* Native MCP availability
-* Composio toolkit availability
-* Agent-toolkit buildability
-* Primary blocker
-* Confidence
-* Supporting evidence
+---
 
-Unknown or insufficiently supported values are preserved as uncertain instead of being silently converted into confident claims.
+# 💡 Key Finding
 
-## Pipeline Architecture
+Not every missing toolkit is an opportunity.
+
+Some applications have:
+
+* 🚫 gated APIs
+* 💰 paid-only developer access
+* 🏢 partnership requirements
+* 📚 incomplete public documentation
+* 🔒 restricted authentication
+* 🤖 existing native MCP solutions
+
+So the pipeline separates applications into practical opportunity buckets rather than treating every missing integration equally.
+
+### Opportunity Funnel
 
 ```text
 100 Apps
    │
    ▼
-Research Agent
-   │
-   ├── Official documentation discovery
-   ├── Authentication research
-   ├── API-surface research
-   ├── Access/gating research
-   └── MCP investigation
+57 Already Covered by Composio
    │
    ▼
-Structured results.json
+42 Toolkit Gaps + 1 Unresolved
    │
    ▼
-Composio Catalog Validation
-   │
-   ├── Dynamic toolkit discovery
-   ├── Product matching
-   └── False-positive removal
+Access + API + Auth + MCP Analysis
    │
    ▼
-Targeted Research
-   │
-   └── Retry uncertain/incomplete records
-   │
-   ▼
-QA + Verification Framework
-   │
-   ├── Dataset invariants
-   ├── Evidence checks
-   ├── Confidence checks
-   └── Human verification sample
-   │
-   ▼
-Analysis
-   │
-   ▼
-Self-Contained HTML Case Study
+23 High-Value Opportunities 🚀
 ```
 
-## Repository Structure
+---
+
+# 🤖 What I Built
+
+The project is not just a dataset.
+
+It's a multi-stage research and verification pipeline.
 
 ```text
-.
-├── README.md
-├── requirements.txt
-├── apps.csv
-├── index.html
-│
-├── research_agent.py
-├── targeted_research.py
-├── final_verify.py
-├── generate_final_html.py
-│
-└── data/
-    ├── results.json
-    ├── verification.csv
-    ├── accuracy.json
-    └── qa_report.json
+                     📱 100 Apps
+                          │
+                          ▼
+                🤖 Research Agent
+                          │
+          ┌───────────────┼───────────────┐
+          ▼               ▼               ▼
+       🔐 Auth          🌐 API         🔓 Access
+          │               │               │
+          └───────────────┼───────────────┘
+                          ▼
+                    🧠 LLM Analysis
+                          │
+                          ▼
+                  📦 Structured JSON
+                          │
+                          ▼
+             🧩 Composio Catalog Check
+                          │
+                          ▼
+                🔍 Product Validation
+                          │
+                          ▼
+                 🔄 Targeted Retry
+                          │
+                          ▼
+                   🛡️ Final QA
+                          │
+                          ▼
+                👩‍💻 Human Verification
+                          │
+                          ▼
+                  📊 Pattern Analysis
+                          │
+                          ▼
+                 🌐 HTML Case Study
 ```
 
-### Main Files
+---
 
-**`research_agent.py`**
+# 🔬 What the Agent Researches
 
-Runs the primary automated research workflow and creates structured application-level research.
+For every application, the pipeline captures:
 
-**`targeted_research.py`**
+| Field                | Question                                          |
+| -------------------- | ------------------------------------------------- |
+| 🏷️ Category         | What kind of product is this?                     |
+| 📝 Description       | What does it do?                                  |
+| 🔐 Authentication    | OAuth2, API key, token, Basic, etc.?              |
+| 🔓 Developer Access  | Self-serve, paid, admin-gated, partnership-gated? |
+| 🌐 API Type          | REST, GraphQL, SDK, CLI, etc.?                    |
+| 📚 API Breadth       | Broad or limited surface?                         |
+| 🤖 Native MCP        | Official, community, none, or unverified?         |
+| 🧩 Composio Coverage | Existing toolkit, gap, or unresolved?             |
+| ⚡ Buildability       | Can an agent toolkit be built today?              |
+| 🚧 Blocker           | What prevents integration?                        |
+| 📈 Confidence        | How trustworthy is the result?                    |
+| 🔗 Evidence          | What source supports the claim?                   |
 
-Re-researches incomplete or uncertain applications rather than unnecessarily rerunning all 100.
+---
 
-**`final_verify.py`**
+# 🧩 Composio Toolkit Validation
 
-Provides the final QA and human-verification workflow.
+One of the most important discoveries was that:
 
-It distinguishes between:
+> **Finding a similarly named toolkit does not mean you've found the correct product.**
 
-* **Hard failures:** dataset-integrity problems that should block the pipeline
-* **Soft warnings:** incomplete evidence or claims requiring additional verification
+Early matching produced false positives.
 
-**`generate_final_html.py`**
+For example:
 
-Transforms the final structured dataset and analysis into the self-contained case-study page.
-
-**`index.html`**
-
-Final reviewer-facing case study.
-
-## Running the Project
-
-### 1. Create a virtual environment
-
-```bash
-python -m venv .venv
+```text
+Squarespace ❌ Square
+Zoho Cliq  ❌ Zoho CRM
+TranscriptAPI ❌ YouTube
 ```
 
-Activate it on Windows:
+Those are related by words, not by product identity. Computers remain courageously literal. 😭
 
-```bash
-.venv\Scripts\activate
+So I added **product-level validation**.
+
+### 📈 Coverage Evolution
+
+```text
+Initial detection
+       │
+       ▼
+       0
+       │
+       ▼
+Static correction
+       │
+       ▼
+      23
+       │
+       ▼
+Dynamic catalog discovery
+       │
+       ▼
+      61
+       │
+       ▼
+Product-level validation
+       │
+       ▼
+      57 ✅
 ```
 
-### 2. Install dependencies
+Final defensible result:
 
-```bash
-pip install -r requirements.txt
+> 🧩 **57 existing toolkits**
+> 🚧 **42 toolkit gaps**
+> ⚠️ **1 unresolved**
+
+The decreasing number from **61 → 57** is intentional.
+
+The validation layer found false positives and removed them.
+
+---
+
+# 🔄 Verification Philosophy
+
+The research agent is treated as:
+
+> **a first-pass researcher, not ground truth.**
+
+Instead of assuming the model is correct, the pipeline progressively checks its work.
+
+```text
+🤖 Agent Research
+       ↓
+🔗 Evidence Collection
+       ↓
+🧩 Composio Catalog Validation
+       ↓
+🔍 Product Identity Validation
+       ↓
+🔄 Targeted Re-Research
+       ↓
+🛡️ Automated QA
+       ↓
+👩‍💻 Human Verification
 ```
 
-### 3. Configure environment variables
+Three principles guide the pipeline:
 
-Create a local `.env` file for any API credentials required by the research pipeline.
+### 🔎 1. Evidence Over Assumption
 
-Do not commit `.env` or API keys to Git.
+A plausible answer isn't automatically considered verified.
 
-### 4. Run the research agent
+### ⚠️ 2. Preserve Uncertainty
 
-```bash
-python research_agent.py
+If reliable evidence isn't available:
+
+```text
+unknown > invented certainty
 ```
 
-For targeted re-research:
+The system keeps the result unresolved or unverified.
 
-```bash
-python targeted_research.py
+### 🛡️ 3. Verify the Agent
+
+Agent outputs are checked through catalog validation, evidence checks, targeted retries, QA rules, and human sampling.
+
+---
+
+# 🛡️ Automated QA
+
+The final QA layer distinguishes between two kinds of problems.
+
+### 🔴 Hard Failures
+
+These block the pipeline:
+
+* Incorrect number of apps
+* Duplicate applications
+* Broken Composio coverage invariant
+* Invalid confidence values
+* Invalid classification values
+* Structural dataset corruption
+
+### 🟡 Soft Warnings
+
+These don't corrupt the dataset but indicate claims needing stronger evidence:
+
+* Missing evidence URLs
+* Native MCP claims without stored official-source evidence
+* Incomplete verification coverage
+
+Current structural QA:
+
+```text
+Apps:       100
+Unique:     100
+
+Composio:
+Existing:    57
+Gaps:        42
+Unresolved:   1
+
+Hard Errors:  0
+
+QA: PASS WITH WARNINGS ✅
 ```
 
-The targeted workflow is preferred once the initial dataset exists because it avoids overwriting validated results unnecessarily.
+---
 
-## Verification
+# 👩‍💻 Human Verification
 
-Generate a stratified human-verification sample:
+The pipeline can generate a stratified sample for manual checking:
 
 ```bash
 python final_verify.py sample --sample 20
@@ -221,89 +323,342 @@ This creates:
 data/verification.csv
 ```
 
-After manually checking sampled claims against authoritative documentation, calculate measured accuracy:
+The sample covers different:
+
+* 📂 categories
+* 📈 confidence levels
+* 🧩 Composio statuses
+* ⚡ buildability classifications
+
+After manual verification:
 
 ```bash
 python final_verify.py accuracy
 ```
 
-Run final QA:
+Accuracy is only reported when actual human checks exist.
+
+If:
+
+```text
+checked = 0
+```
+
+then:
+
+```text
+accuracy = not measured
+```
+
+No imaginary 97.8% accuracy appearing from the sacred lands of `random.randint()`. 🫠
+
+---
+
+# 🗂️ Repository Structure
+
+```text
+composio-ai-product-ops/
+│
+├── 📄 README.md
+├── 📦 requirements.txt
+├── 📋 apps.csv
+├── 🌐 index.html
+│
+├── 🤖 research_agent.py
+├── 🔄 targeted_research.py
+├── 🛡️ final_verify.py
+├── 🎨 generate_final_html.py
+│
+└── 📁 data/
+    ├── results.json
+    ├── verification.csv
+    ├── accuracy.json
+    └── qa_report.json
+```
+
+---
+
+# ⚙️ Running the Project
+
+## 1️⃣ Clone the repository
+
+```bash
+git clone <YOUR_REPOSITORY_URL>
+cd composio-ai-product-ops
+```
+
+---
+
+## 2️⃣ Create a virtual environment
+
+```bash
+python -m venv .venv
+```
+
+### Windows
+
+```bash
+.venv\Scripts\activate
+```
+
+### macOS / Linux
+
+```bash
+source .venv/bin/activate
+```
+
+---
+
+## 3️⃣ Install dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+---
+
+## 4️⃣ Configure Environment Variables
+
+Create:
+
+```text
+.env
+```
+
+Add the API credentials required by the research pipeline.
+
+⚠️ **Never commit `.env` or API keys to GitHub.**
+
+---
+
+## 5️⃣ Run the Research Agent
+
+```bash
+python research_agent.py
+```
+
+This performs the initial research across the application dataset.
+
+---
+
+## 6️⃣ Run Targeted Research
+
+Instead of unnecessarily researching all 100 applications again:
+
+```bash
+python targeted_research.py
+```
+
+This focuses additional research on incomplete or uncertain records.
+
+---
+
+## 7️⃣ Run Final QA
 
 ```bash
 python final_verify.py qa
 ```
 
-The QA layer validates dataset integrity, Composio coverage invariants, confidence values, evidence availability, and classification consistency.
+This validates:
 
-At the current snapshot, automated structural QA passes with soft evidence warnings. Manual field-level accuracy should only be reported after the verification sample has actually been completed.
+```text
+✓ Dataset integrity
+✓ 100-app invariant
+✓ Duplicate detection
+✓ Composio coverage
+✓ Confidence ranges
+✓ Classification consistency
+✓ Evidence availability
+```
 
-## Generate the Case Study
+---
+
+## 8️⃣ Generate Human Verification Sample
+
+```bash
+python final_verify.py sample --sample 20
+```
+
+After manually verifying the sample:
+
+```bash
+python final_verify.py accuracy
+```
+
+---
+
+## 9️⃣ Generate the Case Study
 
 ```bash
 python generate_final_html.py
 ```
 
-This produces:
+Output:
 
 ```text
 index.html
 ```
 
-Open `index.html` directly in a browser to inspect the final case study.
-
-## Research Philosophy
-
-The pipeline follows three principles:
-
-### 1. Evidence over assumption
-
-A plausible answer is not automatically treated as a verified answer.
-
-### 2. Preserve uncertainty
-
-If reliable evidence cannot be found, the system keeps the result unresolved or unverified rather than fabricating certainty.
-
-### 3. Verify the agent
-
-The research agent is treated as a first-pass researcher, not as ground truth.
-
-Automated validation, product-level matching, targeted retries, QA checks, and human sampling are used to progressively improve reliability.
-
-## Key Insight
-
-The useful output is not simply a table of 100 applications.
-
-The pipeline is designed to answer the product question behind the dataset:
-
-> **Where does Composio already have strong coverage, where are the actionable toolkit opportunities, and which apparent opportunities actually require additional access, evidence, or partnership work?**
-
-The final HTML case study presents these patterns alongside the underlying research and methodology.
-
-## Limitations
-
-* Developer documentation and API availability can change over time.
-* Some applications require paid accounts, admin approval, or partnership access for complete verification.
-* Native MCP classifications without sufficient first-party evidence are reported conservatively.
-* Automated research can misclassify similarly named products, which is why product-level validation is included.
-* Human verification remains the final reliability layer for claims selected in the verification sample.
-
-## Tech Stack
-
-* Python
-* Groq / LLM-assisted research
-* Structured JSON research pipeline
-* Composio toolkit catalog validation
-* HTML/CSS/JavaScript
-* Automated QA and verification tooling
-
-## Deliverables
-
-* **Interactive HTML case study:** `index.html`
-* **Research dataset:** `data/results.json`
-* **Research agent:** `research_agent.py`
-* **Verification pipeline:** `final_verify.py`
-* **Reproducible source code:** this repository
+Open it directly in a browser.
 
 ---
 
-Built as part of the **Composio AI Product Ops Intern take-home assignment**.
+# 📂 Data Flow
+
+```text
+apps.csv
+   │
+   ▼
+research_agent.py
+   │
+   ▼
+data/results.json
+   │
+   ├──────────────► targeted_research.py
+   │                        │
+   │                        ▼
+   │                 improved results
+   │
+   ▼
+final_verify.py
+   │
+   ├──► verification.csv
+   ├──► accuracy.json
+   └──► qa_report.json
+   │
+   ▼
+generate_final_html.py
+   │
+   ▼
+🌐 index.html
+```
+
+---
+
+# 🛠️ Tech Stack
+
+### 🐍 Research Pipeline
+
+* Python
+* Structured JSON
+* HTTP/API documentation discovery
+
+### 🧠 AI
+
+* Groq
+* Llama 3.3
+* LLM-assisted extraction and classification
+
+### 🧩 Integration Research
+
+* Composio toolkit catalog
+* Official developer documentation
+* API/authentication documentation
+
+### 🛡️ Reliability
+
+* Confidence scoring
+* Evidence tracking
+* Targeted retry pipeline
+* Product-level matching
+* Automated QA
+* Human verification framework
+
+### 🎨 Case Study
+
+* HTML
+* CSS
+* JavaScript
+* Interactive filtering
+* Responsive layout
+
+---
+
+# ⚠️ Limitations
+
+No research agent gets magical omniscience privileges.
+
+Some limitations remain:
+
+🔐 Certain APIs require paid accounts or admin access.
+🤝 Some developer programs require partnerships or approval.
+📚 Documentation can change over time.
+🤖 Native MCP availability evolves quickly.
+🔍 Similar product names can create matching ambiguity.
+👩‍💻 Some claims still benefit from manual verification.
+
+These uncertainties are preserved rather than hidden.
+
+---
+
+# 🚀 Final Deliverables
+
+### 🌐 Interactive Case Study
+
+```text
+index.html
+```
+
+Contains:
+
+* Executive findings
+* Opportunity analysis
+* Full 100-app dataset
+* Research workflow
+* Verification methodology
+* Composio coverage analysis
+
+### 🤖 Research Agent
+
+```text
+research_agent.py
+```
+
+Automates application research.
+
+### 🔄 Targeted Research
+
+```text
+targeted_research.py
+```
+
+Improves uncertain records without rerunning everything.
+
+### 🛡️ Verification Pipeline
+
+```text
+final_verify.py
+```
+
+Performs QA and supports human verification.
+
+### 📊 Structured Dataset
+
+```text
+data/results.json
+```
+
+Contains the final research output for all 100 applications.
+
+---
+
+# 💭 Core Takeaway
+
+The interesting part of this assignment wasn't:
+
+> *“Can an LLM research 100 apps?”*
+
+It was:
+
+> **“Can we build a system that researches 100 apps, recognizes when its own results may be unreliable, verifies those results, and converts them into useful product decisions?”**
+
+That's what this pipeline was designed to explore.
+
+---
+
+## 👩‍💻 Author
+
+**Shreya R Chittaragi**
+AI & ML Engineer
+
+Built for the **Composio AI Product Ops Intern Take-Home Assignment** 🚀
