@@ -1,0 +1,1533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Composio Research Agent - 100 Apps Analysis</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f8fafc;
+            color: #0f172a;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .container { max-width: 1400px; margin: 0 auto; }
+        
+        /* Hero */
+        .hero {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            color: white;
+            padding: 50px 40px;
+            border-radius: 20px;
+            margin-bottom: 40px;
+        }
+        .hero h1 { font-size: 2.8rem; font-weight: 800; margin-bottom: 10px; }
+        .hero .subtitle { color: #94a3b8; font-size: 1.2rem; margin-bottom: 30px; }
+        .hero-metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+        }
+        .metric {
+            background: rgba(255,255,255,0.05);
+            padding: 15px 20px;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+        .metric .number { font-size: 2rem; font-weight: 700; color: #818cf8; }
+        .metric .label { font-size: 0.85rem; color: #94a3b8; margin-top: 4px; }
+        
+        /* Sections */
+        .section {
+            background: white;
+            border-radius: 16px;
+            padding: 25px 30px;
+            margin-bottom: 25px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+            border: 1px solid #e2e8f0;
+        }
+        .section h2 { font-size: 1.6rem; font-weight: 700; margin-bottom: 18px; }
+        .section h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 12px; color: #334155; }
+        
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+        .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; }
+        
+        @media (max-width: 768px) {
+            .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 2rem; }
+        }
+        
+        /* Badges */
+        .badge {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+        .badge-ready { background: #dcfce7; color: #166534; }
+        .badge-constraints { background: #fef3c7; color: #92400e; }
+        .badge-blocked { background: #fee2e2; color: #991b1b; }
+        .badge-unknown { background: #f1f5f9; color: #475569; }
+        .badge-self_serve { background: #dbeafe; color: #1e40af; }
+        .badge-paid { background: #fce7f3; color: #9d174d; }
+        .badge-partner_gated { background: #fef3c7; color: #92400e; }
+        .badge-contact_sales { background: #fee2e2; color: #991b1b; }
+        .badge-existing_toolkit { background: #d1fae5; color: #065f46; }
+        .badge-toolkit_gap { background: #fef3c7; color: #92400e; }
+        .badge-unresolved { background: #fce7f3; color: #9d174d; }
+        
+        /* Bar chart */
+        .bar-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 6px;
+        }
+        .bar-label { width: 100px; font-size: 0.85rem; color: #334155; flex-shrink: 0; }
+        .bar-track {
+            flex: 1;
+            height: 22px;
+            background: #f1f5f9;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        .bar-fill {
+            height: 100%;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 8px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: white;
+        }
+        .bar-percent { font-size: 0.85rem; font-weight: 600; color: #0f172a; min-width: 40px; text-align: right; }
+        
+        .color-purple { background: #818cf8; }
+        .color-blue { background: #60a5fa; }
+        .color-green { background: #34d399; }
+        .color-yellow { background: #fbbf24; }
+        .color-red { background: #f87171; }
+        .color-indigo { background: #a78bfa; }
+        .color-pink { background: #f472b6; }
+        
+        /* Table */
+        .table-container {
+            overflow-x: auto;
+            max-height: 500px;
+            overflow-y: auto;
+        }
+        table { width: 100%; border-collapse: collapse; font-size: 0.8rem; }
+        thead { position: sticky; top: 0; background: #f8fafc; z-index: 10; }
+        th { padding: 10px 8px; text-align: left; font-weight: 600; color: #475569; border-bottom: 2px solid #e2e8f0; white-space: nowrap; }
+        td { padding: 8px; border-bottom: 1px solid #f1f5f9; vertical-align: top; }
+        tr:hover { background: #f8fafc; }
+        .app-name { font-weight: 600; color: #0f172a; }
+        .evidence-link { color: #6366f1; text-decoration: none; font-size: 0.7rem; }
+        
+        .filter-bar {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 15px;
+        }
+        .filter-bar input, .filter-bar select {
+            padding: 6px 12px;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            background: white;
+        }
+        .filter-bar input { flex: 1; min-width: 150px; }
+        
+        .opportunity-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 10px;
+        }
+        .opportunity-card {
+            background: #f8fafc;
+            padding: 12px 15px;
+            border-radius: 10px;
+            border: 1px solid #e2e8f0;
+        }
+        .opportunity-card .name { font-weight: 600; }
+        .opportunity-card .detail { font-size: 0.8rem; color: #64748b; }
+        
+        .footer {
+            text-align: center;
+            padding: 30px 20px;
+            color: #94a3b8;
+            font-size: 0.85rem;
+        }
+        .highlight-box {
+            background: #f0f9ff;
+            border: 1px solid #bae6fd;
+            border-radius: 12px;
+            padding: 15px 20px;
+        }
+        .highlight-box strong { color: #0369a1; }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <!-- HERO -->
+    <div class="hero">
+        <h1>100 Apps. One Research Agent.</h1>
+        <div class="subtitle">Where should Composio build next? A data-driven analysis of integration opportunities</div>
+        <div class="hero-metrics">
+            <div class="metric">
+                <div class="number">57</div>
+                <div class="label">Existing Composio Toolkits</div>
+            </div>
+            <div class="metric">
+                <div class="number">73</div>
+                <div class="label">Buildable Now</div>
+            </div>
+            <div class="metric">
+                <div class="number">78</div>
+                <div class="label">Self-Serve Access</div>
+            </div>
+            <div class="metric">
+                <div class="number">81</div>
+                <div class="label">High Confidence Results</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- KEY INSIGHTS -->
+    <div class="section">
+        <h2>🔑 Key Insights</h2>
+        <div class="grid-3">
+            <div class="highlight-box">
+                <strong>57 Existing Composio Toolkits</strong><br>
+                57 out of 100 requested apps already have Composio coverage.
+            </div>
+            <div class="highlight-box">
+                <strong>73 Buildable Now</strong><br>
+                73 apps can be integrated today with public APIs and self-serve access.
+            </div>
+            <div class="highlight-box">
+                <strong>23 High-Value Gaps</strong><br>
+                Apps with broad APIs, self-serve access, and no existing Composio toolkit.
+            </div>
+        </div>
+    </div>
+
+    <!-- CHARTS -->
+    <div class="section">
+        <h2>📊 Distribution Analysis</h2>
+        <div class="grid-2">
+            <div>
+                <h3>Buildability</h3>
+                <div class="bar-item">
+                    <span class="bar-label">Ready</span>
+                    <div class="bar-track"><div class="bar-fill color-green" style="width:73.0%">73.0%</div></div>
+                </div>
+                <div class="bar-item">
+                    <span class="bar-label">With Constraints</span>
+                    <div class="bar-track"><div class="bar-fill color-yellow" style="width:14.0%">14.0%</div></div>
+                </div>
+                <div class="bar-item">
+                    <span class="bar-label">Blocked</span>
+                    <div class="bar-track"><div class="bar-fill color-red" style="width:1.0%">1.0%</div></div>
+                </div>
+                <div class="bar-item">
+                    <span class="bar-label">Unknown</span>
+                    <div class="bar-track"><div class="bar-fill color-gray" style="width:12.0%;background:#94a3b8">12.0%</div></div>
+                </div>
+            </div>
+            <div>
+                <h3>Composio Coverage</h3>
+                <div class="bar-item">
+                    <span class="bar-label">Existing</span>
+                    <div class="bar-track"><div class="bar-fill color-green" style="width:57.0%">57.0%</div></div>
+                </div>
+                <div class="bar-item">
+                    <span class="bar-label">Gaps</span>
+                    <div class="bar-track"><div class="bar-fill color-yellow" style="width:42.0%">42.0%</div></div>
+                </div>
+                <div class="bar-item">
+                    <span class="bar-label">Unresolved</span>
+                    <div class="bar-track"><div class="bar-fill color-red" style="width:1.0%">1.0%</div></div>
+                </div>
+                <h3 style="margin-top:18px;">Confidence</h3>
+                <div class="bar-item">
+                    <span class="bar-label">High</span>
+                    <div class="bar-track"><div class="bar-fill color-purple" style="width:81.0%">81.0%</div></div>
+                </div>
+                <div class="bar-item">
+                    <span class="bar-label">Medium</span>
+                    <div class="bar-track"><div class="bar-fill color-blue" style="width:7.0%">7.0%</div></div>
+                </div>
+                <div class="bar-item">
+                    <span class="bar-label">Low</span>
+                    <div class="bar-track"><div class="bar-fill color-red" style="width:12.0%">12.0%</div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- OPPORTUNITY MATRIX -->
+    <div class="section">
+        <h2>🚀 Opportunity Matrix</h2>
+        <div class="grid-4">
+            <div style="background:#dcfce7;padding:15px;border-radius:12px;border:2px solid #86efac;">
+                <h3 style="color:#166534;">BUILD NOW</h3>
+                <div style="font-size:2rem;font-weight:700;color:#166534;">23</div>
+                <div style="font-size:0.8rem;color:#14532d;">Self-serve + public API + no existing toolkit</div>
+            </div>
+            <div style="background:#fef3c7;padding:15px;border-radius:12px;border:2px solid #fcd34d;">
+                <h3 style="color:#92400e;">WITH CONSTRAINTS</h3>
+                <div style="font-size:2rem;font-weight:700;color:#92400e;">14</div>
+                <div style="font-size:0.8rem;color:#78350f;">Technical ready, but access limitations</div>
+            </div>
+            <div style="background:#fce7f3;padding:15px;border-radius:12px;border:2px solid #f9a8d4;">
+                <h3 style="color:#9d174d;">OUTREACH</h3>
+                <div style="font-size:2rem;font-weight:700;color:#9d174d;">3</div>
+                <div style="font-size:0.8rem;color:#831843;">Buildable but requires partnership/paid access</div>
+            </div>
+            <div style="background:#fee2e2;padding:15px;border-radius:12px;border:2px solid #fca5a5;">
+                <h3 style="color:#991b1b;">BLOCKED</h3>
+                <div style="font-size:2rem;font-weight:700;color:#991b1b;">13</div>
+                <div style="font-size:0.8rem;color:#7f1d1d;">Needs research or technically blocked</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TOP OPPORTUNITIES -->
+    <div class="section">
+        <h2>🎯 Top Build Opportunities</h2>
+        <div class="opportunity-grid">
+            
+            <div class="opportunity-card">
+                <div class="name">Podio</div>
+                <div class="detail">CRM and Sales</div>
+                <div class="detail" style="font-size:0.75rem;color:#6366f1;">Auth: OAuth2, API Key</div>
+                <div class="detail" style="font-size:0.75rem;">API: broad</div>
+            </div>
+            
+            <div class="opportunity-card">
+                <div class="name">Copper</div>
+                <div class="detail">CRM and Sales</div>
+                <div class="detail" style="font-size:0.75rem;color:#6366f1;">Auth: unknown</div>
+                <div class="detail" style="font-size:0.75rem;">API: moderate</div>
+            </div>
+            
+            <div class="opportunity-card">
+                <div class="name">Front</div>
+                <div class="detail">Support and Helpdesk</div>
+                <div class="detail" style="font-size:0.75rem;color:#6366f1;">Auth: unknown</div>
+                <div class="detail" style="font-size:0.75rem;">API: moderate</div>
+            </div>
+            
+            <div class="opportunity-card">
+                <div class="name">LiveAgent</div>
+                <div class="detail">Support and Helpdesk</div>
+                <div class="detail" style="font-size:0.75rem;color:#6366f1;">Auth: unknown</div>
+                <div class="detail" style="font-size:0.75rem;">API: broad</div>
+            </div>
+            
+            <div class="opportunity-card">
+                <div class="name">Zoho Cliq</div>
+                <div class="detail">Communications and Messaging</div>
+                <div class="detail" style="font-size:0.75rem;color:#6366f1;">Auth: unknown</div>
+                <div class="detail" style="font-size:0.75rem;">API: broad</div>
+            </div>
+            
+            <div class="opportunity-card">
+                <div class="name">Lark</div>
+                <div class="detail">Communications and Messaging</div>
+                <div class="detail" style="font-size:0.75rem;color:#6366f1;">Auth: unknown</div>
+                <div class="detail" style="font-size:0.75rem;">API: broad</div>
+            </div>
+            
+            <div class="opportunity-card">
+                <div class="name">Pumble</div>
+                <div class="detail">Communications and Messaging</div>
+                <div class="detail" style="font-size:0.75rem;color:#6366f1;">Auth: unknown</div>
+                <div class="detail" style="font-size:0.75rem;">API: moderate</div>
+            </div>
+            
+            <div class="opportunity-card">
+                <div class="name">Aircall</div>
+                <div class="detail">Communications and Messaging</div>
+                <div class="detail" style="font-size:0.75rem;color:#6366f1;">Auth: unknown</div>
+                <div class="detail" style="font-size:0.75rem;">API: broad</div>
+            </div>
+            
+            <div class="opportunity-card">
+                <div class="name">Vonage</div>
+                <div class="detail">Communications and Messaging</div>
+                <div class="detail" style="font-size:0.75rem;color:#6366f1;">Auth: unknown</div>
+                <div class="detail" style="font-size:0.75rem;">API: broad</div>
+            </div>
+            
+            <div class="opportunity-card">
+                <div class="name">systeme.io</div>
+                <div class="detail">Marketing Ads Email and Social</div>
+                <div class="detail" style="font-size:0.75rem;color:#6366f1;">Auth: unknown</div>
+                <div class="detail" style="font-size:0.75rem;">API: moderate</div>
+            </div>
+            
+            <div class="opportunity-card">
+                <div class="name">WooCommerce</div>
+                <div class="detail">Ecommerce</div>
+                <div class="detail" style="font-size:0.75rem;color:#6366f1;">Auth: unknown</div>
+                <div class="detail" style="font-size:0.75rem;">API: broad</div>
+            </div>
+            
+            <div class="opportunity-card">
+                <div class="name">BigCommerce</div>
+                <div class="detail">Ecommerce</div>
+                <div class="detail" style="font-size:0.75rem;color:#6366f1;">Auth: unknown</div>
+                <div class="detail" style="font-size:0.75rem;">API: broad</div>
+            </div>
+            
+        </div>
+    </div>
+
+    <!-- FULL DATASET -->
+    <div class="section">
+        <h2>📋 Full Dataset</h2>
+        <div class="filter-bar">
+            <input type="text" id="searchInput" placeholder="Search apps..." onkeyup="filterTable()">
+            <select id="categoryFilter" onchange="filterTable()">
+                <option value="">All Categories</option>
+                <option value="AI Research and Media-native">AI Research and Media-native</option><option value="CRM and Sales">CRM and Sales</option><option value="Communications and Messaging">Communications and Messaging</option><option value="Data SEO and Scraping">Data SEO and Scraping</option><option value="Developer Infra and Data platforms">Developer Infra and Data platforms</option><option value="Ecommerce">Ecommerce</option><option value="Finance and Fintech">Finance and Fintech</option><option value="Marketing Ads Email and Social">Marketing Ads Email and Social</option><option value="Productivity and Project Management">Productivity and Project Management</option><option value="Support and Helpdesk">Support and Helpdesk</option>
+            </select>
+            <select id="buildFilter" onchange="filterTable()">
+                <option value="">All Buildability</option>
+                <option value="ready">Ready</option>
+                <option value="ready_with_constraints">With Constraints</option>
+                <option value="blocked">Blocked</option>
+                <option value="unknown">Unknown</option>
+            </select>
+            <select id="composioFilter" onchange="filterTable()">
+                <option value="">All Composio</option>
+                <option value="existing_toolkit">Existing</option>
+                <option value="toolkit_gap">Gap</option>
+                <option value="unresolved">Unresolved</option>
+            </select>
+        </div>
+        <div class="table-container">
+            <table id="appsTable">
+                <thead>
+                    <tr>
+                        <th>App</th>
+                        <th>Category</th>
+                        <th>Auth</th>
+                        <th>Access</th>
+                        <th>API</th>
+                        <th>Native MCP</th>
+                        <th>Composio</th>
+                        <th>Buildability</th>
+                        <th>Confidence</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr data-category="CRM and Sales" data-build="ready_with_constraints" data-composio="existing_toolkit">
+                        <td class="app-name">Salesforce</td>
+                        <td style="font-size:0.75rem;">CRM and Sales</td>
+                        <td style="font-size:0.75rem;">OAuth2, API Key</td>
+                        <td><span class="badge badge-admin_gated">admin_gated</span></td>
+                        <td style="font-size:0.75rem;">rest<br><span style="color:#94a3b8;font-size:0.65rem;">broad</span></td>
+                        <td style="font-size:0.75rem;">unverified</td>
+                        <td><span class="badge badge-existing_toolkit">existing_toolkit</span></td>
+                        <td><span class="badge badge-ready_with_constraints">ready_with_constraints</span></td>
+                        <td style="text-align:center;font-weight:600;color:#166534">0.80</td>
+                    </tr><tr data-category="CRM and Sales" data-build="ready" data-composio="existing_toolkit">
+                        <td class="app-name">HubSpot</td>
+                        <td style="font-size:0.75rem;">CRM and Sales</td>
+                        <td style="font-size:0.75rem;">OAuth2, API Key</td>
+                        <td><span class="badge badge-self_serve">self_serve</span></td>
+                        <td style="font-size:0.75rem;">rest<br><span style="color:#94a3b8;font-size:0.65rem;">broad</span></td>
+                        <td style="font-size:0.75rem;">unverified</td>
+                        <td><span class="badge badge-existing_toolkit">existing_toolkit</span></td>
+                        <td><span class="badge badge-ready">ready</span></td>
+                        <td style="text-align:center;font-weight:600;color:#166534">0.90</td>
+                    </tr><tr data-category="CRM and Sales" data-build="ready" data-composio="existing_toolkit">
+                        <td class="app-name">Pipedrive</td>
+                        <td style="font-size:0.75rem;">CRM and Sales</td>
+                        <td style="font-size:0.75rem;">API Key, OAuth2</td>
+                        <td><span class="badge badge-self_serve">self_serve</span></td>
+                        <td style="font-size:0.75rem;">rest<br><span style="color:#94a3b8;font-size:0.65rem;">unknown</span></td>
+                        <td style="font-size:0.75rem;">unverified</td>
+                        <td><span class="badge badge-existing_toolkit">existing_toolkit</span></td>
+                        <td><span class="badge badge-ready">ready</span></td>
+                        <td style="text-align:center;font-weight:600;color:#166534">0.90</td>
+                    </tr><tr data-category="CRM and Sales" data-build="ready_with_constraints" data-composio="existing_toolkit">
+                        <td class="app-name">Attio</td>
+                        <td style="font-size:0.75rem;">CRM and Sales</td>
+                        <td style="font-size:0.75rem;">API Key</td>
+                        <td><span class="badge badge-self_serve">self_serve</span></td>
+                        <td style="font-size:0.75rem;">rest<br><span style="color:#94a3b8;font-size:0.65rem;">moderate</span></td>
+                        <td style="font-size:0.75rem;">none</td>
+                        <td><span class="badge badge-existing_toolkit">existing_toolkit</span></td>
+                        <td><span class="badge badge-ready_with_constraints">ready_with_constraints</span></td>
+                        <td style="text-align:center;font-weight:600;color:#166534">0.70</td>
+                    </tr><tr data-category="CRM and Sales" data-build="unknown" data-composio="toolkit_gap">
+                        <td class="app-name">Twenty</td>
+                        <td style="font-size:0.75rem;">CRM and Sales</td>
+                        <td style="font-size:0.75rem;">unknown</td>
+                        <td><span class="badge badge-unknown">unknown</span></td>
+                        <td style="font-size:0.75rem;">unknown<br><span style="color:#94a3b8;font-size:0.65rem;">unknown</span></td>
+                        <td style="font-size:0.75rem;">unknown</td>
+                        <td><span class="badge badge-toolkit_gap">toolkit_gap</span></td>
+                        <td><span class="badge badge-unknown">unknown</span></td>
+                        <td style="text-align:center;font-weight:600;color:#991b1b">0.00</td>
+                    </tr><tr data-category="CRM and Sales" data-build="ready" data-composio="toolkit_gap">
+                        <td class="app-name">Podio</td>
+                        <td style="font-size:0.75rem;">CRM and Sales</td>
+                        <td style="font-size:0.75rem;">OAuth2, API Key</td>
+                        <td><span class="badge badge-self_serve">self_serve</span></td>
+                        <td style="font-size:0.75rem;">rest<br><span style="color:#94a3b8;font-size:0.65rem;">broad</span></td>
+                        <td style="font-size:0.75rem;">unverified</td>
+                        <td><span class="badge badge-toolkit_gap">toolkit_gap</span></td>
+                        <td><span class="badge badge-ready">ready</span></td>
+                        <td style="text-align:center;font-weight:600;color:#166534">0.80</td>
+                    </tr><tr data-category="CRM and Sales" data-build="ready" data-composio="existing_toolkit">
+                        <td class="app-name">Zoho CRM</td>
+                        <td style="font-size:0.75rem;">CRM and Sales</td>
+                        <td style="font-size:0.75rem;">OAuth2, API Key</td>
+                        <td><span class="badge badge-self_serve">self_serve</span></td>
+                        <td style="font-size:0.75rem;">rest<br><span style="color:#94a3b8;font-size:0.65rem;">broad</span></td>
+                        <td style="font-size:0.75rem;">unknown</td>
+                        <td><span class="badge badge-existing_toolkit">existing_toolkit</span></td>
+                        <td><span class="badge badge-ready">ready</span></td>
+                        <td style="text-align:center;font-weight:600;color:#166534">0.90</td>
+                    </tr><tr data-category="CRM and Sales" data-build="ready" data-composio="existing_toolkit">
+                        <td class="app-name">Close</td>
+                        <td style="font-size:0.75rem;">CRM and Sales</td>
+                        <td style="font-size:0.75rem;">API Key, OAuth2</td>
+                        <td><span class="badge badge-self_serve">self_serve</span></td>
+                        <td style="font-size:0.75rem;">rest<br><span style="color:#94a3b8;font-size:0.65rem;">broad</span></td>
+                        <td style="font-size:0.75rem;">unknown</td>
+                        <td><span class="badge badge-existing_toolkit">existing_toolkit</span></td>
+                        <td><span class="badge badge-ready">ready</span></td>
+                        <td style="text-align:center;font-weight:600;color:#166534">0.80</td>
+                    </tr><tr data-category="CRM and Sales" data-build="ready" data-composio="toolkit_gap">
+                        <td class="app-name">Copper</td>
+                        <td style="font-size:0.75rem;">CRM and Sales</td>
+                        <td style="font-size:0.75rem;">unknown</td>
+                        <td><span class="badge badge-self_serve">self_serve</span></td>
+                        <td style="font-size:0.75rem;">rest<br><span style="color:#94a3b8;font-size:0.65rem;">moderate</span></td>
+                        <td style="font-size:0.75rem;">unknown</td>
+                        <td><span class="badge badge-toolkit_gap">toolkit_gap</span></td>
+                        <td><span class="badge badge-ready">ready</span></td>
+                        <td style="text-align:center;font-weight:600;color:#166534">0.80</td>
+                    </tr><tr data-category="CRM and Sales" data-build="ready_with_constraints" data-composio="toolkit_gap">
+                        <td class="app-name">DealCloud</td>
+                        <td style="font-size:0.75rem;">CRM and Sales</td>
+                        <td style="font-size:0.75rem;">unknown</td>
+                        <td><span class="badge badge-admin_gated">admin_gated</span></td>
+                        <td style="font-size:0.75rem;">rest<br><span style="color:#94a3b8;font-size:0.65rem;">moderate</span></td>
+                        <td style="font-size:0.75rem;">unknown</td>
+                        <td><span class="badge badge-toolkit_gap">toolkit_gap</span></td>
+                        <td><span class="badge badge-ready_with_constraints">ready_with_constraints</span></td>
+                        <td style="text-align:center;font-weight:600;color:#166534">0.70</td>
+                    </tr><tr data-category="Support and Helpdesk" data-build="ready" data-composio="existing_toolkit">
+                        <td class="app-name">Zendesk</td>
+                        <td style="font-size:0.75rem;">Support and Helpdesk</td>
+                        <td style="font-size:0.75rem;">OAuth2, API Key</td>
+                        <td><span class="badge badge-self_serve">self_serve</span></td>
+                        <td style="font-size:0.75rem;">rest<br><span style="color:#94a3b8;font-size:0.65rem;">broad</span></td>
+                        <td style="font-size:0.75rem;">unknown</td>
+                        <td><span class="badge badge-existing_toolkit">existing_toolkit</span></td>
+                        <td><span class="badge badge-ready">ready</span></td>
+                        <td style="text-align:center;font-weight:600;color:#166534">0.90</td>
+                    </tr><tr data-category="Support and Helpdesk" data-build="ready" data-composio="existing_toolkit">
+                        <td class="app-name">Intercom</td>
+                        <td style="font-size:0.75rem;">Support and Helpdesk</td>
+                        <td style="font-size:0.75rem;">OAuth2, API Key</td>
+                        <td><span class="badge badge-self_serve">self_serve</span></td>
+                        <td style="font-size:0.75rem;">rest<br><span style="color:#94a3b8;font-size:0.65rem;">broad</span></td>
+                        <td style="font-size:0.75rem;">unknown</td>
+                        <td><span class="badge badge-existing_toolkit">existing_toolkit</span></td>
+                        <td><span class="badge badge-ready">ready</span></td>
+                        <td style="text-align:center;font-weight:600;color:#166534">0.80</td>
+                    </tr><tr data-category="Support and Helpdesk" data-build="ready" data-composio="existing_toolkit">
+                        <td class="app-name">Freshdesk</td>
+                        <td style="font-size:0.75rem;">Support and Helpdesk</td>
+                        <td style="font-size:0.75rem;">API Key, OAuth2</td>
+                        <td><span class="badge badge-self_serve">self_serve</span></td>
+                        <td style="font-size:0.75rem;">rest<br><span style="color:#94a3b8;font-size:0.65rem;">broad</span></td>
+                        <td style="font-size:0.75rem;">unknown</td>
+                        <td><span class="badge badge-existing_toolkit">existing_toolkit</span></td>
+                        <td><span class="badge badge-ready">ready</span></td>
+                        <td style="text-align:center;font-weight:600;color:#166534">0.80</td>
+                    </tr><tr data-category="Support and Helpdesk" data-build="ready" data-composio="toolkit_gap">
+                        <td class="app-name">Front</td>
+                        <td style="font-size:0.75rem;">Support and Helpdesk</td>
+                        <td style="font-size:0.75rem;">unknown</td>
+                        <td><span class="badge badge-self_serve">self_serve</span></td>
+                        <td style="font-size:0.75rem;">rest<br><span style="color:#94a3b8;font-size:0.65rem;">moderate</span></td>
+                        <td style="font-size:0.75rem;">unknown</td>
+                        <td><span class="badge badge-toolkit_gap">toolkit_gap</span></td>
+                        <td><span class="badge badge-ready">ready</span></td>
+                        <td style="text-align:center;font-weight:600;color:#166534">0.80</td>
+                    </tr><tr data-category="Support and Helpdesk" data-build="unknown" data-composio="existing_toolkit">
+                        <td class="app-name">Pylon</td>
+                        <td style="font-size:0.75rem;">Support and Helpdesk</td>
+                        <td style="font-size:0.75rem;">unknown</td>
+                        <td><span class="badge badge-unknown">unknown</span></td>
+                        <td style="font-size:0.75rem;">unknown<br><span style="color:#94a3b8;font-size:0.65rem;">unknown</span></td>
+                        <td style="font-size:0.75rem;">unverified</td>
+                        <td><span class="badge badge-existing_toolkit">existing_toolkit</span></td>
+                        <td><span class="badge badge-unknown">unknown</span></td>
+                        <td style="text-align:center;font-weight:600;color:#991b1b">0.20</td>
+                    </tr><tr data-category="Support and Helpdesk" data-build="ready" data-composio="toolkit_gap">
+                        <td class="app-name">LiveAgent</td>
+                        <td style="font-size:0.75rem;">Support and Helpdesk</td>
+                        <td style="font-size:0.75rem;">unknown</td>
+                        <td><span class="badge badge-self_serve">self_serve</span></td>
+                        <td style="font-size:0.75rem;">rest<br><span style="color:#94a3b8;font-size:0.65rem;">broad</span></td>
+                        <td style="font-size:0.75rem;">unknown</td>
+                        <td><span class="badge badge-toolkit_gap">toolkit_gap</span></td>
+                        <td><span class="badge badge-ready">ready</span></td>
+                        <td style="text-align:center;font-weight:600;color:#166534">0.80</td>
+                    </tr><tr data-category="Support and Helpdesk" data-build="unknown" data-composio="existing_toolkit">
+                        <td class="app-name">Plain</td>
+                        <td style="font-size:0.75rem;">Support and Helpdesk</td>
+                        <td style="font-size:0.75rem;"></td>
+                        <td><span class="badge badge-unknown">unknown</span></td>
+                        <td style="font-size:0.75rem;">unknown<br><span style="color:#94a3b8;font-size:0.65rem;">unknown</span></td>
+                        <td style="font-size:0.75rem;">unknown</td>
+                        <td><span class="badge badge-existing_toolkit">existing_toolkit</span></td>
+                        <td><span class="badge badge-unknown">unknown</span></td>
+                        <td style="text-align:center;font-weight:600;color:#991b1b">0.20</td>
+                    </tr><tr data-category="Support and Helpdesk" data-build="ready" data-composio="existing_toolkit">
+                        <td class="app-name">Help Scout</td>
+                        <td style="font-size:0.75rem;">Support and Helpdesk</td>
+                        <td style="font-size:0.75rem;">API Key, OAuth2</td>
+                        <td><span class="badge badge-self_serve">self_serve</span></td>
+                        <td style="font-size:0.75rem;">rest<br><span style="color:#94a3b8;font-size:0.65rem;">broad</span></td>
+                        <td style="font-size:0.75rem;">unknown</td>
+                        <td><span class="badge badge-existing_toolkit">existing_toolkit</span></td>
+                        <td><span class="badge badge-ready">ready</span></td>
+                        <td style="text-align:center;font-weight:600;color:#166534">0.80</td>
+                    </tr><tr data-category="Support and Helpdesk" data-build="ready" data-composio="existing_toolkit">
+                        <td class="app-name">Gorgias</td>
+                        <td style="font-size:0.75rem;">Support and Helpdesk</td>
+                        <td style="font-size:0.75rem;">API Key, OAuth2</td>
+                        <td><span class="badge badge-self_serve">self_serve</span></td>
+                        <td style="font-size:0.75rem;">rest<br><span style="color:#94a3b8;font-size:0.65rem;">broad</span></td>
+                        <td style="font-size:0.75rem;">unknown</td>
+                        <td><span class="badge badge-existing_toolkit">existing_toolkit</span></td>
+                        <td><span class="badge badge-ready">ready</span></td>
+                        <td style="text-align:center;font-weight:600;color:#166534">0.80</td>
+                    </tr><tr data-category="Support and Helpdesk" data-build="ready_with_constraints" data-composio="toolkit_gap">
+                        <td class="app-name">Gladly</td>
+                        <td style="font-size:0.75rem;">Support and Helpdesk</td>
+                        <td style="font-size:0.75rem;">unknown</td>
+                        <td><span class="badge badge-admin_gated">admin_gated</span></td>
+                        <td style="font-size:0.75rem;">rest<br><span style="color:#94a3b8;font-size:0.65rem;">moderate</span></td>
+                        <td style="font-size:0.75rem;">unknown</td>
+                        <td><span class="badge badge-toolkit_gap">toolkit_gap</span></td>
+                        <td><span class="badge badge-ready_with_constraints">ready_with_constraints</span></td>
+                        <td style="text-align:center;font-weight:600;color:#166534">0.70</td>
+                    </tr><tr data-category="Communications and Messaging" data-build="ready" data-composio="existing_toolkit">
+                        <td class="app-name">Slack</td>
+                        <td style="font-size:0.75rem;">Communications and Messaging</td>
+                        <td style="font-size:0.75rem;">OAuth2, Token</td>
+                        <td><span class="badge badge-self_serve">self_serve</span></td>
+                        <td style="font-size:0.75rem;">both<br><span style="color:#94a3b8;font-size:0.65rem;">broad</span></td>
+                        <td style="font-size:0.75rem;">unverified</td>
+                        <td><span class="badge badge-existing_toolkit">existing_toolkit</span></td>
+                        <td><span class="badge badge-ready">ready</span></td>
+                        <td style="text-align:center;font-weight:600;color:#166534">0.90</td>
+                    </tr><tr data-category="Communications and Messaging" data-build="ready" data-composio="existing_toolkit">
+                        <td class="app-name">Twilio</td>
+                        <td style="font-size:0.75rem;">Communications and Messaging</td>
+                        <td style="font-size:0.75rem;">API Key, Auth Token</td>
+                        <td><span class="badge badge-self_serve">self_serve</span></td>
+                        <td style="font-size:0.75rem;">rest<br><span style="color:#94a3b8;font-size:0.65rem;">broad</span></td>
+                        <td style="font-size:0.75rem;">unknown</td>
+                        <td><span class="badge badge-existing_toolkit">existing_toolkit</span></td>
+                        <td><span class="badge badge-ready">ready</span></td>
+                        <td style="text-align:center;font-weight:600;color:#166534">0.90</td>
+                    </tr><tr data-category="Communications and Messaging" data-build="ready" data-composio="toolkit_gap">
+                        <td class="app-name">Zoho Cliq</td>
+                        <td style="font-size:0.75rem;">Communications and Messaging</td>
+                        <td style="font-size:0.75rem;">unknown</td>
+                        <td><span class="badge badge-self_serve">self_serve</span></td>
+                        <td style="font-size:0.75rem;">rest<br><span style="color:#94a3b8;font-size:0.65rem;">broad</span></td>
+                        <td style="font-size:0.75rem;">unknown</td>
+                        <td><span class="badge badge-toolkit_gap">toolkit_gap</span></td>
+                        <td><span class="badge badge-ready">ready</span></td>
+                        <td style="text-align:center;font-weight:600;color:#166534">0.80</td>
+                    </tr><tr data-category="Communications and Messaging" data-build="ready" data-composio="toolkit_gap">
+                        <td class="app-name">Lark</td>
+                        <td style="font-size:0.75rem;">Communications and Messaging</td>
+                        <td style="font-size:0.75rem;">unknown</td>
+                        <td><span class="badge badge-self_serve">self_serve</span></td>
+                        <td style="font-size:0.75rem;">rest<br><span style="color:#94a3b8;font-size:0.65rem;">broad</span></td>
+                        <td style="font-size:0.75rem;">unknown</td>
+                        <td><span class="badge badge-toolkit_gap">toolkit_gap</span></td>
+                        <td><span class="badge badge-ready">ready</span></td>
+                        <td style="text-align:center;font-weight:600;color:#166534">0.80</td>
+                    </tr><tr data-category="Communications and Messaging" data-build="ready" data-composio="toolkit_gap">
+                        <td class="app-name">Pumble</td>
+                        <td style="font-size:0.75rem;">Communications and Messaging</td>
+                        <td style="font-size:0.75rem;">unknown</td>
+                        <td><span class="badge badge-self_serve">self_serve</span></td>
+                        <td style="font-size:0.75rem;">rest<br><span style="color:#94a3b8;font-size:0.65rem;">moderate</span></td>
+                        <td style="font-size:0.75rem;">unknown</td>
+                        <td><span class="badge badge-toolkit_gap">toolkit_gap</span></td>
+                        <td><span class="badge badge-ready">ready</span></td>
+                        <td style="text-align:center;font-weight:600;color:#166534">0.80</td>
+                    </tr><tr data-category="Communications and Messaging" data-build="ready" data-composio="existing_toolkit">
+                        <td class="app-name">Discord</td>
+                        <td style="font-size:0.75rem;">Communications and Messaging</td>
+                        <td style="font-size:0.75rem;">OAuth2</td>
+                        <td><span class="badge badge-self_serve">self_serve</span></td>
+                        <td style="font-size:0.75rem;">rest<br><span style="color:#94a3b8;font-size:0.65rem;">broad</span></td>
+                        <td style="font-size:0.75rem;">unknown</td>
+                        <td><span class="badge badge-existing_toolkit">existing_toolkit</span></td>
+                        <td><span class="badge badge-ready">ready</span></td>
+                        <td style="text-align:center;font-weight:600;color:#166534">0.90</td>
+                    </tr><tr data-category="Communications and Messaging" data-build="ready" data-composio="existing_toolkit">
+                        <td class="app-name">Telegram</td>
+                        <td style="font-size:0.75rem;">Communications and Messaging</td>
+                        <td style="font-size:0.75rem;">Bot Token, API Key</td>
+                        <td><span class="badge badge-self_serve">self_serve</span></td>
+                        <td style="font-size:0.75rem;">rest<br><span style="color:#94a3b8;font-size:0.65rem;">broad</span></td>
+                        <td style="font-size:0.75rem;">unknown</td>
+                        <td><span class="badge badge-existing_toolkit">existing_toolkit</span></td>
+                        <td><span class="badge badge-ready">ready</span></td>
+                        <td style="text-align:center;font-weight:600;color:#166534">0.90</td>
+                    </tr><tr data-category="Communications and Messaging" data-build="ready" data-composio="existing_toolkit">
+                        <td class="app-name">WhatsApp Business</td>
+                        <td style="font-size:0.75rem;">Communications and Messaging</td>
+                        <td style="font-size:0.75rem;">OAuth2, API Key</td>
+                        <td><span class="badge badge-self_serve">self_serve</span></td>
+                        <td style="font-size:0.75rem;">rest<br><span style="color:#94a3b8;font-size:0.65rem;">broad</span></td>
+                        <td style="font-size:0.75rem;">unknown</td>
+                        <td><span class="badge badge-existing_toolkit">existing_toolkit</span></td>
+                        <td><span class="badge badge-ready">ready</span></td>
+                        <td style="text-align:center;font-weight:600;color:#166534">0.80</td>
+                    </tr><tr data-category="Communications and Messaging" data-build="ready" data-composio="toolkit_gap">
+                        <td class="app-name">Aircall</td>
+                        <td style="font-size:0.75rem;">Communications and Messaging</td>
+                        <td style="font-size:0.75rem;">unknown</td>
+                        <td><span class="badge badge-self_serve">self_serve</span></td>
+                        <td style="font-size:0.75rem;">rest<br><span style="color:#94a3b8;font-size:0.65rem;">broad</span></td>
+                        <td style="font-size:0.75rem;">unknown</td>
+                        <td><span class="badge badge-toolkit_gap">toolkit_gap</span></td>
+                        <td><span class="badge badge-ready">ready</span></td>
+                        <td style="text-align:center;font-weight:600;color:#166534">0.80</td>
+                    </tr><tr data-category="Communications and Messaging" data-build="ready" data-composio="toolkit_gap">
+                        <td class="app-name">Vonage</td>
+                        <td style="font-size:0.75rem;">Communications and Messaging</td>
+                        <td style="font-size:0.75rem;">unknown</td>
+                        <td><span class="badge badge-self_serve">self_serve</span></td>
+                        <td style="font-size:0.75rem;">rest<br><span style="color:#94a3b8;font-size:0.65rem;">broad</span></td>
+                        <td style="font-size:0.75rem;">unknown</td>
+                        <td><span class="badge badge-toolkit_gap">toolkit_gap</span></td>
+                        <td><span class="badge badge-ready">ready</span></td>
+                        <td style="text-align:center;font-weight:600;color:#166534">0.80</td>
+                    </tr><tr data-category="Marketing Ads Email and Social" data-build="ready" data-composio="existing_toolkit">
+                        <td class="app-name">Google Ads</td>
+                        <td style="font-size:0.75rem;">Marketing Ads Email and Social</td>
+                        <td style="font-size:0.75rem;">OAuth2</td>
+                        <td><span class="badge badge-self_serve">self_serve</span></td>
+                        <td style="font-size:0.75rem;">rest<br><span style="color:#94a3b8;font-size:0.65rem;">broad</span></td>
+                        <td style="font-size:0.75rem;">unknown</td>
+                        <td><span class="badge badge-existing_toolkit">existing_toolkit</span></td>
+                        <td><span class="badge badge-ready">ready</span></td>
+                        <td style="text-align:center;font-weight:600;color:#166534">0.90</td>
+                    </tr><tr data-category="Marketing Ads Email and Social" data-build="ready" data-composio="existing_toolkit">
+                        <td class="app-name">Meta Ads</td>
+                        <td style="font-size:0.75rem;">Marketing Ads Email and Social</td>
+                        <td style="font-size:0.75rem;">OAuth2</td>
+                        <td><span class="badge badge-self_serve">self_serve</span></td>
+                        <td style="font-size:0.75rem;">both<br><span style="color:#94a3b8;font-size:0.65rem;">broad</span></td>
+                        <td style="font-size:0.75rem;">unknown</td>
+                        <td><span class="badge badge-existing_toolkit">existing_toolkit</span></td>
+                        <td><span class="badge badge-ready">ready</span></td>
+                        <td style="text-align:center;font-weight:600;color:#166534">0.80</td>
+                    </tr><tr data-category="Marketing Ads Email and Social" data-build="ready" data-composio="existing_toolkit">
+                        <td class="app-name">LinkedIn Ads</td>
+                        <td style="font-size:0.75rem;">Marketing Ads Email and Social</td>
+                        <td style="font-size:0.75rem;">OAuth2</td>
+                        <td><span class="badge badge-self_serve">self_serve</span></td>
+                        <td style="font-size:0.75rem;">rest<br><span style="color:#94a3b8;font-size:0.65rem;">broad</span></td>
+                        <td style="font-size:0.75rem;">unknown</td>
+                        <td><span class="badge badge-existing_toolkit">existing_toolkit</span></td>
+                        <td><span class="badge badge-ready">ready</span></td>
+                        <td style="text-align:center;font-weight:600;color:#166534">0.80</td>
+                    </tr><tr data-category="Marketing Ads Email and Social" data-build="ready" data-composio="existing_toolkit">
+                        <td class="app-name">GoHighLevel</td>
+                        <td style="font-size:0.75rem;">Marketing Ads Email and Social</td>
+                        <td style="font-size:0.75rem;">API Key</td>
+                        <td><span class="badge badge-self_serve">self_serve</span></td>
+                        <td style="font-size:0.75rem;">rest<br><span style="color:#94a3b8;font-size:0.65rem;">broad</span></td>
+                        <td style="font-size:0.75rem;">unknown</td>
+                        <td><span class="badge badge-existing_toolkit">existing_toolkit</span></td>
+                        <td><span class="badge badge-ready">ready</span></td>
+                        <td style="text-align:center;font-weight:600;color:#166534">0.80</td>
+                    </tr><tr data-category="Marketing Ads Email and Social" data-build="ready" data-composio="existing_toolkit">
+                        <td class="app-name">Mailchimp</td>
+                        <td style="font-size:0.75rem;">Marketing Ads Email and Social</td>
+                        <td style="font-size:0.75rem;">OAuth2, API Key</td>
+                        <td><span class="badge badge-self_serve">self_serve</span></td>
+                        <td style="font-size:0.75rem;">rest<br><span style="color:#94a3b8;font-size:0.65rem;">broad</span></td>
+                        <td style="font-size:0.75rem;">unknown</td>
+                        <td><span class="badge badge-existing_toolkit">existing_toolkit</span></td>
+                        <td><span class="badge badge-ready">ready</span></td>
+                        <td style="text-align:center;font-weight:600;color:#166534">0.90</td>
+                    </tr><tr data-category="Marketing Ads Email and Social" data-build="ready" data-composio="existing_toolkit">
+                        <td class="app-name">Klaviyo</td>
+                        <td style="font-size:0.75rem;">Marketing Ads Email and Social</td>
+                        <td style="font-size:0.75rem;">API Key, OAuth2</td>
+                        <td><span class="badge badge-self_serve">self_serve</span></td>
+                        <td style="font-size:0.75rem;">rest<br><span style="color:#94a3b8;font-size:0.65rem;">broad</span></td>
+                        <td style="font-size:0.75rem;">unknown</td>
+                        <td><span class="badge badge-existing_toolkit">existing_toolkit</span></td>
+                        <td><span class="badge badge-ready">ready</span></td>
+                        <td style="text-align:center;font-weight:600;color:#166534">0.80</td>
+                    </tr><tr data-category="Marketing Ads Email and Social" data-build="ready" data-composio="toolkit_gap">
+                        <td class="app-name">systeme.io</td>
+                        <td style="font-size:0.75rem;">Marketing Ads Email and Social</td>
+                        <td style="font-size:0.75rem;">unknown</td>
+                        <td><span class="badge badge-self_serve">self_serve</span></td>
+                        <td style="font-size:0.75rem;">rest<br><span style="color:#94a3b8;font-size:0.65rem;">moderate</span></td>
+                        <td style="font-size:0.75rem;">unknown</td>
+                        <td><span class="badge badge-toolkit_gap">toolkit_gap</span></td>
+                        <td><span class="badge badge-ready">ready</span></td>
+                        <td style="text-align:center;font-weight:600;color:#166534">0.80</td>
+                    </tr><tr data-category="Marketing Ads Email and Social" data-build="ready_with_constraints" data-composio="toolkit_gap">
+                        <td class="app-name">Pinterest</td>
+                        <td style="font-size:0.75rem;">Marketing Ads Email and Social</td>
+                        <td style="font-size:0.75rem;">unknown</td>
+                        <td><span class="badge badge-self_serve">self_serve</span></td>
+                        <td style="font-size:0.75rem;">rest<br><span style="color:#94a3b8;font-size:0.65rem;">moderate</span></td>
+                        <td style="font-size:0.75rem;">unknown</td>
+                        <td><span class="badge badge-toolkit_gap">toolkit_gap</span></td>
+                        <td><span class="badge badge-ready_with_constraints">ready_with_constraints</span></td>
+                        <td style="text-align:center;font-weight:600;color:#166534">0.80</td>
+                    </tr><tr data-category="Marketing Ads Email and Social" data-build="ready_with_constraints" data-composio="toolkit_gap">
+                        <td class="app-name">Threads</td>
+                        <td style="font-size:0.75rem;">Marketing Ads Email and Social</td>
+                        <td style="font-size:0.75rem;">unknown</td>
+                        <td><span class="badge badge-self_serve">self_serve</span></td>
+                        <td style="font-size:0.75rem;">graphql<br><span style="color:#94a3b8;font-size:0.65rem;">moderate</span></td>
+                        <td style="font-size:0.75rem;">unknown</td>
+                        <td><span class="badge badge-toolkit_gap">toolkit_gap</span></td>
+                        <td><span class="badge badge-ready_with_constraints">ready_with_constraints</span></td>
+                        <td style="text-align:center;font-weight:600;color:#166534">0.80</td>
+                    </tr><tr data-category="Marketing Ads Email and Social" data-build="ready" data-composio="existing_toolkit">
+                        <td class="app-name">SendGrid</td>
+                        <td style="font-size:0.75rem;">Marketing Ads Email and Social</td>
+                        <td style="font-size:0.75rem;">API Key, OAuth2</td>
+                        <td><span class="badge badge-self_serve">self_serve</span></td>
+                        <td style="font-size:0.75rem;">rest<br><span style="color:#94a3b8;font-size:0.65rem;">broad</span></td>
+                        <td style="font-size:0.75rem;">unknown</td>
+                        <td><span class="badge badge-existing_toolkit">existing_toolkit</span></td>
+                        <td><span class="badge badge-ready">ready</span></td>
+                        <td style="text-align:center;font-weight:600;color:#166534">0.90</td>
+                    </tr><tr data-category="Ecommerce" data-build="ready" data-composio="existing_toolkit">
+                        <td class="app-name">Shopify</td>
+                        <td style="font-size:0.75rem;">Ecommerce</td>
+                        <td style="font-size:0.75rem;">OAuth2, API Key</td>
+                        <td><span class="badge badge-self_serve">self_serve</span></td>
+                        <td style="font-size:0.75rem;">rest<br><span style="color:#94a3b8;font-size:0.65rem;">broad</span></td>
+                        <td style="font-size:0.75rem;">unknown</td>
+                        <td><span class="badge badge-existing_toolkit">existing_toolkit</span></td>
+                        <td><span class="badge badge-ready">ready</span></td>
+                        <td style="text-align:center;font-weight:600;color:#166534">0.90</td>
+                    </tr><tr data-category="Ecommerce" data-build="ready" data-composio="toolkit_gap">
+                        <td class="app-name">WooCommerce</td>
+                        <td style="font-size:0.75rem;">Ecommerce</td>
+                        <td style="font-size:0.75rem;">unknown</td>
+                        <td><span class="badge badge-self_serve">self_serve</span></td>
+                        <td style="font-size:0.75rem;">rest<br><span style="color:#94a3b8;font-size:0.65rem;">broad</span></td>
+                        <td style="font-size:0.75rem;">unknown</td>
+                        <td><span class="badge badge-toolkit_gap">toolkit_gap</span></td>
+                        <td><span class="badge badge-ready">ready</span></td>
+                        <td style="text-align:center;font-weight:600;color:#166534">0.90</td>
+                    </tr><tr data-category="Ecommerce" data-build="ready" data-composio="toolkit_gap">
+                        <td class="app-name">BigCommerce</td>
+                        <td style="font-size:0.75rem;">Ecommerce</td>
+                        <td style="font-size:0.75rem;">unknown</td>
+                        <td><span class="badge badge-self_serve">self_serve</span></td>
+                        <td style="font-size:0.75rem;">rest<br><span style="color:#94a3b8;font-size:0.65rem;">broad</span></td>
+                        <td style="font-size:0.75rem;">unknown</td>
+                        <td><span class="badge badge-toolkit_gap">toolkit_gap</span></td>
+                        <td><span class="badge badge-ready">ready</span></td>
+                        <td style="text-align:center;font-weight:600;color:#166534">0.80</td>
+                    </tr><tr data-category="Ecommerce" data-build="ready_with_constraints" data-composio="unresolved">
+                        <td class="app-name">Salesforce Commerce Cloud</td>
+                        <td style="font-size:0.75rem;">Ecommerce</td>
+                        <td style="font-size:0.75rem;">unknown</td>
+                        <td><span class="badge badge-admin_gated">admin_gated</span></td>
+                        <td style="font-size:0.75rem;">rest<br><span style="color:#94a3b8;font-size:0.65rem;">broad</span></td>
+                        <td style="font-size:0.75rem;">unknown</td>
+                        <td><span class="badge badge-unresolved">unresolved</span></td>
+                        <td><span class="badge badge-ready_with_constraints">ready_with_constraints</span></td>
+                        <td style="text-align:center;font-weight:600;color:#166534">0.80</td>
+                    </tr><tr data-category="Ecommerce" data-build="ready" data-composio="toolkit_gap">
+                        <td class="app-name">Magento</td>
+                        <td style="font-size:0.75rem;">Ecommerce</td>
+                        <td style="font-size:0.75rem;">unknown</td>
+                        <td><span class="badge badge-self_serve">self_serve</span></td>
+                        <td style="font-size:0.75rem;">rest<br><span style="color:#94a3b8;font-size:0.65rem;">broad</span></td>
+                        <td style="font-size:0.75rem;">unknown</td>
+                        <td><span class="badge badge-toolkit_gap">toolkit_gap</span></td>
+                        <td><span class="badge badge-ready">ready</span></td>
+                        <td style="text-align:center;font-weight:600;color:#166534">0.80</td>
+                    </tr><tr data-category="Ecommerce" data-build="ready" data-composio="toolkit_gap">
+                        <td class="app-name">Squarespace</td>
+                        <td style="font-size:0.75rem;">Ecommerce</td>
+                        <td style="font-size:0.75rem;">unknown</td>
+                        <td><span class="badge badge-self_serve">self_serve</span></td>
+                        <td style="font-size:0.75rem;">rest<br><span style="color:#94a3b8;font-size:0.65rem;">moderate</span></td>
+                        <td style="font-size:0.75rem;">unknown</td>
+                        <td><span class="badge badge-toolkit_gap">toolkit_gap</span></td>
+                        <td><span class="badge badge-ready">ready</span></td>
+                        <td style="text-align:center;font-weight:600;color:#166534">0.80</td>
+                    </tr><tr data-category="Ecommerce" data-build="ready" data-composio="toolkit_gap">
+                        <td class="app-name">Ecwid</td>
+                        <td style="font-size:0.75rem;">Ecommerce</td>
+                        <td style="font-size:0.75rem;">unknown</td>
+                        <td><span class="badge badge-self_serve">self_serve</span></td>
+                        <td style="font-size:0.75rem;">rest<br><span style="color:#94a3b8;font-size:0.65rem;">broad</span></td>
+                        <td style="font-size:0.75rem;">unknown</td>
+                        <td><span class="badge badge-toolkit_gap">toolkit_gap</span></td>
+                        <td><span class="badge badge-ready">ready</span></td>
+                        <td style="text-align:center;font-weight:600;color:#166534">0.80</td>
+                    </tr><tr data-category="Ecommerce" data-build="ready" data-composio="existing_toolkit">
+                        <td class="app-name">Gumroad</td>
+                        <td style="font-size:0.75rem;">Ecommerce</td>
+                        <td style="font-size:0.75rem;">OAuth2, API Key</td>
+                        <td><span class="badge badge-self_serve">self_serve</span></td>
+                        <td style="font-size:0.75rem;">rest<br><span style="color:#94a3b8;font-size:0.65rem;">moderate</span></td>
+                        <td style="font-size:0.75rem;">unknown</td>
+                        <td><span class="badge badge-existing_toolkit">existing_toolkit</span></td>
+                        <td><span class="badge badge-ready">ready</span></td>
+                        <td style="text-align:center;font-weight:600;color:#166534">0.80</td>
+                    </tr><tr data-category="Ecommerce" data-build="ready" data-composio="toolkit_gap">
+                        <td class="app-name">Amazon Selling Partner</td>
+                        <td style="font-size:0.75rem;">Ecommerce</td>
+                        <td style="font-size:0.75rem;">unknown</td>
+                        <td><span class="badge badge-self_serve">self_serve</span></td>
+                        <td style="font-size:0.75rem;">rest<br><span style="color:#94a3b8;font-size:0.65rem;">broad</span></td>
+                        <td style="font-size:0.75rem;">unknown</td>
+                        <td><span class="badge badge-toolkit_gap">toolkit_gap</span></td>
+                        <td><span class="badge badge-ready">ready</span></td>
+                        <td style="text-align:center;font-weight:600;color:#166534">0.90</td>
+                    </tr><tr data-category="Ecommerce" data-build="unknown" data-composio="toolkit_gap">
+                        <td class="app-name">fanbasis</td>
+                        <td style="font-size:0.75rem;">Ecommerce</td>
+                        <td style="font-size:0.75rem;">unknown</td>
+                        <td><span class="badge badge-unknown">unknown</span></td>
+                        <td style="font-size:0.75rem;">unknown<br><span style="color:#94a3b8;font-size:0.65rem;">unknown</span></td>
+                        <td style="font-size:0.75rem;">unknown</td>
+                        <td><span class="badge badge-toolkit_gap">toolkit_gap</span></td>
+                        <td><span class="badge badge-unknown">unknown</span></td>
+                        <td style="text-align:center;font-weight:600;color:#991b1b">0.20</td>
+                    </tr><tr data-category="Data SEO and Scraping" data-build="ready" data-composio="existing_toolkit">
+                        <td class="app-name">DataForSEO</td>
+                        <td style="font-size:0.75rem;">Data SEO and Scraping</td>
+                        <td style="font-size:0.75rem;">API Key</td>
+                        <td><span class="badge badge-self_serve">self_serve</span></td>
+                        <td style="font-size:0.75rem;">rest<br><span style="color:#94a3b8;font-size:0.65rem;">broad</span></td>
+                        <td style="font-size:0.75rem;">unknown</td>
+                        <td><span class="badge badge-existing_toolkit">existing_toolkit</span></td>
+                        <td><span class="badge badge-ready">ready</span></td>
+                        <td style="text-align:center;font-weight:600;color:#166534">0.80</td>
+                    </tr><tr data-category="Data SEO and Scraping" data-build="ready" data-composio="toolkit_gap">
+                        <td class="app-name">SE Ranking</td>
+                        <td style="font-size:0.75rem;">Data SEO and Scraping</td>
+                        <td style="font-size:0.75rem;">unknown</td>
+                        <td><span class="badge badge-self_serve">self_serve</span></td>
+                        <td style="font-size:0.75rem;">rest<br><span style="color:#94a3b8;font-size:0.65rem;">broad</span></td>
+                        <td style="font-size:0.75rem;">unknown</td>
+                        <td><span class="badge badge-toolkit_gap">toolkit_gap</span></td>
+                        <td><span class="badge badge-ready">ready</span></td>
+                        <td style="text-align:center;font-weight:600;color:#166534">0.80</td>
+                    </tr><tr data-category="Data SEO and Scraping" data-build="ready" data-composio="existing_toolkit">
+                        <td class="app-name">Ahrefs</td>
+                        <td style="font-size:0.75rem;">Data SEO and Scraping</td>
+                        <td style="font-size:0.75rem;">API Key</td>
+                        <td><span class="badge badge-paid">paid</span></td>
+                        <td style="font-size:0.75rem;">rest<br><span style="color:#94a3b8;font-size:0.65rem;">broad</span></td>
+                        <td style="font-size:0.75rem;">unknown</td>
+                        <td><span class="badge badge-existing_toolkit">existing_toolkit</span></td>
+                        <td><span class="badge badge-ready">ready</span></td>
+                        <td style="text-align:center;font-weight:600;color:#166534">0.80</td>
+                    </tr><tr data-category="Data SEO and Scraping" data-build="unknown" data-composio="toolkit_gap">
+                        <td class="app-name">MrScraper</td>
+                        <td style="font-size:0.75rem;">Data SEO and Scraping</td>
+                        <td style="font-size:0.75rem;">unknown</td>
+                        <td><span class="badge badge-unknown">unknown</span></td>
+                        <td style="font-size:0.75rem;">unknown<br><span style="color:#94a3b8;font-size:0.65rem;">unknown</span></td>
+                        <td style="font-size:0.75rem;">unknown</td>
+                        <td><span class="badge badge-toolkit_gap">toolkit_gap</span></td>
+                        <td><span class="badge badge-unknown">unknown</span></td>
+                        <td style="text-align:center;font-weight:600;color:#991b1b">0.20</td>
+                    </tr><tr data-category="Data SEO and Scraping" data-build="ready" data-composio="existing_toolkit">
+                        <td class="app-name">Apify</td>
+                        <td style="font-size:0.75rem;">Data SEO and Scraping</td>
+                        <td style="font-size:0.75rem;">API Key, Token</td>
+                        <td><span class="badge badge-self_serve">self_serve</span></td>
+                        <td style="font-size:0.75rem;">rest<br><span style="color:#94a3b8;font-size:0.65rem;">broad</span></td>
+                        <td style="font-size:0.75rem;">unverified</td>
+                        <td><span class="badge badge-existing_toolkit">existing_toolkit</span></td>
+                        <td><span class="badge badge-ready">ready</span></td>
+                        <td style="text-align:center;font-weight:600;color:#166534">0.80</td>
+                    </tr><tr data-category="Data SEO and Scraping" data-build="unknown" data-composio="existing_toolkit">
+                        <td class="app-name">Firecrawl</td>
+                        <td style="font-size:0.75rem;">Data SEO and Scraping</td>
+                        <td style="font-size:0.75rem;">API Key</td>
+                        <td><span class="badge badge-unknown">unknown</span></td>
+                        <td style="font-size:0.75rem;">unknown<br><span style="color:#94a3b8;font-size:0.65rem;">unknown</span></td>
+                        <td style="font-size:0.75rem;">unknown</td>
+                        <td><span class="badge badge-existing_toolkit">existing_toolkit</span></td>
+                        <td><span class="badge badge-unknown">unknown</span></td>
+                        <td style="text-align:center;font-weight:600;color:#991b1b">0.20</td>
+                    </tr><tr data-category="Data SEO and Scraping" data-build="ready" data-composio="existing_toolkit">
+                        <td class="app-name">Bright Data</td>
+                        <td style="font-size:0.75rem;">Data SEO and Scraping</td>
+                        <td style="font-size:0.75rem;">API Key</td>
+                        <td><span class="badge badge-self_serve">self_serve</span></td>
+                        <td style="font-size:0.75rem;">rest<br><span style="color:#94a3b8;font-size:0.65rem;">broad</span></td>
+                        <td style="font-size:0.75rem;">unknown</td>
+                        <td><span class="badge badge-existing_toolkit">existing_toolkit</span></td>
+                        <td><span class="badge badge-ready">ready</span></td>
+                        <td style="text-align:center;font-weight:600;color:#166534">0.80</td>
+                    </tr><tr data-category="Data SEO and Scraping" data-build="unknown" data-composio="toolkit_gap">
+                        <td class="app-name">Sherlock</td>
+                        <td style="font-size:0.75rem;">Data SEO and Scraping</td>
+                        <td style="font-size:0.75rem;">unknown</td>
+                        <td><span class="badge badge-unknown">unknown</span></td>
+                        <td style="font-size:0.75rem;">unknown<br><span style="color:#94a3b8;font-size:0.65rem;">unknown</span></td>
+                        <td style="font-size:0.75rem;">unknown</td>
+                        <td><span class="badge badge-toolkit_gap">toolkit_gap</span></td>
+                        <td><span class="badge badge-unknown">unknown</span></td>
+                        <td style="text-align:center;font-weight:600;color:#991b1b">0.20</td>
+                    </tr><tr data-category="Data SEO and Scraping" data-build="unknown" data-composio="toolkit_gap">
+                        <td class="app-name">Waterfall.io</td>
+                        <td style="font-size:0.75rem;">Data SEO and Scraping</td>
+                        <td style="font-size:0.75rem;">unknown</td>
+                        <td><span class="badge badge-unknown">unknown</span></td>
+                        <td style="font-size:0.75rem;">unknown<br><span style="color:#94a3b8;font-size:0.65rem;">unknown</span></td>
+                        <td style="font-size:0.75rem;">unknown</td>
+                        <td><span class="badge badge-toolkit_gap">toolkit_gap</span></td>
+                        <td><span class="badge badge-unknown">unknown</span></td>
+                        <td style="text-align:center;font-weight:600;color:#991b1b">0.20</td>
+                    </tr><tr data-category="Data SEO and Scraping" data-build="unknown" data-composio="toolkit_gap">
+                        <td class="app-name">Clay</td>
+                        <td style="font-size:0.75rem;">Data SEO and Scraping</td>
+                        <td style="font-size:0.75rem;">unknown</td>
+                        <td><span class="badge badge-unknown">unknown</span></td>
+                        <td style="font-size:0.75rem;">unknown<br><span style="color:#94a3b8;font-size:0.65rem;">unknown</span></td>
+                        <td style="font-size:0.75rem;">unknown</td>
+                        <td><span class="badge badge-toolkit_gap">toolkit_gap</span></td>
+                        <td><span class="badge badge-unknown">unknown</span></td>
+                        <td style="text-align:center;font-weight:600;color:#991b1b">0.20</td>
+                    </tr><tr data-category="Developer Infra and Data platforms" data-build="ready" data-composio="existing_toolkit">
+                        <td class="app-name">GitHub</td>
+                        <td style="font-size:0.75rem;">Developer Infra and Data platforms</td>
+                        <td style="font-size:0.75rem;">OAuth2, API Key</td>
+                        <td><span class="badge badge-self_serve">self_serve</span></td>
+                        <td style="font-size:0.75rem;">rest<br><span style="color:#94a3b8;font-size:0.65rem;">broad</span></td>
+                        <td style="font-size:0.75rem;">unverified</td>
+                        <td><span class="badge badge-existing_toolkit">existing_toolkit</span></td>
+                        <td><span class="badge badge-ready">ready</span></td>
+                        <td style="text-align:center;font-weight:600;color:#166534">0.90</td>
+                    </tr><tr data-category="Developer Infra and Data platforms" data-build="ready" data-composio="existing_toolkit">
+                        <td class="app-name">Vercel</td>
+                        <td style="font-size:0.75rem;">Developer Infra and Data platforms</td>
+                        <td style="font-size:0.75rem;">OAuth2, API Key</td>
+                        <td><span class="badge badge-self_serve">self_serve</span></td>
+                        <td style="font-size:0.75rem;">rest<br><span style="color:#94a3b8;font-size:0.65rem;">broad</span></td>
+                        <td style="font-size:0.75rem;">unknown</td>
+                        <td><span class="badge badge-existing_toolkit">existing_toolkit</span></td>
+                        <td><span class="badge badge-ready">ready</span></td>
+                        <td style="text-align:center;font-weight:600;color:#166534">0.80</td>
+                    </tr><tr data-category="Developer Infra and Data platforms" data-build="ready" data-composio="toolkit_gap">
+                        <td class="app-name">Netlify</td>
+                        <td style="font-size:0.75rem;">Developer Infra and Data platforms</td>
+                        <td style="font-size:0.75rem;">unknown</td>
+                        <td><span class="badge badge-self_serve">self_serve</span></td>
+                        <td style="font-size:0.75rem;">rest<br><span style="color:#94a3b8;font-size:0.65rem;">broad</span></td>
+                        <td style="font-size:0.75rem;">unknown</td>
+                        <td><span class="badge badge-toolkit_gap">toolkit_gap</span></td>
+                        <td><span class="badge badge-ready">ready</span></td>
+                        <td style="text-align:center;font-weight:600;color:#166534">0.80</td>
+                    </tr><tr data-category="Developer Infra and Data platforms" data-build="ready" data-composio="existing_toolkit">
+                        <td class="app-name">Cloudflare</td>
+                        <td style="font-size:0.75rem;">Developer Infra and Data platforms</td>
+                        <td style="font-size:0.75rem;">API Key, OAuth2</td>
+                        <td><span class="badge badge-self_serve">self_serve</span></td>
+                        <td style="font-size:0.75rem;">rest<br><span style="color:#94a3b8;font-size:0.65rem;">broad</span></td>
+                        <td style="font-size:0.75rem;">unverified</td>
+                        <td><span class="badge badge-existing_toolkit">existing_toolkit</span></td>
+                        <td><span class="badge badge-ready">ready</span></td>
+                        <td style="text-align:center;font-weight:600;color:#166534">0.90</td>
+                    </tr><tr data-category="Developer Infra and Data platforms" data-build="ready" data-composio="existing_toolkit">
+                        <td class="app-name">Supabase</td>
+                        <td style="font-size:0.75rem;">Developer Infra and Data platforms</td>
+                        <td style="font-size:0.75rem;">API Key, Token</td>
+                        <td><span class="badge badge-self_serve">self_serve</span></td>
+                        <td style="font-size:0.75rem;">rest<br><span style="color:#94a3b8;font-size:0.65rem;">broad</span></td>
+                        <td style="font-size:0.75rem;">community</td>
+                        <td><span class="badge badge-existing_toolkit">existing_toolkit</span></td>
+                        <td><span class="badge badge-ready">ready</span></td>
+                        <td style="text-align:center;font-weight:600;color:#166534">0.80</td>
+                    </tr><tr data-category="Developer Infra and Data platforms" data-build="ready" data-composio="existing_toolkit">
+                        <td class="app-name">Neo4j</td>
+                        <td style="font-size:0.75rem;">Developer Infra and Data platforms</td>
+                        <td style="font-size:0.75rem;">Basic, Token</td>
+                        <td><span class="badge badge-self_serve">self_serve</span></td>
+                        <td style="font-size:0.75rem;">rest<br><span style="color:#94a3b8;font-size:0.65rem;">broad</span></td>
+                        <td style="font-size:0.75rem;">unverified</td>
+                        <td><span class="badge badge-existing_toolkit">existing_toolkit</span></td>
+                        <td><span class="badge badge-ready">ready</span></td>
+                        <td style="text-align:center;font-weight:600;color:#166534">0.80</td>
+                    </tr><tr data-category="Developer Infra and Data platforms" data-build="ready" data-composio="existing_toolkit">
+                        <td class="app-name">Snowflake</td>
+                        <td style="font-size:0.75rem;">Developer Infra and Data platforms</td>
+                        <td style="font-size:0.75rem;">OAuth2, API Key</td>
+                        <td><span class="badge badge-self_serve">self_serve</span></td>
+                        <td style="font-size:0.75rem;">rest<br><span style="color:#94a3b8;font-size:0.65rem;">broad</span></td>
+                        <td style="font-size:0.75rem;">unknown</td>
+                        <td><span class="badge badge-existing_toolkit">existing_toolkit</span></td>
+                        <td><span class="badge badge-ready">ready</span></td>
+                        <td style="text-align:center;font-weight:600;color:#166534">0.80</td>
+                    </tr><tr data-category="Developer Infra and Data platforms" data-build="ready" data-composio="toolkit_gap">
+                        <td class="app-name">MongoDB Atlas</td>
+                        <td style="font-size:0.75rem;">Developer Infra and Data platforms</td>
+                        <td style="font-size:0.75rem;">unknown</td>
+                        <td><span class="badge badge-self_serve">self_serve</span></td>
+                        <td style="font-size:0.75rem;">rest<br><span style="color:#94a3b8;font-size:0.65rem;">broad</span></td>
+                        <td style="font-size:0.75rem;">unknown</td>
+                        <td><span class="badge badge-toolkit_gap">toolkit_gap</span></td>
+                        <td><span class="badge badge-ready">ready</span></td>
+                        <td style="text-align:center;font-weight:600;color:#166534">0.90</td>
+                    </tr><tr data-category="Developer Infra and Data platforms" data-build="ready" data-composio="existing_toolkit">
+                        <td class="app-name">Datadog</td>
+                        <td style="font-size:0.75rem;">Developer Infra and Data platforms</td>
+                        <td style="font-size:0.75rem;">API Key, OAuth2</td>
+                        <td><span class="badge badge-self_serve">self_serve</span></td>
+                        <td style="font-size:0.75rem;">rest<br><span style="color:#94a3b8;font-size:0.65rem;">broad</span></td>
+                        <td style="font-size:0.75rem;">unknown</td>
+                        <td><span class="badge badge-existing_toolkit">existing_toolkit</span></td>
+                        <td><span class="badge badge-ready">ready</span></td>
+                        <td style="text-align:center;font-weight:600;color:#166534">0.90</td>
+                    </tr><tr data-category="Developer Infra and Data platforms" data-build="ready" data-composio="existing_toolkit">
+                        <td class="app-name">Sentry</td>
+                        <td style="font-size:0.75rem;">Developer Infra and Data platforms</td>
+                        <td style="font-size:0.75rem;">API Key, OAuth2</td>
+                        <td><span class="badge badge-self_serve">self_serve</span></td>
+                        <td style="font-size:0.75rem;">rest<br><span style="color:#94a3b8;font-size:0.65rem;">broad</span></td>
+                        <td style="font-size:0.75rem;">unknown</td>
+                        <td><span class="badge badge-existing_toolkit">existing_toolkit</span></td>
+                        <td><span class="badge badge-ready">ready</span></td>
+                        <td style="text-align:center;font-weight:600;color:#166534">0.80</td>
+                    </tr><tr data-category="Productivity and Project Management" data-build="ready" data-composio="existing_toolkit">
+                        <td class="app-name">Notion</td>
+                        <td style="font-size:0.75rem;">Productivity and Project Management</td>
+                        <td style="font-size:0.75rem;">OAuth2</td>
+                        <td><span class="badge badge-self_serve">self_serve</span></td>
+                        <td style="font-size:0.75rem;">rest<br><span style="color:#94a3b8;font-size:0.65rem;">broad</span></td>
+                        <td style="font-size:0.75rem;">unverified</td>
+                        <td><span class="badge badge-existing_toolkit">existing_toolkit</span></td>
+                        <td><span class="badge badge-ready">ready</span></td>
+                        <td style="text-align:center;font-weight:600;color:#166534">0.90</td>
+                    </tr><tr data-category="Productivity and Project Management" data-build="ready" data-composio="existing_toolkit">
+                        <td class="app-name">Airtable</td>
+                        <td style="font-size:0.75rem;">Productivity and Project Management</td>
+                        <td style="font-size:0.75rem;">API Key, OAuth2</td>
+                        <td><span class="badge badge-self_serve">self_serve</span></td>
+                        <td style="font-size:0.75rem;">rest<br><span style="color:#94a3b8;font-size:0.65rem;">broad</span></td>
+                        <td style="font-size:0.75rem;">unknown</td>
+                        <td><span class="badge badge-existing_toolkit">existing_toolkit</span></td>
+                        <td><span class="badge badge-ready">ready</span></td>
+                        <td style="text-align:center;font-weight:600;color:#166534">0.90</td>
+                    </tr><tr data-category="Productivity and Project Management" data-build="ready" data-composio="existing_toolkit">
+                        <td class="app-name">Linear</td>
+                        <td style="font-size:0.75rem;">Productivity and Project Management</td>
+                        <td style="font-size:0.75rem;">OAuth2, API Key</td>
+                        <td><span class="badge badge-self_serve">self_serve</span></td>
+                        <td style="font-size:0.75rem;">rest<br><span style="color:#94a3b8;font-size:0.65rem;">moderate</span></td>
+                        <td style="font-size:0.75rem;">unknown</td>
+                        <td><span class="badge badge-existing_toolkit">existing_toolkit</span></td>
+                        <td><span class="badge badge-ready">ready</span></td>
+                        <td style="text-align:center;font-weight:600;color:#166534">0.80</td>
+                    </tr><tr data-category="Productivity and Project Management" data-build="ready" data-composio="existing_toolkit">
+                        <td class="app-name">Jira</td>
+                        <td style="font-size:0.75rem;">Productivity and Project Management</td>
+                        <td style="font-size:0.75rem;">OAuth2, Basic</td>
+                        <td><span class="badge badge-self_serve">self_serve</span></td>
+                        <td style="font-size:0.75rem;">rest<br><span style="color:#94a3b8;font-size:0.65rem;">broad</span></td>
+                        <td style="font-size:0.75rem;">unknown</td>
+                        <td><span class="badge badge-existing_toolkit">existing_toolkit</span></td>
+                        <td><span class="badge badge-ready">ready</span></td>
+                        <td style="text-align:center;font-weight:600;color:#166534">0.90</td>
+                    </tr><tr data-category="Productivity and Project Management" data-build="ready" data-composio="existing_toolkit">
+                        <td class="app-name">Asana</td>
+                        <td style="font-size:0.75rem;">Productivity and Project Management</td>
+                        <td style="font-size:0.75rem;">OAuth2, API Key</td>
+                        <td><span class="badge badge-self_serve">self_serve</span></td>
+                        <td style="font-size:0.75rem;">rest<br><span style="color:#94a3b8;font-size:0.65rem;">broad</span></td>
+                        <td style="font-size:0.75rem;">unknown</td>
+                        <td><span class="badge badge-existing_toolkit">existing_toolkit</span></td>
+                        <td><span class="badge badge-ready">ready</span></td>
+                        <td style="text-align:center;font-weight:600;color:#166534">0.90</td>
+                    </tr><tr data-category="Productivity and Project Management" data-build="ready" data-composio="existing_toolkit">
+                        <td class="app-name">Monday.com</td>
+                        <td style="font-size:0.75rem;">Productivity and Project Management</td>
+                        <td style="font-size:0.75rem;">OAuth2, API Key</td>
+                        <td><span class="badge badge-self_serve">self_serve</span></td>
+                        <td style="font-size:0.75rem;">rest<br><span style="color:#94a3b8;font-size:0.65rem;">broad</span></td>
+                        <td style="font-size:0.75rem;">unknown</td>
+                        <td><span class="badge badge-existing_toolkit">existing_toolkit</span></td>
+                        <td><span class="badge badge-ready">ready</span></td>
+                        <td style="text-align:center;font-weight:600;color:#166534">0.90</td>
+                    </tr><tr data-category="Productivity and Project Management" data-build="ready" data-composio="existing_toolkit">
+                        <td class="app-name">ClickUp</td>
+                        <td style="font-size:0.75rem;">Productivity and Project Management</td>
+                        <td style="font-size:0.75rem;">OAuth2, API Key</td>
+                        <td><span class="badge badge-self_serve">self_serve</span></td>
+                        <td style="font-size:0.75rem;">rest<br><span style="color:#94a3b8;font-size:0.65rem;">broad</span></td>
+                        <td style="font-size:0.75rem;">unknown</td>
+                        <td><span class="badge badge-existing_toolkit">existing_toolkit</span></td>
+                        <td><span class="badge badge-ready">ready</span></td>
+                        <td style="text-align:center;font-weight:600;color:#166534">0.80</td>
+                    </tr><tr data-category="Productivity and Project Management" data-build="ready" data-composio="existing_toolkit">
+                        <td class="app-name">Coda</td>
+                        <td style="font-size:0.75rem;">Productivity and Project Management</td>
+                        <td style="font-size:0.75rem;">OAuth2</td>
+                        <td><span class="badge badge-self_serve">self_serve</span></td>
+                        <td style="font-size:0.75rem;">rest<br><span style="color:#94a3b8;font-size:0.65rem;">broad</span></td>
+                        <td style="font-size:0.75rem;">unknown</td>
+                        <td><span class="badge badge-existing_toolkit">existing_toolkit</span></td>
+                        <td><span class="badge badge-ready">ready</span></td>
+                        <td style="text-align:center;font-weight:600;color:#166534">0.80</td>
+                    </tr><tr data-category="Productivity and Project Management" data-build="ready" data-composio="toolkit_gap">
+                        <td class="app-name">Smartsheet</td>
+                        <td style="font-size:0.75rem;">Productivity and Project Management</td>
+                        <td style="font-size:0.75rem;">unknown</td>
+                        <td><span class="badge badge-self_serve">self_serve</span></td>
+                        <td style="font-size:0.75rem;">rest<br><span style="color:#94a3b8;font-size:0.65rem;">broad</span></td>
+                        <td style="font-size:0.75rem;">unknown</td>
+                        <td><span class="badge badge-toolkit_gap">toolkit_gap</span></td>
+                        <td><span class="badge badge-ready">ready</span></td>
+                        <td style="text-align:center;font-weight:600;color:#166534">0.90</td>
+                    </tr><tr data-category="Productivity and Project Management" data-build="ready" data-composio="existing_toolkit">
+                        <td class="app-name">Harvest</td>
+                        <td style="font-size:0.75rem;">Productivity and Project Management</td>
+                        <td style="font-size:0.75rem;">OAuth2</td>
+                        <td><span class="badge badge-self_serve">self_serve</span></td>
+                        <td style="font-size:0.75rem;">rest<br><span style="color:#94a3b8;font-size:0.65rem;">moderate</span></td>
+                        <td style="font-size:0.75rem;">unknown</td>
+                        <td><span class="badge badge-existing_toolkit">existing_toolkit</span></td>
+                        <td><span class="badge badge-ready">ready</span></td>
+                        <td style="text-align:center;font-weight:600;color:#166534">0.80</td>
+                    </tr><tr data-category="Finance and Fintech" data-build="ready" data-composio="existing_toolkit">
+                        <td class="app-name">Stripe</td>
+                        <td style="font-size:0.75rem;">Finance and Fintech</td>
+                        <td style="font-size:0.75rem;">API Key, OAuth2</td>
+                        <td><span class="badge badge-self_serve">self_serve</span></td>
+                        <td style="font-size:0.75rem;">rest<br><span style="color:#94a3b8;font-size:0.65rem;">unknown</span></td>
+                        <td style="font-size:0.75rem;">unverified</td>
+                        <td><span class="badge badge-existing_toolkit">existing_toolkit</span></td>
+                        <td><span class="badge badge-ready">ready</span></td>
+                        <td style="text-align:center;font-weight:600;color:#166534">0.90</td>
+                    </tr><tr data-category="Finance and Fintech" data-build="ready" data-composio="existing_toolkit">
+                        <td class="app-name">Plaid</td>
+                        <td style="font-size:0.75rem;">Finance and Fintech</td>
+                        <td style="font-size:0.75rem;">OAuth2, API Key</td>
+                        <td><span class="badge badge-self_serve">self_serve</span></td>
+                        <td style="font-size:0.75rem;">rest<br><span style="color:#94a3b8;font-size:0.65rem;">unknown</span></td>
+                        <td style="font-size:0.75rem;">unverified</td>
+                        <td><span class="badge badge-existing_toolkit">existing_toolkit</span></td>
+                        <td><span class="badge badge-ready">ready</span></td>
+                        <td style="text-align:center;font-weight:600;color:#166534">0.80</td>
+                    </tr><tr data-category="Finance and Fintech" data-build="ready" data-composio="toolkit_gap">
+                        <td class="app-name">Binance</td>
+                        <td style="font-size:0.75rem;">Finance and Fintech</td>
+                        <td style="font-size:0.75rem;">API Key, OAuth2</td>
+                        <td><span class="badge badge-self_serve">self_serve</span></td>
+                        <td style="font-size:0.75rem;">rest<br><span style="color:#94a3b8;font-size:0.65rem;">broad</span></td>
+                        <td style="font-size:0.75rem;">unverified</td>
+                        <td><span class="badge badge-toolkit_gap">toolkit_gap</span></td>
+                        <td><span class="badge badge-ready">ready</span></td>
+                        <td style="text-align:center;font-weight:600;color:#166534">0.90</td>
+                    </tr><tr data-category="Finance and Fintech" data-build="unknown" data-composio="toolkit_gap">
+                        <td class="app-name">Paygent Connect</td>
+                        <td style="font-size:0.75rem;">Finance and Fintech</td>
+                        <td style="font-size:0.75rem;">API Key</td>
+                        <td><span class="badge badge-unknown">unknown</span></td>
+                        <td style="font-size:0.75rem;">unknown<br><span style="color:#94a3b8;font-size:0.65rem;">unknown</span></td>
+                        <td style="font-size:0.75rem;">unknown</td>
+                        <td><span class="badge badge-toolkit_gap">toolkit_gap</span></td>
+                        <td><span class="badge badge-unknown">unknown</span></td>
+                        <td style="text-align:center;font-weight:600;color:#991b1b">0.20</td>
+                    </tr><tr data-category="Finance and Fintech" data-build="unknown" data-composio="toolkit_gap">
+                        <td class="app-name">iPayX</td>
+                        <td style="font-size:0.75rem;">Finance and Fintech</td>
+                        <td style="font-size:0.75rem;">API Key</td>
+                        <td><span class="badge badge-unknown">unknown</span></td>
+                        <td style="font-size:0.75rem;">rest<br><span style="color:#94a3b8;font-size:0.65rem;">unknown</span></td>
+                        <td style="font-size:0.75rem;">unknown</td>
+                        <td><span class="badge badge-toolkit_gap">toolkit_gap</span></td>
+                        <td><span class="badge badge-unknown">unknown</span></td>
+                        <td style="text-align:center;font-weight:600;color:#991b1b">0.20</td>
+                    </tr><tr data-category="Finance and Fintech" data-build="ready" data-composio="existing_toolkit">
+                        <td class="app-name">QuickBooks</td>
+                        <td style="font-size:0.75rem;">Finance and Fintech</td>
+                        <td style="font-size:0.75rem;">OAuth2</td>
+                        <td><span class="badge badge-self_serve">self_serve</span></td>
+                        <td style="font-size:0.75rem;">rest<br><span style="color:#94a3b8;font-size:0.65rem;">broad</span></td>
+                        <td style="font-size:0.75rem;">unverified</td>
+                        <td><span class="badge badge-existing_toolkit">existing_toolkit</span></td>
+                        <td><span class="badge badge-ready">ready</span></td>
+                        <td style="text-align:center;font-weight:600;color:#166534">0.90</td>
+                    </tr><tr data-category="Finance and Fintech" data-build="ready" data-composio="existing_toolkit">
+                        <td class="app-name">Xero</td>
+                        <td style="font-size:0.75rem;">Finance and Fintech</td>
+                        <td style="font-size:0.75rem;">OAuth2</td>
+                        <td><span class="badge badge-self_serve">self_serve</span></td>
+                        <td style="font-size:0.75rem;">rest<br><span style="color:#94a3b8;font-size:0.65rem;">broad</span></td>
+                        <td style="font-size:0.75rem;">unverified</td>
+                        <td><span class="badge badge-existing_toolkit">existing_toolkit</span></td>
+                        <td><span class="badge badge-ready">ready</span></td>
+                        <td style="text-align:center;font-weight:600;color:#166534">0.90</td>
+                    </tr><tr data-category="Finance and Fintech" data-build="ready" data-composio="existing_toolkit">
+                        <td class="app-name">Brex</td>
+                        <td style="font-size:0.75rem;">Finance and Fintech</td>
+                        <td style="font-size:0.75rem;">OAuth2, API Key</td>
+                        <td><span class="badge badge-self_serve">self_serve</span></td>
+                        <td style="font-size:0.75rem;">rest<br><span style="color:#94a3b8;font-size:0.65rem;">unknown</span></td>
+                        <td style="font-size:0.75rem;">unverified</td>
+                        <td><span class="badge badge-existing_toolkit">existing_toolkit</span></td>
+                        <td><span class="badge badge-ready">ready</span></td>
+                        <td style="text-align:center;font-weight:600;color:#166534">0.80</td>
+                    </tr><tr data-category="Finance and Fintech" data-build="ready_with_constraints" data-composio="existing_toolkit">
+                        <td class="app-name">Ramp</td>
+                        <td style="font-size:0.75rem;">Finance and Fintech</td>
+                        <td style="font-size:0.75rem;">OAuth2, API Key</td>
+                        <td><span class="badge badge-admin_gated">admin_gated</span></td>
+                        <td style="font-size:0.75rem;">rest<br><span style="color:#94a3b8;font-size:0.65rem;">moderate</span></td>
+                        <td style="font-size:0.75rem;">none</td>
+                        <td><span class="badge badge-existing_toolkit">existing_toolkit</span></td>
+                        <td><span class="badge badge-ready_with_constraints">ready_with_constraints</span></td>
+                        <td style="text-align:center;font-weight:600;color:#166534">0.70</td>
+                    </tr><tr data-category="Finance and Fintech" data-build="ready_with_constraints" data-composio="toolkit_gap">
+                        <td class="app-name">PitchBook</td>
+                        <td style="font-size:0.75rem;">Finance and Fintech</td>
+                        <td style="font-size:0.75rem;">API Key</td>
+                        <td><span class="badge badge-paid">paid</span></td>
+                        <td style="font-size:0.75rem;">rest<br><span style="color:#94a3b8;font-size:0.65rem;">broad</span></td>
+                        <td style="font-size:0.75rem;">unverified</td>
+                        <td><span class="badge badge-toolkit_gap">toolkit_gap</span></td>
+                        <td><span class="badge badge-ready_with_constraints">ready_with_constraints</span></td>
+                        <td style="text-align:center;font-weight:600;color:#166534">0.80</td>
+                    </tr><tr data-category="AI Research and Media-native" data-build="ready_with_constraints" data-composio="toolkit_gap">
+                        <td class="app-name">NotebookLM</td>
+                        <td style="font-size:0.75rem;">AI Research and Media-native</td>
+                        <td style="font-size:0.75rem;">OAuth2</td>
+                        <td><span class="badge badge-admin_gated">admin_gated</span></td>
+                        <td style="font-size:0.75rem;">rest<br><span style="color:#94a3b8;font-size:0.65rem;">moderate</span></td>
+                        <td style="font-size:0.75rem;">unverified</td>
+                        <td><span class="badge badge-toolkit_gap">toolkit_gap</span></td>
+                        <td><span class="badge badge-ready_with_constraints">ready_with_constraints</span></td>
+                        <td style="text-align:center;font-weight:600;color:#166534">0.80</td>
+                    </tr><tr data-category="AI Research and Media-native" data-build="ready_with_constraints" data-composio="toolkit_gap">
+                        <td class="app-name">Otter AI</td>
+                        <td style="font-size:0.75rem;">AI Research and Media-native</td>
+                        <td style="font-size:0.75rem;">OAuth2</td>
+                        <td><span class="badge badge-self_serve">self_serve</span></td>
+                        <td style="font-size:0.75rem;">rest<br><span style="color:#94a3b8;font-size:0.65rem;">moderate</span></td>
+                        <td style="font-size:0.75rem;">unverified</td>
+                        <td><span class="badge badge-toolkit_gap">toolkit_gap</span></td>
+                        <td><span class="badge badge-ready_with_constraints">ready_with_constraints</span></td>
+                        <td style="text-align:center;font-weight:600;color:#166534">0.70</td>
+                    </tr><tr data-category="AI Research and Media-native" data-build="ready_with_constraints" data-composio="existing_toolkit">
+                        <td class="app-name">Fathom</td>
+                        <td style="font-size:0.75rem;">AI Research and Media-native</td>
+                        <td style="font-size:0.75rem;">API Key</td>
+                        <td><span class="badge badge-self_serve">self_serve</span></td>
+                        <td style="font-size:0.75rem;">rest<br><span style="color:#94a3b8;font-size:0.65rem;">moderate</span></td>
+                        <td style="font-size:0.75rem;">none</td>
+                        <td><span class="badge badge-existing_toolkit">existing_toolkit</span></td>
+                        <td><span class="badge badge-ready_with_constraints">ready_with_constraints</span></td>
+                        <td style="text-align:center;font-weight:600;color:#166534">0.80</td>
+                    </tr><tr data-category="AI Research and Media-native" data-build="unknown" data-composio="toolkit_gap">
+                        <td class="app-name">Consensus</td>
+                        <td style="font-size:0.75rem;">AI Research and Media-native</td>
+                        <td style="font-size:0.75rem;">API Key</td>
+                        <td><span class="badge badge-unknown">unknown</span></td>
+                        <td style="font-size:0.75rem;">unknown<br><span style="color:#94a3b8;font-size:0.65rem;">unknown</span></td>
+                        <td style="font-size:0.75rem;">unknown</td>
+                        <td><span class="badge badge-toolkit_gap">toolkit_gap</span></td>
+                        <td><span class="badge badge-unknown">unknown</span></td>
+                        <td style="text-align:center;font-weight:600;color:#991b1b">0.00</td>
+                    </tr><tr data-category="AI Research and Media-native" data-build="ready_with_constraints" data-composio="toolkit_gap">
+                        <td class="app-name">Reducto</td>
+                        <td style="font-size:0.75rem;">AI Research and Media-native</td>
+                        <td style="font-size:0.75rem;">API Key</td>
+                        <td><span class="badge badge-contact_sales">contact_sales</span></td>
+                        <td style="font-size:0.75rem;">rest<br><span style="color:#94a3b8;font-size:0.65rem;">moderate</span></td>
+                        <td style="font-size:0.75rem;">none</td>
+                        <td><span class="badge badge-toolkit_gap">toolkit_gap</span></td>
+                        <td><span class="badge badge-ready_with_constraints">ready_with_constraints</span></td>
+                        <td style="text-align:center;font-weight:600;color:#92400e">0.60</td>
+                    </tr><tr data-category="AI Research and Media-native" data-build="ready" data-composio="existing_toolkit">
+                        <td class="app-name">Devin</td>
+                        <td style="font-size:0.75rem;">AI Research and Media-native</td>
+                        <td style="font-size:0.75rem;">API Key, OAuth2</td>
+                        <td><span class="badge badge-unknown">unknown</span></td>
+                        <td style="font-size:0.75rem;">rest<br><span style="color:#94a3b8;font-size:0.65rem;">unknown</span></td>
+                        <td style="font-size:0.75rem;">unverified</td>
+                        <td><span class="badge badge-existing_toolkit">existing_toolkit</span></td>
+                        <td><span class="badge badge-ready">ready</span></td>
+                        <td style="text-align:center;font-weight:600;color:#166534">0.80</td>
+                    </tr><tr data-category="AI Research and Media-native" data-build="ready_with_constraints" data-composio="toolkit_gap">
+                        <td class="app-name">higgsfield</td>
+                        <td style="font-size:0.75rem;">AI Research and Media-native</td>
+                        <td style="font-size:0.75rem;">API Key</td>
+                        <td><span class="badge badge-self_serve">self_serve</span></td>
+                        <td style="font-size:0.75rem;">rest<br><span style="color:#94a3b8;font-size:0.65rem;">moderate</span></td>
+                        <td style="font-size:0.75rem;">none</td>
+                        <td><span class="badge badge-toolkit_gap">toolkit_gap</span></td>
+                        <td><span class="badge badge-ready_with_constraints">ready_with_constraints</span></td>
+                        <td style="text-align:center;font-weight:600;color:#166534">0.70</td>
+                    </tr><tr data-category="AI Research and Media-native" data-build="blocked" data-composio="toolkit_gap">
+                        <td class="app-name">Mermaid CLI</td>
+                        <td style="font-size:0.75rem;">AI Research and Media-native</td>
+                        <td style="font-size:0.75rem;">unknown</td>
+                        <td><span class="badge badge-self_serve">self_serve</span></td>
+                        <td style="font-size:0.75rem;">none<br><span style="color:#94a3b8;font-size:0.65rem;">none</span></td>
+                        <td style="font-size:0.75rem;">none</td>
+                        <td><span class="badge badge-toolkit_gap">toolkit_gap</span></td>
+                        <td><span class="badge badge-blocked">blocked</span></td>
+                        <td style="text-align:center;font-weight:600;color:#166534">0.80</td>
+                    </tr><tr data-category="AI Research and Media-native" data-build="ready" data-composio="toolkit_gap">
+                        <td class="app-name">YouTube Transcript</td>
+                        <td style="font-size:0.75rem;">AI Research and Media-native</td>
+                        <td style="font-size:0.75rem;">API Key</td>
+                        <td><span class="badge badge-self_serve">self_serve</span></td>
+                        <td style="font-size:0.75rem;">rest<br><span style="color:#94a3b8;font-size:0.65rem;">moderate</span></td>
+                        <td style="font-size:0.75rem;">none</td>
+                        <td><span class="badge badge-toolkit_gap">toolkit_gap</span></td>
+                        <td><span class="badge badge-ready">ready</span></td>
+                        <td style="text-align:center;font-weight:600;color:#166534">0.80</td>
+                    </tr><tr data-category="AI Research and Media-native" data-build="ready" data-composio="toolkit_gap">
+                        <td class="app-name">Grain</td>
+                        <td style="font-size:0.75rem;">AI Research and Media-native</td>
+                        <td style="font-size:0.75rem;">OAuth2, API Key</td>
+                        <td><span class="badge badge-self_serve">self_serve</span></td>
+                        <td style="font-size:0.75rem;">rest<br><span style="color:#94a3b8;font-size:0.65rem;">moderate</span></td>
+                        <td style="font-size:0.75rem;">none</td>
+                        <td><span class="badge badge-toolkit_gap">toolkit_gap</span></td>
+                        <td><span class="badge badge-ready">ready</span></td>
+                        <td style="text-align:center;font-weight:600;color:#166534">0.80</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- VERIFICATION -->
+    <div class="section">
+        <h2>✅ Verification & Accuracy</h2>
+        <div class="grid-2">
+            <div>
+                <h3>Composio Coverage Evolution</h3>
+                <div style="background:#f8fafc;padding:15px;border-radius:10px;">
+                    <div style="font-size:0.9rem;">
+                        <div>Initial detection: <span style="color:#f87171;">0</span></div>
+                        <div>Static correction: <span style="color:#fbbf24;">23</span></div>
+                        <div>Dynamic catalog: <span style="color:#60a5fa;">61</span></div>
+                        <div style="font-weight:700;">Product-validated: <span style="color:#34d399;">57</span></div>
+                    </div>
+                    <div style="margin-top:10px;font-size:0.8rem;color:#64748b;">
+                        Verification removed false positives (Squarespace → Square, Zoho Cliq → Zoho CRM, YouTube Transcript → YouTube)
+                    </div>
+                </div>
+            </div>
+            <div>
+                <h3>Field-Level Verification</h3>
+                <div style="background:#f8fafc;padding:15px;border-radius:10px;">
+                    <div style="font-weight:700;color:#92400e;margin-bottom:8px;">
+                        Manual verification pending
+                    </div>
+                    <div style="font-size:0.85rem;color:#64748b;line-height:1.6;">
+                        The verification framework is implemented, but no manually checked
+                        sample has been recorded yet. Therefore, no field-level accuracy
+                        percentage is reported.
+                    </div>
+                    <div style="margin-top:10px;font-size:0.78rem;color:#94a3b8;">
+                        Current verification sample: 0 checked rows • Accuracy: not yet measured
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+        <div style="margin-top:15px;background:#f0f9ff;padding:15px;border-radius:10px;border:1px solid #bae6fd;">
+            <strong>Example: False Positive Caught</strong><br>
+            Squarespace was initially matched to "Square" (payments) toolkit.<br>
+            Product-level validation identified this as incorrect → removed from Composio coverage.
+        </div>
+    </div>
+
+
+    <!-- METHODOLOGY NOTE -->
+    <div class="section">
+        <h2>🧪 Verification Notes</h2>
+        <div class="highlight-box">
+            <strong>Conservative reporting:</strong><br>
+            Composio coverage was product-validated to 57 existing toolkits, 42 toolkit gaps,
+            and 1 unresolved match. Native MCP claims without stored official-source evidence
+            are displayed as <strong>unverified</strong>. The automated QA currently passes
+            with soft warnings, while manual field-level accuracy verification remains pending.
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer">
+        <p>Generated by Composio Research Agent • 2026-07-27 20:09:16</p>
+        <p style="font-size:0.75rem;">Research pipeline powered by Groq Llama 3.3 • Composio toolkit coverage validated separately • 100 apps analyzed</p>
+    </div>
+
+</div>
+
+<script>
+function filterTable() {
+    const search = document.getElementById('searchInput').value.toLowerCase();
+    const category = document.getElementById('categoryFilter').value;
+    const build = document.getElementById('buildFilter').value;
+    const composio = document.getElementById('composioFilter').value;
+    const rows = document.querySelectorAll('#appsTable tbody tr');
+    
+    rows.forEach(row => {
+        const name = row.cells[0].textContent.toLowerCase();
+        const cat = row.dataset.category;
+        const buildVal = row.dataset.build;
+        const compVal = row.dataset.composio;
+        
+        let show = true;
+        if (search && !name.includes(search)) show = false;
+        if (category && cat !== category) show = false;
+        if (build && buildVal !== build) show = false;
+        if (composio && compVal !== composio) show = false;
+        
+        row.style.display = show ? '' : 'none';
+    });
+}
+</script>
+
+</body>
+</html>
