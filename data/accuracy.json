@@ -1,0 +1,38 @@
+{
+  "auth": {
+    "correct": 0,
+    "checked": 0,
+    "accuracy": null
+  },
+  "access": {
+    "correct": 0,
+    "checked": 0,
+    "accuracy": null
+  },
+  "api": {
+    "correct": 0,
+    "checked": 0,
+    "accuracy": null
+  },
+  "mcp": {
+    "correct": 0,
+    "checked": 0,
+    "accuracy": null
+  },
+  "buildability": {
+    "correct": 0,
+    "checked": 0,
+    "accuracy": null
+  },
+  "composio": {
+    "correct": 0,
+    "checked": 0,
+    "accuracy": null
+  },
+  "overall": {
+    "correct": 0,
+    "checked": 0,
+    "accuracy": null
+  },
+  "sample_rows": 20
+}

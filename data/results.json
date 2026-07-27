@@ -1,0 +1,3374 @@
+{
+  "apps": [
+    {
+      "app": "Salesforce",
+      "category": "CRM and Sales",
+      "description": "Customer relationship management",
+      "auth_methods": [
+        "OAuth2",
+        "API Key",
+        "Token"
+      ],
+      "access": "admin_gated",
+      "api_type": "rest",
+      "api_breadth": "broad",
+      "composio_status": "existing_toolkit",
+      "composio_actions": [],
+      "composio_actions_count": 0,
+      "buildability": "ready_with_constraints",
+      "main_blocker": "Requires admin approval for API access",
+      "confidence": 0.8,
+      "needs_human_review": false,
+      "evidence": [
+        {
+          "claim": "auth_methods",
+          "value": "OAuth2",
+          "url": "https://help.salesforce.com/articleView?id=remoteaccess_oauth.htm&type=5",
+          "source_title": "OAuth 2.0",
+          "supporting_text": "OAuth 2.0 is a protocol that allows users to grant access to their resources on one website to another website, without sharing their login credentials.",
+          "source_quality": "official_docs"
+        },
+        {
+          "claim": "api_type",
+          "value": "rest",
+          "url": "https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_rest.htm",
+          "source_title": "REST API",
+          "supporting_text": "The REST API provides a simple, standards-based way to access Salesforce data and functionality.",
+          "source_quality": "official_docs"
+        },
+        {
+          "claim": "api_breadth",
+          "value": "broad",
+          "url": "https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_quickstart.htm",
+          "source_title": "API Quickstart",
+          "supporting_text": "The Salesforce API provides access to a wide range of data and functionality, including accounts, contacts, opportunities, and more.",
+          "source_quality": "official_docs"
+        },
+        {
+          "claim": "Composio toolkit exists",
+          "value": "salesforce",
+          "url": "https://docs.composio.dev/toolkits/salesforce",
+          "source_title": "Composio Toolkits",
+          "supporting_text": "Composio provides salesforce toolkit",
+          "source_quality": "composio_toolkit"
+        }
+      ],
+      "composio_toolkit_slug": "salesforce",
+      "composio_toolkit_url": "https://docs.composio.dev/toolkits/salesforce",
+      "composio_match_quality": "exact",
+      "native_mcp_status": "official"
+    },
+    {
+      "app": "HubSpot",
+      "category": "CRM and Sales",
+      "description": "Marketing, sales, customer service platform",
+      "auth_methods": [
+        "OAuth2",
+        "API Key",
+        "Bearer Token"
+      ],
+      "access": "self_serve",
+      "api_type": "rest",
+      "api_breadth": "broad",
+      "composio_status": "existing_toolkit",
+      "composio_actions": [],
+      "composio_actions_count": 0,
+      "buildability": "ready",
+      "main_blocker": "",
+      "confidence": 0.9,
+      "needs_human_review": false,
+      "evidence": [
+        {
+          "claim": "API type",
+          "value": "REST",
+          "url": "https://developers.hubspot.com/docs/api",
+          "source_title": "HubSpot API Documentation",
+          "supporting_text": "The HubSpot API is a REST API.",
+          "source_quality": "official_docs"
+        },
+        {
+          "claim": "Auth methods",
+          "value": "OAuth2",
+          "url": "https://developers.hubspot.com/docs/api/overview/auth",
+          "source_title": "HubSpot API Authentication",
+          "supporting_text": "Use OAuth 2.0 to authenticate with the HubSpot API.",
+          "source_quality": "official_docs"
+        },
+        {
+          "claim": "API breadth",
+          "value": "broad",
+          "url": "https://developers.hubspot.com/docs/api/crm",
+          "source_title": "HubSpot CRM API",
+          "supporting_text": "The HubSpot CRM API provides access to a wide range of endpoints.",
+          "source_quality": "official_docs"
+        },
+        {
+          "claim": "Composio toolkit exists",
+          "value": "hubspot",
+          "url": "https://docs.composio.dev/toolkits/hubspot",
+          "source_title": "Composio Toolkits",
+          "supporting_text": "Composio provides hubspot toolkit",
+          "source_quality": "composio_toolkit"
+        }
+      ],
+      "composio_toolkit_slug": "hubspot",
+      "composio_toolkit_url": "https://docs.composio.dev/toolkits/hubspot",
+      "composio_match_quality": "exact",
+      "native_mcp_status": "official"
+    },
+    {
+      "app": "Pipedrive",
+      "category": "CRM and Sales",
+      "description": "Sales CRM and pipeline management",
+      "auth_methods": [
+        "API Key",
+        "OAuth2"
+      ],
+      "access": "self_serve",
+      "api_type": "rest",
+      "api_breadth": "unknown",
+      "composio_status": "existing_toolkit",
+      "composio_actions": [],
+      "composio_actions_count": 0,
+      "buildability": "ready",
+      "main_blocker": "",
+      "confidence": 0.9,
+      "needs_human_review": false,
+      "evidence": [
+        {
+          "claim": "API type",
+          "value": "rest",
+          "url": "https://developers.pipedrive.com/docs/api/v1/",
+          "source_title": "Pipedrive API Documentation",
+          "supporting_text": "The Pipedrive API is a RESTful API",
+          "source_quality": "official_docs"
+        },
+        {
+          "claim": "Auth methods",
+          "value": "API Key",
+          "url": "https://developers.pipedrive.com/docs/api/v1/#authentication",
+          "source_title": "Pipedrive API Documentation",
+          "supporting_text": "You can authenticate using an API token",
+          "source_quality": "official_docs"
+        },
+        {
+          "claim": "Access",
+          "value": "self_serve",
+          "url": "https://www.pipedrive.com/en/pricing",
+          "source_title": "Pipedrive Pricing",
+          "supporting_text": "Sign up for a free trial",
+          "source_quality": "official_pricing"
+        },
+        {
+          "claim": "Composio toolkit exists",
+          "value": "pipedrive",
+          "url": "https://docs.composio.dev/toolkits/pipedrive",
+          "source_title": "Composio Toolkits",
+          "supporting_text": "Composio provides pipedrive toolkit",
+          "source_quality": "composio_toolkit"
+        }
+      ],
+      "composio_toolkit_slug": "pipedrive",
+      "composio_toolkit_url": "https://docs.composio.dev/toolkits/pipedrive",
+      "composio_match_quality": "exact",
+      "native_mcp_status": "official"
+    },
+    {
+      "app": "Attio",
+      "category": "CRM and Sales",
+      "description": "CRM for relationships",
+      "auth_methods": [
+        "API Key"
+      ],
+      "access": "self_serve",
+      "api_type": "rest",
+      "api_breadth": "moderate",
+      "composio_status": "existing_toolkit",
+      "composio_actions": [],
+      "composio_actions_count": 0,
+      "buildability": "ready_with_constraints",
+      "main_blocker": "",
+      "confidence": 0.7,
+      "needs_human_review": false,
+      "evidence": [
+        {
+          "claim": "API Type",
+          "value": "REST",
+          "url": "https://docs.attio.com/",
+          "source_title": "Attio API Documentation",
+          "supporting_text": "The Attio API is a RESTful API",
+          "source_quality": "official_docs"
+        },
+        {
+          "claim": "Auth Methods",
+          "value": "API Key",
+          "url": "https://docs.attio.com/",
+          "source_title": "Attio API Documentation",
+          "supporting_text": "You can authenticate using an API key",
+          "source_quality": "official_docs"
+        },
+        {
+          "claim": "Composio toolkit exists",
+          "value": "attio",
+          "url": "https://docs.composio.dev/toolkits/attio",
+          "source_title": "Composio Toolkits",
+          "supporting_text": "Composio provides attio toolkit",
+          "source_quality": "composio_toolkit"
+        }
+      ],
+      "composio_toolkit_slug": "attio",
+      "composio_toolkit_url": "https://docs.composio.dev/toolkits/attio",
+      "composio_match_quality": "exact",
+      "native_mcp_status": "none"
+    },
+    {
+      "app": "Twenty",
+      "category": "CRM and Sales",
+      "description": "Twenty app details not found",
+      "auth_methods": [
+        "unknown"
+      ],
+      "access": "unknown",
+      "api_type": "unknown",
+      "api_breadth": "unknown",
+      "composio_status": "toolkit_gap",
+      "composio_actions": [],
+      "composio_actions_count": 0,
+      "buildability": "unknown",
+      "main_blocker": "",
+      "confidence": 0.0,
+      "needs_human_review": true,
+      "evidence": [
+        {
+          "claim": "Lack of publicly available information",
+          "value": "Twenty",
+          "url": "",
+          "source_title": "",
+          "supporting_text": "No publicly available documentation or API details found for Twenty app",
+          "source_quality": "third_party"
+        }
+      ],
+      "composio_toolkit_slug": null,
+      "composio_toolkit_url": null,
+      "composio_match_quality": "not_found",
+      "native_mcp_status": "unknown"
+    },
+    {
+      "app": "Podio",
+      "category": "CRM and Sales",
+      "description": "Project management platform",
+      "auth_methods": [
+        "OAuth2",
+        "API Key"
+      ],
+      "access": "self_serve",
+      "api_type": "rest",
+      "api_breadth": "broad",
+      "composio_status": "toolkit_gap",
+      "composio_actions": [],
+      "composio_actions_count": 0,
+      "buildability": "ready",
+      "main_blocker": "",
+      "confidence": 0.8,
+      "needs_human_review": false,
+      "evidence": [
+        {
+          "claim": "auth_methods",
+          "value": "OAuth2",
+          "url": "https://developers.podio.com/index/api",
+          "source_title": "Podio API Documentation",
+          "supporting_text": "The Podio API uses OAuth 2.0 for authentication.",
+          "source_quality": "official_docs"
+        },
+        {
+          "claim": "api_type",
+          "value": "rest",
+          "url": "https://developers.podio.com/index/api",
+          "source_title": "Podio API Documentation",
+          "supporting_text": "The Podio API is a RESTful API.",
+          "source_quality": "official_docs"
+        },
+        {
+          "claim": "api_breadth",
+          "value": "broad",
+          "url": "https://developers.podio.com/index/api",
+          "source_title": "Podio API Documentation",
+          "supporting_text": "The Podio API provides a wide range of endpoints for managing projects, tasks, and more.",
+          "source_quality": "official_docs"
+        }
+      ],
+      "composio_toolkit_slug": null,
+      "composio_toolkit_url": null,
+      "composio_match_quality": "not_found",
+      "native_mcp_status": "official"
+    },
+    {
+      "app": "Zoho CRM",
+      "category": "CRM and Sales",
+      "description": "Research failed for Zoho CRM",
+      "auth_methods": [
+        "OAuth2",
+        "API Key",
+        "Token"
+      ],
+      "access": "self_serve",
+      "api_type": "rest",
+      "api_breadth": "broad",
+      "composio_status": "existing_toolkit",
+      "composio_actions": [],
+      "composio_actions_count": 0,
+      "buildability": "ready",
+      "main_blocker": "Research error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kxyx4xf3fbvrt299w086kd83` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99898, Requested 774. Please try again in 9m40.608s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+      "confidence": 0.9,
+      "needs_human_review": true,
+      "evidence": [
+        {
+          "claim": "Composio toolkit exists",
+          "value": "zoho_crm",
+          "url": "https://docs.composio.dev/toolkits/zoho_crm",
+          "source_title": "Composio Toolkits",
+          "supporting_text": "Composio provides zoho_crm toolkit",
+          "source_quality": "composio_toolkit"
+        }
+      ],
+      "composio_toolkit_slug": "zoho_crm",
+      "composio_toolkit_url": "https://docs.composio.dev/toolkits/zoho_crm",
+      "composio_match_quality": "exact",
+      "native_mcp_status": "unknown"
+    },
+    {
+      "app": "Close",
+      "category": "CRM and Sales",
+      "description": "Research failed for Close",
+      "auth_methods": [
+        "API Key",
+        "OAuth2"
+      ],
+      "access": "self_serve",
+      "api_type": "rest",
+      "api_breadth": "broad",
+      "composio_status": "existing_toolkit",
+      "composio_actions": [],
+      "composio_actions_count": 0,
+      "buildability": "ready",
+      "main_blocker": "Research error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kxyx4xf3fbvrt299w086kd83` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99891, Requested 794. Please try again in 9m51.84s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+      "confidence": 0.8,
+      "needs_human_review": true,
+      "evidence": [
+        {
+          "claim": "Composio toolkit exists",
+          "value": "close",
+          "url": "https://docs.composio.dev/toolkits/close",
+          "source_title": "Composio Toolkits",
+          "supporting_text": "Composio provides close toolkit",
+          "source_quality": "composio_toolkit"
+        }
+      ],
+      "composio_toolkit_slug": "close",
+      "composio_toolkit_url": "https://docs.composio.dev/toolkits/close",
+      "composio_match_quality": "exact",
+      "native_mcp_status": "unknown"
+    },
+    {
+      "app": "Copper",
+      "category": "CRM and Sales",
+      "description": "Research failed for Copper",
+      "auth_methods": [
+        "unknown"
+      ],
+      "access": "self_serve",
+      "api_type": "rest",
+      "api_breadth": "moderate",
+      "composio_status": "toolkit_gap",
+      "composio_actions": [],
+      "composio_actions_count": 0,
+      "buildability": "ready",
+      "main_blocker": "Research error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kxyx4xf3fbvrt299w086kd83` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99891, Requested 794. Please try again in 9m51.84s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+      "confidence": 0.8,
+      "needs_human_review": true,
+      "evidence": [],
+      "composio_toolkit_slug": null,
+      "composio_toolkit_url": null,
+      "composio_match_quality": "not_found",
+      "native_mcp_status": "unknown"
+    },
+    {
+      "app": "DealCloud",
+      "category": "CRM and Sales",
+      "description": "Research failed for DealCloud",
+      "auth_methods": [
+        "unknown"
+      ],
+      "access": "admin_gated",
+      "api_type": "rest",
+      "api_breadth": "moderate",
+      "composio_status": "toolkit_gap",
+      "composio_actions": [],
+      "composio_actions_count": 0,
+      "buildability": "ready_with_constraints",
+      "main_blocker": "Research error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kxyx4xf3fbvrt299w086kd83` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99890, Requested 774. Please try again in 9m33.696s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+      "confidence": 0.7,
+      "needs_human_review": true,
+      "evidence": [],
+      "composio_toolkit_slug": null,
+      "composio_toolkit_url": null,
+      "composio_match_quality": "not_found",
+      "native_mcp_status": "unknown"
+    },
+    {
+      "app": "Zendesk",
+      "category": "Support and Helpdesk",
+      "description": "Research failed for Zendesk",
+      "auth_methods": [
+        "OAuth2",
+        "API Key",
+        "Basic"
+      ],
+      "access": "self_serve",
+      "api_type": "rest",
+      "api_breadth": "broad",
+      "composio_status": "existing_toolkit",
+      "composio_actions": [],
+      "composio_actions_count": 0,
+      "buildability": "ready",
+      "main_blocker": "Research error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kxyx4xf3fbvrt299w086kd83` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99886, Requested 771. Please try again in 9m27.648s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+      "confidence": 0.9,
+      "needs_human_review": true,
+      "evidence": [
+        {
+          "claim": "Composio toolkit exists",
+          "value": "zendesk",
+          "url": "https://docs.composio.dev/toolkits/zendesk",
+          "source_title": "Composio Toolkits",
+          "supporting_text": "Composio provides zendesk toolkit",
+          "source_quality": "composio_toolkit"
+        }
+      ],
+      "composio_toolkit_slug": "zendesk",
+      "composio_toolkit_url": "https://docs.composio.dev/toolkits/zendesk",
+      "composio_match_quality": "exact",
+      "native_mcp_status": "unknown"
+    },
+    {
+      "app": "Intercom",
+      "category": "Support and Helpdesk",
+      "description": "Research failed for Intercom",
+      "auth_methods": [
+        "OAuth2",
+        "API Key",
+        "Bearer Token"
+      ],
+      "access": "self_serve",
+      "api_type": "rest",
+      "api_breadth": "broad",
+      "composio_status": "existing_toolkit",
+      "composio_actions": [],
+      "composio_actions_count": 0,
+      "buildability": "ready",
+      "main_blocker": "Research error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kxyx4xf3fbvrt299w086kd83` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99886, Requested 584. Please try again in 6m46.08s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+      "confidence": 0.8,
+      "needs_human_review": true,
+      "evidence": [
+        {
+          "claim": "Composio toolkit exists",
+          "value": "intercom",
+          "url": "https://docs.composio.dev/toolkits/intercom",
+          "source_title": "Composio Toolkits",
+          "supporting_text": "Composio provides intercom toolkit",
+          "source_quality": "composio_toolkit"
+        }
+      ],
+      "composio_toolkit_slug": "intercom",
+      "composio_toolkit_url": "https://docs.composio.dev/toolkits/intercom",
+      "composio_match_quality": "exact",
+      "native_mcp_status": "unknown"
+    },
+    {
+      "app": "Freshdesk",
+      "category": "Support and Helpdesk",
+      "description": "Research failed for Freshdesk",
+      "auth_methods": [
+        "API Key",
+        "OAuth2"
+      ],
+      "access": "self_serve",
+      "api_type": "rest",
+      "api_breadth": "broad",
+      "composio_status": "existing_toolkit",
+      "composio_actions": [],
+      "composio_actions_count": 0,
+      "buildability": "ready",
+      "main_blocker": "Research error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kxyx4xf3fbvrt299w086kd83` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99886, Requested 584. Please try again in 6m46.08s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+      "confidence": 0.8,
+      "needs_human_review": true,
+      "evidence": [
+        {
+          "claim": "Composio toolkit exists",
+          "value": "freshdesk",
+          "url": "https://docs.composio.dev/toolkits/freshdesk",
+          "source_title": "Composio Toolkits",
+          "supporting_text": "Composio provides freshdesk toolkit",
+          "source_quality": "composio_toolkit"
+        }
+      ],
+      "composio_toolkit_slug": "freshdesk",
+      "composio_toolkit_url": "https://docs.composio.dev/toolkits/freshdesk",
+      "composio_match_quality": "exact",
+      "native_mcp_status": "unknown"
+    },
+    {
+      "app": "Front",
+      "category": "Support and Helpdesk",
+      "description": "Research failed for Front",
+      "auth_methods": [
+        "unknown"
+      ],
+      "access": "self_serve",
+      "api_type": "rest",
+      "api_breadth": "moderate",
+      "composio_status": "toolkit_gap",
+      "composio_actions": [],
+      "composio_actions_count": 0,
+      "buildability": "ready",
+      "main_blocker": "Research error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kxyx4xf3fbvrt299w086kd83` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99885, Requested 582. Please try again in 6m43.488s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+      "confidence": 0.8,
+      "needs_human_review": true,
+      "evidence": [],
+      "composio_toolkit_slug": null,
+      "composio_toolkit_url": null,
+      "composio_match_quality": "not_found",
+      "native_mcp_status": "unknown"
+    },
+    {
+      "app": "Pylon",
+      "category": "Support and Helpdesk",
+      "description": "Research failed for Pylon",
+      "auth_methods": [
+        "unknown"
+      ],
+      "access": "unknown",
+      "api_type": "unknown",
+      "api_breadth": "unknown",
+      "mcp_status": "unknown",
+      "composio_status": "existing_toolkit",
+      "composio_actions": [],
+      "composio_actions_count": 0,
+      "buildability": "unknown",
+      "main_blocker": "Research error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kxyx4xf3fbvrt299w086kd83` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99885, Requested 585. Please try again in 6m46.08s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+      "confidence": 0.2,
+      "needs_human_review": true,
+      "evidence": [
+        {
+          "claim": "Composio toolkit exists",
+          "value": "pylon_mcp",
+          "url": "https://docs.composio.dev/toolkits/pylon_mcp",
+          "source_title": "Composio Toolkits",
+          "supporting_text": "Composio provides pylon_mcp toolkit",
+          "source_quality": "composio_toolkit"
+        }
+      ],
+      "composio_toolkit_slug": "pylon_mcp",
+      "composio_toolkit_url": "https://docs.composio.dev/toolkits/pylon_mcp",
+      "composio_match_quality": "exact",
+      "native_mcp_status": "official"
+    },
+    {
+      "app": "LiveAgent",
+      "category": "Support and Helpdesk",
+      "description": "Research failed for LiveAgent",
+      "auth_methods": [
+        "unknown"
+      ],
+      "access": "self_serve",
+      "api_type": "rest",
+      "api_breadth": "broad",
+      "composio_status": "toolkit_gap",
+      "composio_actions": [],
+      "composio_actions_count": 0,
+      "buildability": "ready",
+      "main_blocker": "Research error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kxyx4xf3fbvrt299w086kd83` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99884, Requested 796. Please try again in 9m47.52s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+      "confidence": 0.8,
+      "needs_human_review": true,
+      "evidence": [],
+      "composio_toolkit_slug": null,
+      "composio_toolkit_url": null,
+      "composio_match_quality": "not_found",
+      "native_mcp_status": "unknown"
+    },
+    {
+      "app": "Plain",
+      "category": "Support and Helpdesk",
+      "description": "Research failed for Plain",
+      "auth_methods": [],
+      "access": "unknown",
+      "api_type": "unknown",
+      "api_breadth": "unknown",
+      "composio_status": "existing_toolkit",
+      "composio_actions": [],
+      "composio_actions_count": 0,
+      "buildability": "unknown",
+      "main_blocker": "Research error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kxyx4xf3fbvrt299w086kd83` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99884, Requested 582. Please try again in 6m42.624s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+      "confidence": 0.2,
+      "needs_human_review": true,
+      "evidence": [
+        {
+          "claim": "Composio toolkit exists",
+          "value": "plain",
+          "url": "https://docs.composio.dev/toolkits/plain",
+          "source_title": "Composio Toolkits",
+          "supporting_text": "Composio provides plain toolkit",
+          "source_quality": "composio_toolkit"
+        }
+      ],
+      "composio_toolkit_slug": "plain",
+      "composio_toolkit_url": "https://docs.composio.dev/toolkits/plain",
+      "composio_match_quality": "exact",
+      "native_mcp_status": "unknown"
+    },
+    {
+      "app": "Help Scout",
+      "category": "Support and Helpdesk",
+      "description": "Research failed for Help Scout",
+      "auth_methods": [
+        "API Key",
+        "OAuth2"
+      ],
+      "access": "self_serve",
+      "api_type": "rest",
+      "api_breadth": "broad",
+      "composio_status": "existing_toolkit",
+      "composio_actions": [],
+      "composio_actions_count": 0,
+      "buildability": "ready",
+      "main_blocker": "Research error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kxyx4xf3fbvrt299w086kd83` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99883, Requested 772. Please try again in 9m25.92s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+      "confidence": 0.8,
+      "needs_human_review": true,
+      "evidence": [
+        {
+          "claim": "Composio toolkit exists",
+          "value": "help_scout",
+          "url": "https://docs.composio.dev/toolkits/help_scout",
+          "source_title": "Composio Toolkits",
+          "supporting_text": "Composio provides help_scout toolkit",
+          "source_quality": "composio_toolkit"
+        }
+      ],
+      "composio_toolkit_slug": "help_scout",
+      "composio_toolkit_url": "https://docs.composio.dev/toolkits/help_scout",
+      "composio_match_quality": "exact",
+      "native_mcp_status": "unknown"
+    },
+    {
+      "app": "Gorgias",
+      "category": "Support and Helpdesk",
+      "description": "Research failed for Gorgias",
+      "auth_methods": [
+        "API Key",
+        "OAuth2"
+      ],
+      "access": "self_serve",
+      "api_type": "rest",
+      "api_breadth": "broad",
+      "composio_status": "existing_toolkit",
+      "composio_actions": [],
+      "composio_actions_count": 0,
+      "buildability": "ready",
+      "main_blocker": "Research error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kxyx4xf3fbvrt299w086kd83` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99883, Requested 586. Please try again in 6m45.215999999s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+      "confidence": 0.8,
+      "needs_human_review": true,
+      "evidence": [
+        {
+          "claim": "Composio toolkit exists",
+          "value": "gorgias",
+          "url": "https://docs.composio.dev/toolkits/gorgias",
+          "source_title": "Composio Toolkits",
+          "supporting_text": "Composio provides gorgias toolkit",
+          "source_quality": "composio_toolkit"
+        }
+      ],
+      "composio_toolkit_slug": "gorgias",
+      "composio_toolkit_url": "https://docs.composio.dev/toolkits/gorgias",
+      "composio_match_quality": "exact",
+      "native_mcp_status": "unknown"
+    },
+    {
+      "app": "Gladly",
+      "category": "Support and Helpdesk",
+      "description": "Research failed for Gladly",
+      "auth_methods": [
+        "unknown"
+      ],
+      "access": "admin_gated",
+      "api_type": "rest",
+      "api_breadth": "moderate",
+      "composio_status": "toolkit_gap",
+      "composio_actions": [],
+      "composio_actions_count": 0,
+      "buildability": "ready_with_constraints",
+      "main_blocker": "Research error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kxyx4xf3fbvrt299w086kd83` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99882, Requested 770. Please try again in 9m23.328s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+      "confidence": 0.7,
+      "needs_human_review": true,
+      "evidence": [],
+      "composio_toolkit_slug": null,
+      "composio_toolkit_url": null,
+      "composio_match_quality": "not_found",
+      "native_mcp_status": "unknown"
+    },
+    {
+      "app": "Slack",
+      "category": "Communications and Messaging",
+      "description": "Research failed for Slack",
+      "auth_methods": [
+        "OAuth2",
+        "Token"
+      ],
+      "access": "self_serve",
+      "api_type": "both",
+      "api_breadth": "broad",
+      "mcp_status": "unknown",
+      "composio_status": "existing_toolkit",
+      "composio_actions": [],
+      "composio_actions_count": 0,
+      "buildability": "ready",
+      "main_blocker": "Research error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kxyx4xf3fbvrt299w086kd83` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99878, Requested 769. Please try again in 9m19.008s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+      "confidence": 0.9,
+      "needs_human_review": true,
+      "evidence": [
+        {
+          "claim": "Composio toolkit exists",
+          "value": "slack",
+          "url": "https://docs.composio.dev/toolkits/slack",
+          "source_title": "Composio Toolkits",
+          "supporting_text": "Composio provides slack toolkit",
+          "source_quality": "composio_toolkit"
+        }
+      ],
+      "composio_toolkit_slug": "slack",
+      "composio_toolkit_url": "https://docs.composio.dev/toolkits/slack",
+      "composio_match_quality": "exact",
+      "native_mcp_status": "official"
+    },
+    {
+      "app": "Twilio",
+      "category": "Communications and Messaging",
+      "description": "Research failed for Twilio",
+      "auth_methods": [
+        "API Key",
+        "Auth Token"
+      ],
+      "access": "self_serve",
+      "api_type": "rest",
+      "api_breadth": "broad",
+      "composio_status": "existing_toolkit",
+      "composio_actions": [],
+      "composio_actions_count": 0,
+      "buildability": "ready",
+      "main_blocker": "Research error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kxyx4xf3fbvrt299w086kd83` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99878, Requested 771. Please try again in 9m20.736s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+      "confidence": 0.9,
+      "needs_human_review": true,
+      "evidence": [
+        {
+          "claim": "Composio toolkit exists",
+          "value": "twilio",
+          "url": "https://docs.composio.dev/toolkits/twilio",
+          "source_title": "Composio Toolkits",
+          "supporting_text": "Composio provides twilio toolkit",
+          "source_quality": "composio_toolkit"
+        }
+      ],
+      "composio_toolkit_slug": "twilio",
+      "composio_toolkit_url": "https://docs.composio.dev/toolkits/twilio",
+      "composio_match_quality": "exact",
+      "native_mcp_status": "unknown"
+    },
+    {
+      "app": "Zoho Cliq",
+      "category": "Communications and Messaging",
+      "description": "Research failed for Zoho Cliq",
+      "auth_methods": [
+        "unknown"
+      ],
+      "access": "self_serve",
+      "api_type": "rest",
+      "api_breadth": "broad",
+      "composio_status": "toolkit_gap",
+      "composio_actions": [],
+      "composio_actions_count": 0,
+      "buildability": "ready",
+      "main_blocker": "Research error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kxyx4xf3fbvrt299w086kd83` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99878, Requested 775. Please try again in 9m24.192s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+      "confidence": 0.8,
+      "needs_human_review": true,
+      "evidence": [],
+      "composio_toolkit_slug": null,
+      "composio_toolkit_url": null,
+      "composio_match_quality": "not_found",
+      "native_mcp_status": "unknown"
+    },
+    {
+      "app": "Lark",
+      "category": "Communications and Messaging",
+      "description": "Research failed for Lark",
+      "auth_methods": [
+        "unknown"
+      ],
+      "access": "self_serve",
+      "api_type": "rest",
+      "api_breadth": "broad",
+      "composio_status": "toolkit_gap",
+      "composio_actions": [],
+      "composio_actions_count": 0,
+      "buildability": "ready",
+      "main_blocker": "Research error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kxyx4xf3fbvrt299w086kd83` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99877, Requested 586. Please try again in 6m40.032s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+      "confidence": 0.8,
+      "needs_human_review": true,
+      "evidence": [],
+      "composio_toolkit_slug": null,
+      "composio_toolkit_url": null,
+      "composio_match_quality": "not_found",
+      "native_mcp_status": "unknown"
+    },
+    {
+      "app": "Pumble",
+      "category": "Communications and Messaging",
+      "description": "Research failed for Pumble",
+      "auth_methods": [
+        "unknown"
+      ],
+      "access": "self_serve",
+      "api_type": "rest",
+      "api_breadth": "moderate",
+      "composio_status": "toolkit_gap",
+      "composio_actions": [],
+      "composio_actions_count": 0,
+      "buildability": "ready",
+      "main_blocker": "Research error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kxyx4xf3fbvrt299w086kd83` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99877, Requested 771. Please try again in 9m19.872s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+      "confidence": 0.8,
+      "needs_human_review": true,
+      "evidence": [],
+      "composio_toolkit_slug": null,
+      "composio_toolkit_url": null,
+      "composio_match_quality": "not_found",
+      "native_mcp_status": "unknown"
+    },
+    {
+      "app": "Discord",
+      "category": "Communications and Messaging",
+      "description": "Research failed for Discord",
+      "auth_methods": [
+        "OAuth2"
+      ],
+      "access": "self_serve",
+      "api_type": "rest",
+      "api_breadth": "broad",
+      "composio_status": "existing_toolkit",
+      "composio_actions": [],
+      "composio_actions_count": 0,
+      "buildability": "ready",
+      "main_blocker": "Research error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kxyx4xf3fbvrt299w086kd83` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99876, Requested 769. Please try again in 9m17.28s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+      "confidence": 0.9,
+      "needs_human_review": true,
+      "evidence": [
+        {
+          "claim": "Composio toolkit exists",
+          "value": "discord",
+          "url": "https://docs.composio.dev/toolkits/discord",
+          "source_title": "Composio Toolkits",
+          "supporting_text": "Composio provides discord toolkit",
+          "source_quality": "composio_toolkit"
+        }
+      ],
+      "composio_toolkit_slug": "discord",
+      "composio_toolkit_url": "https://docs.composio.dev/toolkits/discord",
+      "composio_match_quality": "exact",
+      "native_mcp_status": "unknown"
+    },
+    {
+      "app": "Telegram",
+      "category": "Communications and Messaging",
+      "description": "Research failed for Telegram",
+      "auth_methods": [
+        "Bot Token",
+        "API Key"
+      ],
+      "access": "self_serve",
+      "api_type": "rest",
+      "api_breadth": "broad",
+      "composio_status": "existing_toolkit",
+      "composio_actions": [],
+      "composio_actions_count": 0,
+      "buildability": "ready",
+      "main_blocker": "Research error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kxyx4xf3fbvrt299w086kd83` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99876, Requested 795. Please try again in 9m39.744s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+      "confidence": 0.9,
+      "needs_human_review": true,
+      "evidence": [
+        {
+          "claim": "Composio toolkit exists",
+          "value": "telegram",
+          "url": "https://docs.composio.dev/toolkits/telegram",
+          "source_title": "Composio Toolkits",
+          "supporting_text": "Composio provides telegram toolkit",
+          "source_quality": "composio_toolkit"
+        }
+      ],
+      "composio_toolkit_slug": "telegram",
+      "composio_toolkit_url": "https://docs.composio.dev/toolkits/telegram",
+      "composio_match_quality": "exact",
+      "native_mcp_status": "unknown"
+    },
+    {
+      "app": "WhatsApp Business",
+      "category": "Communications and Messaging",
+      "description": "Research failed for WhatsApp Business",
+      "auth_methods": [
+        "OAuth2",
+        "API Key",
+        "Bearer Token"
+      ],
+      "access": "self_serve",
+      "api_type": "rest",
+      "api_breadth": "broad",
+      "composio_status": "existing_toolkit",
+      "composio_actions": [],
+      "composio_actions_count": 0,
+      "buildability": "ready",
+      "main_blocker": "Research error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kxyx4xf3fbvrt299w086kd83` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99875, Requested 800. Please try again in 9m43.2s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+      "confidence": 0.8,
+      "needs_human_review": true,
+      "evidence": [
+        {
+          "claim": "Composio toolkit exists",
+          "value": "whatsapp",
+          "url": "https://docs.composio.dev/toolkits/whatsapp",
+          "source_title": "Composio Toolkits",
+          "supporting_text": "Composio provides whatsapp toolkit",
+          "source_quality": "composio_toolkit"
+        }
+      ],
+      "composio_toolkit_slug": "whatsapp",
+      "composio_toolkit_url": "https://docs.composio.dev/toolkits/whatsapp",
+      "composio_match_quality": "exact",
+      "native_mcp_status": "unknown"
+    },
+    {
+      "app": "Aircall",
+      "category": "Communications and Messaging",
+      "description": "Research failed for Aircall",
+      "auth_methods": [
+        "unknown"
+      ],
+      "access": "self_serve",
+      "api_type": "rest",
+      "api_breadth": "broad",
+      "composio_status": "toolkit_gap",
+      "composio_actions": [],
+      "composio_actions_count": 0,
+      "buildability": "ready",
+      "main_blocker": "Research error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kxyx4xf3fbvrt299w086kd83` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99875, Requested 798. Please try again in 9m41.472s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+      "confidence": 0.8,
+      "needs_human_review": true,
+      "evidence": [],
+      "composio_toolkit_slug": null,
+      "composio_toolkit_url": null,
+      "composio_match_quality": "not_found",
+      "native_mcp_status": "unknown"
+    },
+    {
+      "app": "Vonage",
+      "category": "Communications and Messaging",
+      "description": "Research failed for Vonage",
+      "auth_methods": [
+        "unknown"
+      ],
+      "access": "self_serve",
+      "api_type": "rest",
+      "api_breadth": "broad",
+      "composio_status": "toolkit_gap",
+      "composio_actions": [],
+      "composio_actions_count": 0,
+      "buildability": "ready",
+      "main_blocker": "Research error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kxyx4xf3fbvrt299w086kd83` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99874, Requested 773. Please try again in 9m19.008s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+      "confidence": 0.8,
+      "needs_human_review": true,
+      "evidence": [],
+      "composio_toolkit_slug": null,
+      "composio_toolkit_url": null,
+      "composio_match_quality": "not_found",
+      "native_mcp_status": "unknown"
+    },
+    {
+      "app": "Google Ads",
+      "category": "Marketing Ads Email and Social",
+      "description": "Research failed for Google Ads",
+      "auth_methods": [
+        "OAuth2"
+      ],
+      "access": "self_serve",
+      "api_type": "rest",
+      "api_breadth": "broad",
+      "composio_status": "existing_toolkit",
+      "composio_actions": [],
+      "composio_actions_count": 0,
+      "buildability": "ready",
+      "main_blocker": "Research error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kxyx4xf3fbvrt299w086kd83` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99870, Requested 774. Please try again in 9m16.416s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+      "confidence": 0.9,
+      "needs_human_review": true,
+      "evidence": [
+        {
+          "claim": "Composio toolkit exists",
+          "value": "googleads",
+          "url": "https://docs.composio.dev/toolkits/googleads",
+          "source_title": "Composio Toolkits",
+          "supporting_text": "Composio provides googleads toolkit",
+          "source_quality": "composio_toolkit"
+        }
+      ],
+      "composio_toolkit_slug": "googleads",
+      "composio_toolkit_url": "https://docs.composio.dev/toolkits/googleads",
+      "composio_match_quality": "exact",
+      "native_mcp_status": "unknown"
+    },
+    {
+      "app": "Meta Ads",
+      "category": "Marketing Ads Email and Social",
+      "description": "Research failed for Meta Ads",
+      "auth_methods": [
+        "OAuth2"
+      ],
+      "access": "self_serve",
+      "api_type": "both",
+      "api_breadth": "broad",
+      "composio_status": "existing_toolkit",
+      "composio_actions": [],
+      "composio_actions_count": 0,
+      "buildability": "ready",
+      "main_blocker": "Research error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kxyx4xf3fbvrt299w086kd83` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99870, Requested 801. Please try again in 9m39.744s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+      "confidence": 0.8,
+      "needs_human_review": true,
+      "evidence": [
+        {
+          "claim": "Composio toolkit exists",
+          "value": "meta",
+          "url": "https://docs.composio.dev/toolkits/meta",
+          "source_title": "Composio Toolkits",
+          "supporting_text": "Composio provides meta toolkit",
+          "source_quality": "composio_toolkit"
+        }
+      ],
+      "composio_toolkit_slug": "meta",
+      "composio_toolkit_url": "https://docs.composio.dev/toolkits/meta",
+      "composio_match_quality": "exact",
+      "native_mcp_status": "unknown"
+    },
+    {
+      "app": "LinkedIn Ads",
+      "category": "Marketing Ads Email and Social",
+      "description": "Research failed for LinkedIn Ads",
+      "auth_methods": [
+        "OAuth2"
+      ],
+      "access": "self_serve",
+      "api_type": "rest",
+      "api_breadth": "broad",
+      "composio_status": "existing_toolkit",
+      "composio_actions": [],
+      "composio_actions_count": 0,
+      "buildability": "ready",
+      "main_blocker": "Research error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kxyx4xf3fbvrt299w086kd83` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99870, Requested 588. Please try again in 6m35.712s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+      "confidence": 0.8,
+      "needs_human_review": true,
+      "evidence": [
+        {
+          "claim": "Composio toolkit exists",
+          "value": "linkedin_ads",
+          "url": "https://docs.composio.dev/toolkits/linkedin_ads",
+          "source_title": "Composio Toolkits",
+          "supporting_text": "Composio provides linkedin_ads toolkit",
+          "source_quality": "composio_toolkit"
+        }
+      ],
+      "composio_toolkit_slug": "linkedin_ads",
+      "composio_toolkit_url": "https://docs.composio.dev/toolkits/linkedin_ads",
+      "composio_match_quality": "exact",
+      "native_mcp_status": "unknown"
+    },
+    {
+      "app": "GoHighLevel",
+      "category": "Marketing Ads Email and Social",
+      "description": "Research failed for GoHighLevel",
+      "auth_methods": [
+        "API Key"
+      ],
+      "access": "self_serve",
+      "api_type": "rest",
+      "api_breadth": "broad",
+      "composio_status": "existing_toolkit",
+      "composio_actions": [],
+      "composio_actions_count": 0,
+      "buildability": "ready",
+      "main_blocker": "Research error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kxyx4xf3fbvrt299w086kd83` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99869, Requested 587. Please try again in 6m33.984s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+      "confidence": 0.8,
+      "needs_human_review": true,
+      "evidence": [
+        {
+          "claim": "Composio toolkit exists",
+          "value": "highlevel",
+          "url": "https://docs.composio.dev/toolkits/highlevel",
+          "source_title": "Composio Toolkits",
+          "supporting_text": "Composio provides highlevel toolkit",
+          "source_quality": "composio_toolkit"
+        }
+      ],
+      "composio_toolkit_slug": "highlevel",
+      "composio_toolkit_url": "https://docs.composio.dev/toolkits/highlevel",
+      "composio_match_quality": "exact",
+      "native_mcp_status": "unknown"
+    },
+    {
+      "app": "Mailchimp",
+      "category": "Marketing Ads Email and Social",
+      "description": "Research failed for Mailchimp",
+      "auth_methods": [
+        "OAuth2",
+        "API Key"
+      ],
+      "access": "self_serve",
+      "api_type": "rest",
+      "api_breadth": "broad",
+      "composio_status": "existing_toolkit",
+      "composio_actions": [],
+      "composio_actions_count": 0,
+      "buildability": "ready",
+      "main_blocker": "Research error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kxyx4xf3fbvrt299w086kd83` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99869, Requested 798. Please try again in 9m36.288s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+      "confidence": 0.9,
+      "needs_human_review": true,
+      "evidence": [
+        {
+          "claim": "Composio toolkit exists",
+          "value": "mailchimp",
+          "url": "https://docs.composio.dev/toolkits/mailchimp",
+          "source_title": "Composio Toolkits",
+          "supporting_text": "Composio provides mailchimp toolkit",
+          "source_quality": "composio_toolkit"
+        }
+      ],
+      "composio_toolkit_slug": "mailchimp",
+      "composio_toolkit_url": "https://docs.composio.dev/toolkits/mailchimp",
+      "composio_match_quality": "exact",
+      "native_mcp_status": "unknown"
+    },
+    {
+      "app": "Klaviyo",
+      "category": "Marketing Ads Email and Social",
+      "description": "Research failed for Klaviyo",
+      "auth_methods": [
+        "API Key",
+        "OAuth2"
+      ],
+      "access": "self_serve",
+      "api_type": "rest",
+      "api_breadth": "broad",
+      "composio_status": "existing_toolkit",
+      "composio_actions": [],
+      "composio_actions_count": 0,
+      "buildability": "ready",
+      "main_blocker": "Research error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kxyx4xf3fbvrt299w086kd83` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99868, Requested 800. Please try again in 9m37.152s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+      "confidence": 0.8,
+      "needs_human_review": true,
+      "evidence": [
+        {
+          "claim": "Composio toolkit exists",
+          "value": "klaviyo",
+          "url": "https://docs.composio.dev/toolkits/klaviyo",
+          "source_title": "Composio Toolkits",
+          "supporting_text": "Composio provides klaviyo toolkit",
+          "source_quality": "composio_toolkit"
+        }
+      ],
+      "composio_toolkit_slug": "klaviyo",
+      "composio_toolkit_url": "https://docs.composio.dev/toolkits/klaviyo",
+      "composio_match_quality": "exact",
+      "native_mcp_status": "unknown"
+    },
+    {
+      "app": "systeme.io",
+      "category": "Marketing Ads Email and Social",
+      "description": "Research failed for systeme.io",
+      "auth_methods": [
+        "unknown"
+      ],
+      "access": "self_serve",
+      "api_type": "rest",
+      "api_breadth": "moderate",
+      "composio_status": "toolkit_gap",
+      "composio_actions": [],
+      "composio_actions_count": 0,
+      "buildability": "ready",
+      "main_blocker": "Research error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kxyx4xf3fbvrt299w086kd83` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99867, Requested 797. Please try again in 9m33.696s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+      "confidence": 0.8,
+      "needs_human_review": true,
+      "evidence": [],
+      "composio_toolkit_slug": null,
+      "composio_toolkit_url": null,
+      "composio_match_quality": "not_found",
+      "native_mcp_status": "unknown"
+    },
+    {
+      "app": "Pinterest",
+      "category": "Marketing Ads Email and Social",
+      "description": "Research failed for Pinterest",
+      "auth_methods": [
+        "unknown"
+      ],
+      "access": "self_serve",
+      "api_type": "rest",
+      "api_breadth": "moderate",
+      "composio_status": "toolkit_gap",
+      "composio_actions": [],
+      "composio_actions_count": 0,
+      "buildability": "ready_with_constraints",
+      "main_blocker": "Research error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kxyx4xf3fbvrt299w086kd83` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99867, Requested 771. Please try again in 9m11.232s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+      "confidence": 0.8,
+      "needs_human_review": true,
+      "evidence": [],
+      "composio_toolkit_slug": null,
+      "composio_toolkit_url": null,
+      "composio_match_quality": "not_found",
+      "native_mcp_status": "unknown"
+    },
+    {
+      "app": "Threads",
+      "category": "Marketing Ads Email and Social",
+      "description": "Research failed for Threads",
+      "auth_methods": [
+        "unknown"
+      ],
+      "access": "self_serve",
+      "api_type": "graphql",
+      "api_breadth": "moderate",
+      "composio_status": "toolkit_gap",
+      "composio_actions": [],
+      "composio_actions_count": 0,
+      "buildability": "ready_with_constraints",
+      "main_blocker": "Research error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kxyx4xf3fbvrt299w086kd83` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99867, Requested 773. Please try again in 9m12.96s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+      "confidence": 0.8,
+      "needs_human_review": true,
+      "evidence": [],
+      "composio_toolkit_slug": null,
+      "composio_toolkit_url": null,
+      "composio_match_quality": "not_found",
+      "native_mcp_status": "unknown"
+    },
+    {
+      "app": "SendGrid",
+      "category": "Marketing Ads Email and Social",
+      "description": "Research failed for SendGrid",
+      "auth_methods": [
+        "API Key",
+        "OAuth2"
+      ],
+      "access": "self_serve",
+      "api_type": "rest",
+      "api_breadth": "broad",
+      "composio_status": "existing_toolkit",
+      "composio_actions": [],
+      "composio_actions_count": 0,
+      "buildability": "ready",
+      "main_blocker": "Research error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kxyx4xf3fbvrt299w086kd83` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99866, Requested 771. Please try again in 9m10.367999999s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+      "confidence": 0.9,
+      "needs_human_review": true,
+      "evidence": [
+        {
+          "claim": "Composio toolkit exists",
+          "value": "sendgrid",
+          "url": "https://docs.composio.dev/toolkits/sendgrid",
+          "source_title": "Composio Toolkits",
+          "supporting_text": "Composio provides sendgrid toolkit",
+          "source_quality": "composio_toolkit"
+        }
+      ],
+      "composio_toolkit_slug": "sendgrid",
+      "composio_toolkit_url": "https://docs.composio.dev/toolkits/sendgrid",
+      "composio_match_quality": "exact",
+      "native_mcp_status": "unknown"
+    },
+    {
+      "app": "Shopify",
+      "category": "Ecommerce",
+      "description": "Research failed for Shopify",
+      "auth_methods": [
+        "OAuth2",
+        "API Key",
+        "Token"
+      ],
+      "access": "self_serve",
+      "api_type": "rest",
+      "api_breadth": "broad",
+      "composio_status": "existing_toolkit",
+      "composio_actions": [],
+      "composio_actions_count": 0,
+      "buildability": "ready",
+      "main_blocker": "Research error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kxyx4xf3fbvrt299w086kd83` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99863, Requested 770. Please try again in 9m6.911999999s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+      "confidence": 0.9,
+      "needs_human_review": true,
+      "evidence": [
+        {
+          "claim": "Composio toolkit exists",
+          "value": "shopify",
+          "url": "https://docs.composio.dev/toolkits/shopify",
+          "source_title": "Composio Toolkits",
+          "supporting_text": "Composio provides shopify toolkit",
+          "source_quality": "composio_toolkit"
+        }
+      ],
+      "composio_toolkit_slug": "shopify",
+      "composio_toolkit_url": "https://docs.composio.dev/toolkits/shopify",
+      "composio_match_quality": "exact",
+      "native_mcp_status": "unknown"
+    },
+    {
+      "app": "WooCommerce",
+      "category": "Ecommerce",
+      "description": "Research failed for WooCommerce",
+      "auth_methods": [
+        "unknown"
+      ],
+      "access": "self_serve",
+      "api_type": "rest",
+      "api_breadth": "broad",
+      "composio_status": "toolkit_gap",
+      "composio_actions": [],
+      "composio_actions_count": 0,
+      "buildability": "ready",
+      "main_blocker": "Research error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kxyx4xf3fbvrt299w086kd83` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99863, Requested 800. Please try again in 9m32.832s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+      "confidence": 0.9,
+      "needs_human_review": true,
+      "evidence": [],
+      "composio_toolkit_slug": null,
+      "composio_toolkit_url": null,
+      "composio_match_quality": "not_found",
+      "native_mcp_status": "unknown"
+    },
+    {
+      "app": "BigCommerce",
+      "category": "Ecommerce",
+      "description": "Research failed for BigCommerce",
+      "auth_methods": [
+        "unknown"
+      ],
+      "access": "self_serve",
+      "api_type": "rest",
+      "api_breadth": "broad",
+      "composio_status": "toolkit_gap",
+      "composio_actions": [],
+      "composio_actions_count": 0,
+      "buildability": "ready",
+      "main_blocker": "Research error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kxyx4xf3fbvrt299w086kd83` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99861, Requested 772. Please try again in 9m6.911999999s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+      "confidence": 0.8,
+      "needs_human_review": true,
+      "evidence": [],
+      "composio_toolkit_slug": null,
+      "composio_toolkit_url": null,
+      "composio_match_quality": "not_found",
+      "native_mcp_status": "unknown"
+    },
+    {
+      "app": "Salesforce Commerce Cloud",
+      "category": "Ecommerce",
+      "description": "Research failed for Salesforce Commerce Cloud",
+      "auth_methods": [
+        "unknown"
+      ],
+      "access": "admin_gated",
+      "api_type": "rest",
+      "api_breadth": "broad",
+      "composio_status": "unresolved",
+      "composio_actions": [],
+      "composio_actions_count": 0,
+      "buildability": "ready_with_constraints",
+      "main_blocker": "Research error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kxyx4xf3fbvrt299w086kd83` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99861, Requested 801. Please try again in 9m31.968s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+      "confidence": 0.8,
+      "needs_human_review": true,
+      "evidence": [],
+      "composio_toolkit_slug": null,
+      "composio_toolkit_url": null,
+      "composio_match_quality": "ambiguous",
+      "native_mcp_status": "unknown"
+    },
+    {
+      "app": "Magento",
+      "category": "Ecommerce",
+      "description": "Research failed for Magento",
+      "auth_methods": [
+        "unknown"
+      ],
+      "access": "self_serve",
+      "api_type": "rest",
+      "api_breadth": "broad",
+      "composio_status": "toolkit_gap",
+      "composio_actions": [],
+      "composio_actions_count": 0,
+      "buildability": "ready",
+      "main_blocker": "Research error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kxyx4xf3fbvrt299w086kd83` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99860, Requested 586. Please try again in 6m25.344s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+      "confidence": 0.8,
+      "needs_human_review": true,
+      "evidence": [],
+      "composio_toolkit_slug": null,
+      "composio_toolkit_url": null,
+      "composio_match_quality": "not_found",
+      "native_mcp_status": "unknown"
+    },
+    {
+      "app": "Squarespace",
+      "category": "Ecommerce",
+      "description": "Research failed for Squarespace",
+      "auth_methods": [
+        "unknown"
+      ],
+      "access": "self_serve",
+      "api_type": "rest",
+      "api_breadth": "moderate",
+      "composio_status": "toolkit_gap",
+      "composio_actions": [],
+      "composio_actions_count": 0,
+      "buildability": "ready",
+      "main_blocker": "Research error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kxyx4xf3fbvrt299w086kd83` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99860, Requested 799. Please try again in 9m29.376s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+      "confidence": 0.8,
+      "needs_human_review": true,
+      "evidence": [],
+      "composio_toolkit_slug": null,
+      "composio_toolkit_url": null,
+      "composio_match_quality": "not_found",
+      "native_mcp_status": "unknown"
+    },
+    {
+      "app": "Ecwid",
+      "category": "Ecommerce",
+      "description": "Research failed for Ecwid",
+      "auth_methods": [
+        "unknown"
+      ],
+      "access": "self_serve",
+      "api_type": "rest",
+      "api_breadth": "broad",
+      "composio_status": "toolkit_gap",
+      "composio_actions": [],
+      "composio_actions_count": 0,
+      "buildability": "ready",
+      "main_blocker": "Research error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kxyx4xf3fbvrt299w086kd83` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99859, Requested 774. Please try again in 9m6.911999999s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+      "confidence": 0.8,
+      "needs_human_review": true,
+      "evidence": [],
+      "composio_toolkit_slug": null,
+      "composio_toolkit_url": null,
+      "composio_match_quality": "not_found",
+      "native_mcp_status": "unknown"
+    },
+    {
+      "app": "Gumroad",
+      "category": "Ecommerce",
+      "description": "Research failed for Gumroad",
+      "auth_methods": [
+        "OAuth2",
+        "API Key"
+      ],
+      "access": "self_serve",
+      "api_type": "rest",
+      "api_breadth": "moderate",
+      "composio_status": "existing_toolkit",
+      "composio_actions": [],
+      "composio_actions_count": 0,
+      "buildability": "ready",
+      "main_blocker": "Research error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kxyx4xf3fbvrt299w086kd83` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99859, Requested 797. Please try again in 9m26.784s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+      "confidence": 0.8,
+      "needs_human_review": true,
+      "evidence": [
+        {
+          "claim": "Composio toolkit exists",
+          "value": "gumroad",
+          "url": "https://docs.composio.dev/toolkits/gumroad",
+          "source_title": "Composio Toolkits",
+          "supporting_text": "Composio provides gumroad toolkit",
+          "source_quality": "composio_toolkit"
+        }
+      ],
+      "composio_toolkit_slug": "gumroad",
+      "composio_toolkit_url": "https://docs.composio.dev/toolkits/gumroad",
+      "composio_match_quality": "exact",
+      "native_mcp_status": "unknown"
+    },
+    {
+      "app": "Amazon Selling Partner",
+      "category": "Ecommerce",
+      "description": "Research failed for Amazon Selling Partner",
+      "auth_methods": [
+        "unknown"
+      ],
+      "access": "self_serve",
+      "api_type": "rest",
+      "api_breadth": "broad",
+      "composio_status": "toolkit_gap",
+      "composio_actions": [],
+      "composio_actions_count": 0,
+      "buildability": "ready",
+      "main_blocker": "Research error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kxyx4xf3fbvrt299w086kd83` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99858, Requested 776. Please try again in 9m7.776s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+      "confidence": 0.9,
+      "needs_human_review": true,
+      "evidence": [],
+      "composio_toolkit_slug": null,
+      "composio_toolkit_url": null,
+      "composio_match_quality": "not_found",
+      "native_mcp_status": "unknown"
+    },
+    {
+      "app": "fanbasis",
+      "category": "Ecommerce",
+      "description": "Research failed for fanbasis",
+      "auth_methods": [
+        "unknown"
+      ],
+      "access": "unknown",
+      "api_type": "unknown",
+      "api_breadth": "unknown",
+      "composio_status": "toolkit_gap",
+      "composio_actions": [],
+      "composio_actions_count": 0,
+      "buildability": "unknown",
+      "main_blocker": "Research error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kxyx4xf3fbvrt299w086kd83` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99858, Requested 771. Please try again in 9m3.456s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+      "confidence": 0.2,
+      "needs_human_review": true,
+      "evidence": [],
+      "composio_toolkit_slug": null,
+      "composio_toolkit_url": null,
+      "composio_match_quality": "not_found",
+      "native_mcp_status": "unknown"
+    },
+    {
+      "app": "DataForSEO",
+      "category": "Data SEO and Scraping",
+      "description": "Research failed for DataForSEO",
+      "auth_methods": [
+        "API Key"
+      ],
+      "access": "self_serve",
+      "api_type": "rest",
+      "api_breadth": "broad",
+      "composio_status": "existing_toolkit",
+      "composio_actions": [],
+      "composio_actions_count": 0,
+      "buildability": "ready",
+      "main_blocker": "Research error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kxyx4xf3fbvrt299w086kd83` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99854, Requested 774. Please try again in 9m2.592s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+      "confidence": 0.8,
+      "needs_human_review": true,
+      "evidence": [
+        {
+          "claim": "Composio toolkit exists",
+          "value": "dataforseo",
+          "url": "https://docs.composio.dev/toolkits/dataforseo",
+          "source_title": "Composio Toolkits",
+          "supporting_text": "Composio provides dataforseo toolkit",
+          "source_quality": "composio_toolkit"
+        }
+      ],
+      "composio_toolkit_slug": "dataforseo",
+      "composio_toolkit_url": "https://docs.composio.dev/toolkits/dataforseo",
+      "composio_match_quality": "exact",
+      "native_mcp_status": "unknown"
+    },
+    {
+      "app": "SE Ranking",
+      "category": "Data SEO and Scraping",
+      "description": "Research failed for SE Ranking",
+      "auth_methods": [
+        "unknown"
+      ],
+      "access": "self_serve",
+      "api_type": "rest",
+      "api_breadth": "broad",
+      "composio_status": "toolkit_gap",
+      "composio_actions": [],
+      "composio_actions_count": 0,
+      "buildability": "ready",
+      "main_blocker": "Research error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kxyx4xf3fbvrt299w086kd83` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99854, Requested 772. Please try again in 9m0.864s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+      "confidence": 0.8,
+      "needs_human_review": true,
+      "evidence": [],
+      "composio_toolkit_slug": null,
+      "composio_toolkit_url": null,
+      "composio_match_quality": "not_found",
+      "native_mcp_status": "unknown"
+    },
+    {
+      "app": "Ahrefs",
+      "category": "Data SEO and Scraping",
+      "description": "Research failed for Ahrefs",
+      "auth_methods": [
+        "API Key"
+      ],
+      "access": "paid",
+      "api_type": "rest",
+      "api_breadth": "broad",
+      "composio_status": "existing_toolkit",
+      "composio_actions": [],
+      "composio_actions_count": 0,
+      "buildability": "ready",
+      "main_blocker": "Research error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kxyx4xf3fbvrt299w086kd83` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99853, Requested 799. Please try again in 9m23.328s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+      "confidence": 0.8,
+      "needs_human_review": true,
+      "evidence": [
+        {
+          "claim": "Composio toolkit exists",
+          "value": "ahrefs",
+          "url": "https://docs.composio.dev/toolkits/ahrefs",
+          "source_title": "Composio Toolkits",
+          "supporting_text": "Composio provides ahrefs toolkit",
+          "source_quality": "composio_toolkit"
+        }
+      ],
+      "composio_toolkit_slug": "ahrefs",
+      "composio_toolkit_url": "https://docs.composio.dev/toolkits/ahrefs",
+      "composio_match_quality": "exact",
+      "native_mcp_status": "unknown"
+    },
+    {
+      "app": "MrScraper",
+      "category": "Data SEO and Scraping",
+      "description": "Research failed for MrScraper",
+      "auth_methods": [
+        "unknown"
+      ],
+      "access": "unknown",
+      "api_type": "unknown",
+      "api_breadth": "unknown",
+      "composio_status": "toolkit_gap",
+      "composio_actions": [],
+      "composio_actions_count": 0,
+      "buildability": "unknown",
+      "main_blocker": "Research error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kxyx4xf3fbvrt299w086kd83` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99853, Requested 800. Please try again in 9m24.192s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+      "confidence": 0.2,
+      "needs_human_review": true,
+      "evidence": [],
+      "composio_toolkit_slug": null,
+      "composio_toolkit_url": null,
+      "composio_match_quality": "not_found",
+      "native_mcp_status": "unknown"
+    },
+    {
+      "app": "Apify",
+      "category": "Data SEO and Scraping",
+      "description": "Research failed for Apify",
+      "auth_methods": [
+        "API Key",
+        "Token"
+      ],
+      "access": "self_serve",
+      "api_type": "rest",
+      "api_breadth": "broad",
+      "mcp_status": "unknown",
+      "composio_status": "existing_toolkit",
+      "composio_actions": [],
+      "composio_actions_count": 0,
+      "buildability": "ready",
+      "main_blocker": "Research error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kxyx4xf3fbvrt299w086kd83` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99852, Requested 772. Please try again in 8m59.135999999s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+      "confidence": 0.8,
+      "needs_human_review": true,
+      "evidence": [
+        {
+          "claim": "Composio toolkit exists",
+          "value": "apify",
+          "url": "https://docs.composio.dev/toolkits/apify",
+          "source_title": "Composio Toolkits",
+          "supporting_text": "Composio provides apify toolkit",
+          "source_quality": "composio_toolkit"
+        }
+      ],
+      "composio_toolkit_slug": "apify",
+      "composio_toolkit_url": "https://docs.composio.dev/toolkits/apify",
+      "composio_match_quality": "exact",
+      "native_mcp_status": "official"
+    },
+    {
+      "app": "Firecrawl",
+      "category": "Data SEO and Scraping",
+      "description": "Research failed for Firecrawl",
+      "auth_methods": [
+        "API Key"
+      ],
+      "access": "unknown",
+      "api_type": "unknown",
+      "api_breadth": "unknown",
+      "composio_status": "existing_toolkit",
+      "composio_actions": [],
+      "composio_actions_count": 0,
+      "buildability": "unknown",
+      "main_blocker": "Research error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kxyx4xf3fbvrt299w086kd83` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99852, Requested 584. Please try again in 6m16.704s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+      "confidence": 0.2,
+      "needs_human_review": true,
+      "evidence": [
+        {
+          "claim": "Composio toolkit exists",
+          "value": "firecrawl",
+          "url": "https://docs.composio.dev/toolkits/firecrawl",
+          "source_title": "Composio Toolkits",
+          "supporting_text": "Composio provides firecrawl toolkit",
+          "source_quality": "composio_toolkit"
+        }
+      ],
+      "composio_toolkit_slug": "firecrawl",
+      "composio_toolkit_url": "https://docs.composio.dev/toolkits/firecrawl",
+      "composio_match_quality": "exact",
+      "native_mcp_status": "unknown"
+    },
+    {
+      "app": "Bright Data",
+      "category": "Data SEO and Scraping",
+      "description": "Research failed for Bright Data",
+      "auth_methods": [
+        "API Key"
+      ],
+      "access": "self_serve",
+      "api_type": "rest",
+      "api_breadth": "broad",
+      "composio_status": "existing_toolkit",
+      "composio_actions": [],
+      "composio_actions_count": 0,
+      "buildability": "ready",
+      "main_blocker": "Research error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kxyx4xf3fbvrt299w086kd83` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99851, Requested 796. Please try again in 9m19.008s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+      "confidence": 0.8,
+      "needs_human_review": true,
+      "evidence": [
+        {
+          "claim": "Composio toolkit exists",
+          "value": "brightdata",
+          "url": "https://docs.composio.dev/toolkits/brightdata",
+          "source_title": "Composio Toolkits",
+          "supporting_text": "Composio provides brightdata toolkit",
+          "source_quality": "composio_toolkit"
+        }
+      ],
+      "composio_toolkit_slug": "brightdata",
+      "composio_toolkit_url": "https://docs.composio.dev/toolkits/brightdata",
+      "composio_match_quality": "exact",
+      "native_mcp_status": "unknown"
+    },
+    {
+      "app": "Sherlock",
+      "category": "Data SEO and Scraping",
+      "description": "Research failed for Sherlock",
+      "auth_methods": [
+        "unknown"
+      ],
+      "access": "unknown",
+      "api_type": "unknown",
+      "api_breadth": "unknown",
+      "composio_status": "toolkit_gap",
+      "composio_actions": [],
+      "composio_actions_count": 0,
+      "buildability": "unknown",
+      "main_blocker": "Research error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kxyx4xf3fbvrt299w086kd83` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99851, Requested 801. Please try again in 9m23.328s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+      "confidence": 0.2,
+      "needs_human_review": true,
+      "evidence": [],
+      "composio_toolkit_slug": null,
+      "composio_toolkit_url": null,
+      "composio_match_quality": "not_found",
+      "native_mcp_status": "unknown"
+    },
+    {
+      "app": "Waterfall.io",
+      "category": "Data SEO and Scraping",
+      "description": "Research failed for Waterfall.io",
+      "auth_methods": [
+        "unknown"
+      ],
+      "access": "unknown",
+      "api_type": "unknown",
+      "api_breadth": "unknown",
+      "composio_status": "toolkit_gap",
+      "composio_actions": [],
+      "composio_actions_count": 0,
+      "buildability": "unknown",
+      "main_blocker": "Research error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kxyx4xf3fbvrt299w086kd83` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99850, Requested 584. Please try again in 6m14.976s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+      "confidence": 0.2,
+      "needs_human_review": true,
+      "evidence": [],
+      "composio_toolkit_slug": null,
+      "composio_toolkit_url": null,
+      "composio_match_quality": "not_found",
+      "native_mcp_status": "unknown"
+    },
+    {
+      "app": "Clay",
+      "category": "Data SEO and Scraping",
+      "description": "Research failed for Clay",
+      "auth_methods": [
+        "unknown"
+      ],
+      "access": "unknown",
+      "api_type": "unknown",
+      "api_breadth": "unknown",
+      "composio_status": "toolkit_gap",
+      "composio_actions": [],
+      "composio_actions_count": 0,
+      "buildability": "unknown",
+      "main_blocker": "Research error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kxyx4xf3fbvrt299w086kd83` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99850, Requested 769. Please try again in 8m54.816s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+      "confidence": 0.2,
+      "needs_human_review": true,
+      "evidence": [],
+      "composio_toolkit_slug": null,
+      "composio_toolkit_url": null,
+      "composio_match_quality": "not_found",
+      "native_mcp_status": "unknown"
+    },
+    {
+      "app": "GitHub",
+      "category": "Developer Infra and Data platforms",
+      "description": "Research failed for GitHub",
+      "auth_methods": [
+        "OAuth2",
+        "API Key",
+        "Token"
+      ],
+      "access": "self_serve",
+      "api_type": "rest",
+      "api_breadth": "broad",
+      "mcp_status": "unknown",
+      "composio_status": "existing_toolkit",
+      "composio_actions": [],
+      "composio_actions_count": 0,
+      "buildability": "ready",
+      "main_blocker": "Research error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kxyx4xf3fbvrt299w086kd83` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99846, Requested 584. Please try again in 6m11.52s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+      "confidence": 0.9,
+      "needs_human_review": true,
+      "evidence": [
+        {
+          "claim": "Composio toolkit exists",
+          "value": "github",
+          "url": "https://docs.composio.dev/toolkits/github",
+          "source_title": "Composio Toolkits",
+          "supporting_text": "Composio provides github toolkit",
+          "source_quality": "composio_toolkit"
+        }
+      ],
+      "composio_toolkit_slug": "github",
+      "composio_toolkit_url": "https://docs.composio.dev/toolkits/github",
+      "composio_match_quality": "exact",
+      "native_mcp_status": "official"
+    },
+    {
+      "app": "Vercel",
+      "category": "Developer Infra and Data platforms",
+      "description": "Research failed for Vercel",
+      "auth_methods": [
+        "OAuth2",
+        "API Key",
+        "Token"
+      ],
+      "access": "self_serve",
+      "api_type": "rest",
+      "api_breadth": "broad",
+      "composio_status": "existing_toolkit",
+      "composio_actions": [],
+      "composio_actions_count": 0,
+      "buildability": "ready",
+      "main_blocker": "Research error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kxyx4xf3fbvrt299w086kd83` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99846, Requested 588. Please try again in 6m14.976s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+      "confidence": 0.8,
+      "needs_human_review": true,
+      "evidence": [
+        {
+          "claim": "Composio toolkit exists",
+          "value": "vercel",
+          "url": "https://docs.composio.dev/toolkits/vercel",
+          "source_title": "Composio Toolkits",
+          "supporting_text": "Composio provides vercel toolkit",
+          "source_quality": "composio_toolkit"
+        }
+      ],
+      "composio_toolkit_slug": "vercel",
+      "composio_toolkit_url": "https://docs.composio.dev/toolkits/vercel",
+      "composio_match_quality": "exact",
+      "native_mcp_status": "unknown"
+    },
+    {
+      "app": "Netlify",
+      "category": "Developer Infra and Data platforms",
+      "description": "Research failed for Netlify",
+      "auth_methods": [
+        "unknown"
+      ],
+      "access": "self_serve",
+      "api_type": "rest",
+      "api_breadth": "broad",
+      "composio_status": "toolkit_gap",
+      "composio_actions": [],
+      "composio_actions_count": 0,
+      "buildability": "ready",
+      "main_blocker": "Research error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kxyx4xf3fbvrt299w086kd83` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99846, Requested 586. Please try again in 6m13.248s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+      "confidence": 0.8,
+      "needs_human_review": true,
+      "evidence": [],
+      "composio_toolkit_slug": null,
+      "composio_toolkit_url": null,
+      "composio_match_quality": "not_found",
+      "native_mcp_status": "unknown"
+    },
+    {
+      "app": "Cloudflare",
+      "category": "Developer Infra and Data platforms",
+      "description": "Research failed for Cloudflare",
+      "auth_methods": [
+        "API Key",
+        "OAuth2"
+      ],
+      "access": "self_serve",
+      "api_type": "rest",
+      "api_breadth": "broad",
+      "mcp_status": "unknown",
+      "composio_status": "existing_toolkit",
+      "composio_actions": [],
+      "composio_actions_count": 0,
+      "buildability": "ready",
+      "main_blocker": "Research error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kxyx4xf3fbvrt299w086kd83` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99845, Requested 797. Please try again in 9m14.688s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+      "confidence": 0.9,
+      "needs_human_review": true,
+      "evidence": [
+        {
+          "claim": "Composio toolkit exists",
+          "value": "cloudflare",
+          "url": "https://docs.composio.dev/toolkits/cloudflare",
+          "source_title": "Composio Toolkits",
+          "supporting_text": "Composio provides cloudflare toolkit",
+          "source_quality": "composio_toolkit"
+        }
+      ],
+      "composio_toolkit_slug": "cloudflare",
+      "composio_toolkit_url": "https://docs.composio.dev/toolkits/cloudflare",
+      "composio_match_quality": "exact",
+      "native_mcp_status": "official"
+    },
+    {
+      "app": "Supabase",
+      "category": "Developer Infra and Data platforms",
+      "description": "Research failed for Supabase",
+      "auth_methods": [
+        "API Key",
+        "Token"
+      ],
+      "access": "self_serve",
+      "api_type": "rest",
+      "api_breadth": "broad",
+      "mcp_status": "unknown",
+      "composio_status": "existing_toolkit",
+      "composio_actions": [],
+      "composio_actions_count": 0,
+      "buildability": "ready",
+      "main_blocker": "Research error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kxyx4xf3fbvrt299w086kd83` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99844, Requested 797. Please try again in 9m13.824s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+      "confidence": 0.8,
+      "needs_human_review": true,
+      "evidence": [
+        {
+          "claim": "Composio toolkit exists",
+          "value": "supabase",
+          "url": "https://docs.composio.dev/toolkits/supabase",
+          "source_title": "Composio Toolkits",
+          "supporting_text": "Composio provides supabase toolkit",
+          "source_quality": "composio_toolkit"
+        }
+      ],
+      "composio_toolkit_slug": "supabase",
+      "composio_toolkit_url": "https://docs.composio.dev/toolkits/supabase",
+      "composio_match_quality": "exact",
+      "native_mcp_status": "community"
+    },
+    {
+      "app": "Neo4j",
+      "category": "Developer Infra and Data platforms",
+      "description": "Research failed for Neo4j",
+      "auth_methods": [
+        "Basic",
+        "Token"
+      ],
+      "access": "self_serve",
+      "api_type": "rest",
+      "api_breadth": "broad",
+      "mcp_status": "unknown",
+      "composio_status": "existing_toolkit",
+      "composio_actions": [],
+      "composio_actions_count": 0,
+      "buildability": "ready",
+      "main_blocker": "Research error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kxyx4xf3fbvrt299w086kd83` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99844, Requested 588. Please try again in 6m13.248s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+      "confidence": 0.8,
+      "needs_human_review": true,
+      "evidence": [
+        {
+          "claim": "Composio toolkit exists",
+          "value": "neo4j",
+          "url": "https://docs.composio.dev/toolkits/neo4j",
+          "source_title": "Composio Toolkits",
+          "supporting_text": "Composio provides neo4j toolkit",
+          "source_quality": "composio_toolkit"
+        }
+      ],
+      "composio_toolkit_slug": "neo4j",
+      "composio_toolkit_url": "https://docs.composio.dev/toolkits/neo4j",
+      "composio_match_quality": "exact",
+      "native_mcp_status": "official"
+    },
+    {
+      "app": "Snowflake",
+      "category": "Developer Infra and Data platforms",
+      "description": "Research failed for Snowflake",
+      "auth_methods": [
+        "OAuth2",
+        "API Key",
+        "Basic"
+      ],
+      "access": "self_serve",
+      "api_type": "rest",
+      "api_breadth": "broad",
+      "composio_status": "existing_toolkit",
+      "composio_actions": [],
+      "composio_actions_count": 0,
+      "buildability": "ready",
+      "main_blocker": "Research error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kxyx4xf3fbvrt299w086kd83` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99843, Requested 773. Please try again in 8m52.223999999s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+      "confidence": 0.8,
+      "needs_human_review": true,
+      "evidence": [
+        {
+          "claim": "Composio toolkit exists",
+          "value": "snowflake",
+          "url": "https://docs.composio.dev/toolkits/snowflake",
+          "source_title": "Composio Toolkits",
+          "supporting_text": "Composio provides snowflake toolkit",
+          "source_quality": "composio_toolkit"
+        }
+      ],
+      "composio_toolkit_slug": "snowflake",
+      "composio_toolkit_url": "https://docs.composio.dev/toolkits/snowflake",
+      "composio_match_quality": "exact",
+      "native_mcp_status": "unknown"
+    },
+    {
+      "app": "MongoDB Atlas",
+      "category": "Developer Infra and Data platforms",
+      "description": "Research failed for MongoDB Atlas",
+      "auth_methods": [
+        "unknown"
+      ],
+      "access": "self_serve",
+      "api_type": "rest",
+      "api_breadth": "broad",
+      "composio_status": "toolkit_gap",
+      "composio_actions": [],
+      "composio_actions_count": 0,
+      "buildability": "ready",
+      "main_blocker": "Research error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kxyx4xf3fbvrt299w086kd83` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99843, Requested 587. Please try again in 6m11.52s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+      "confidence": 0.9,
+      "needs_human_review": true,
+      "evidence": [],
+      "composio_toolkit_slug": null,
+      "composio_toolkit_url": null,
+      "composio_match_quality": "not_found",
+      "native_mcp_status": "unknown"
+    },
+    {
+      "app": "Datadog",
+      "category": "Developer Infra and Data platforms",
+      "description": "Research failed for Datadog",
+      "auth_methods": [
+        "API Key",
+        "OAuth2"
+      ],
+      "access": "self_serve",
+      "api_type": "rest",
+      "api_breadth": "broad",
+      "composio_status": "existing_toolkit",
+      "composio_actions": [],
+      "composio_actions_count": 0,
+      "buildability": "ready",
+      "main_blocker": "Research error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kxyx4xf3fbvrt299w086kd83` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99842, Requested 589. Please try again in 6m12.383999999s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+      "confidence": 0.9,
+      "needs_human_review": true,
+      "evidence": [
+        {
+          "claim": "Composio toolkit exists",
+          "value": "datadog",
+          "url": "https://docs.composio.dev/toolkits/datadog",
+          "source_title": "Composio Toolkits",
+          "supporting_text": "Composio provides datadog toolkit",
+          "source_quality": "composio_toolkit"
+        }
+      ],
+      "composio_toolkit_slug": "datadog",
+      "composio_toolkit_url": "https://docs.composio.dev/toolkits/datadog",
+      "composio_match_quality": "exact",
+      "native_mcp_status": "unknown"
+    },
+    {
+      "app": "Sentry",
+      "category": "Developer Infra and Data platforms",
+      "description": "Research failed for Sentry",
+      "auth_methods": [
+        "API Key",
+        "OAuth2"
+      ],
+      "access": "self_serve",
+      "api_type": "rest",
+      "api_breadth": "broad",
+      "composio_status": "existing_toolkit",
+      "composio_actions": [],
+      "composio_actions_count": 0,
+      "buildability": "ready",
+      "main_blocker": "Research error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kxyx4xf3fbvrt299w086kd83` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99841, Requested 585. Please try again in 6m8.063999999s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+      "confidence": 0.8,
+      "needs_human_review": true,
+      "evidence": [
+        {
+          "claim": "Composio toolkit exists",
+          "value": "sentry",
+          "url": "https://docs.composio.dev/toolkits/sentry",
+          "source_title": "Composio Toolkits",
+          "supporting_text": "Composio provides sentry toolkit",
+          "source_quality": "composio_toolkit"
+        }
+      ],
+      "composio_toolkit_slug": "sentry",
+      "composio_toolkit_url": "https://docs.composio.dev/toolkits/sentry",
+      "composio_match_quality": "exact",
+      "native_mcp_status": "unknown"
+    },
+    {
+      "app": "Notion",
+      "category": "Productivity and Project Management",
+      "description": "Research failed for Notion",
+      "auth_methods": [
+        "OAuth2"
+      ],
+      "access": "self_serve",
+      "api_type": "rest",
+      "api_breadth": "broad",
+      "mcp_status": "unknown",
+      "composio_status": "existing_toolkit",
+      "composio_actions": [],
+      "composio_actions_count": 0,
+      "buildability": "ready",
+      "main_blocker": "Research error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kxyx4xf3fbvrt299w086kd83` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99838, Requested 772. Please try again in 8m47.04s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+      "confidence": 0.9,
+      "needs_human_review": true,
+      "evidence": [
+        {
+          "claim": "Composio toolkit exists",
+          "value": "notion",
+          "url": "https://docs.composio.dev/toolkits/notion",
+          "source_title": "Composio Toolkits",
+          "supporting_text": "Composio provides notion toolkit",
+          "source_quality": "composio_toolkit"
+        }
+      ],
+      "composio_toolkit_slug": "notion",
+      "composio_toolkit_url": "https://docs.composio.dev/toolkits/notion",
+      "composio_match_quality": "exact",
+      "native_mcp_status": "official"
+    },
+    {
+      "app": "Airtable",
+      "category": "Productivity and Project Management",
+      "description": "Research failed for Airtable",
+      "auth_methods": [
+        "API Key",
+        "OAuth2"
+      ],
+      "access": "self_serve",
+      "api_type": "rest",
+      "api_breadth": "broad",
+      "composio_status": "existing_toolkit",
+      "composio_actions": [],
+      "composio_actions_count": 0,
+      "buildability": "ready",
+      "main_blocker": "Research error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kxyx4xf3fbvrt299w086kd83` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99838, Requested 798. Please try again in 9m9.504s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+      "confidence": 0.9,
+      "needs_human_review": true,
+      "evidence": [
+        {
+          "claim": "Composio toolkit exists",
+          "value": "airtable",
+          "url": "https://docs.composio.dev/toolkits/airtable",
+          "source_title": "Composio Toolkits",
+          "supporting_text": "Composio provides airtable toolkit",
+          "source_quality": "composio_toolkit"
+        }
+      ],
+      "composio_toolkit_slug": "airtable",
+      "composio_toolkit_url": "https://docs.composio.dev/toolkits/airtable",
+      "composio_match_quality": "exact",
+      "native_mcp_status": "unknown"
+    },
+    {
+      "app": "Linear",
+      "category": "Productivity and Project Management",
+      "description": "Research failed for Linear",
+      "auth_methods": [
+        "OAuth2",
+        "API Key"
+      ],
+      "access": "self_serve",
+      "api_type": "rest",
+      "api_breadth": "moderate",
+      "composio_status": "existing_toolkit",
+      "composio_actions": [],
+      "composio_actions_count": 0,
+      "buildability": "ready",
+      "main_blocker": "Research error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kxyx4xf3fbvrt299w086kd83` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99837, Requested 770. Please try again in 8m44.448s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+      "confidence": 0.8,
+      "needs_human_review": true,
+      "evidence": [
+        {
+          "claim": "Composio toolkit exists",
+          "value": "linear",
+          "url": "https://docs.composio.dev/toolkits/linear",
+          "source_title": "Composio Toolkits",
+          "supporting_text": "Composio provides linear toolkit",
+          "source_quality": "composio_toolkit"
+        }
+      ],
+      "composio_toolkit_slug": "linear",
+      "composio_toolkit_url": "https://docs.composio.dev/toolkits/linear",
+      "composio_match_quality": "exact",
+      "native_mcp_status": "unknown"
+    },
+    {
+      "app": "Jira",
+      "category": "Productivity and Project Management",
+      "description": "Research failed for Jira",
+      "auth_methods": [
+        "OAuth2",
+        "Basic",
+        "API Key"
+      ],
+      "access": "self_serve",
+      "api_type": "rest",
+      "api_breadth": "broad",
+      "composio_status": "existing_toolkit",
+      "composio_actions": [],
+      "composio_actions_count": 0,
+      "buildability": "ready",
+      "main_blocker": "Research error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kxyx4xf3fbvrt299w086kd83` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99837, Requested 797. Please try again in 9m7.776s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+      "confidence": 0.9,
+      "needs_human_review": true,
+      "evidence": [
+        {
+          "claim": "Composio toolkit exists",
+          "value": "jira",
+          "url": "https://docs.composio.dev/toolkits/jira",
+          "source_title": "Composio Toolkits",
+          "supporting_text": "Composio provides jira toolkit",
+          "source_quality": "composio_toolkit"
+        }
+      ],
+      "composio_toolkit_slug": "jira",
+      "composio_toolkit_url": "https://docs.composio.dev/toolkits/jira",
+      "composio_match_quality": "exact",
+      "native_mcp_status": "unknown"
+    },
+    {
+      "app": "Asana",
+      "category": "Productivity and Project Management",
+      "description": "Research failed for Asana",
+      "auth_methods": [
+        "OAuth2",
+        "API Key",
+        "Basic"
+      ],
+      "access": "self_serve",
+      "api_type": "rest",
+      "api_breadth": "broad",
+      "composio_status": "existing_toolkit",
+      "composio_actions": [],
+      "composio_actions_count": 0,
+      "buildability": "ready",
+      "main_blocker": "Research error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kxyx4xf3fbvrt299w086kd83` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99836, Requested 797. Please try again in 9m6.911999999s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+      "confidence": 0.9,
+      "needs_human_review": true,
+      "evidence": [
+        {
+          "claim": "Composio toolkit exists",
+          "value": "asana",
+          "url": "https://docs.composio.dev/toolkits/asana",
+          "source_title": "Composio Toolkits",
+          "supporting_text": "Composio provides asana toolkit",
+          "source_quality": "composio_toolkit"
+        }
+      ],
+      "composio_toolkit_slug": "asana",
+      "composio_toolkit_url": "https://docs.composio.dev/toolkits/asana",
+      "composio_match_quality": "exact",
+      "native_mcp_status": "unknown"
+    },
+    {
+      "app": "Monday.com",
+      "category": "Productivity and Project Management",
+      "description": "Research failed for Monday.com",
+      "auth_methods": [
+        "OAuth2",
+        "API Key"
+      ],
+      "access": "self_serve",
+      "api_type": "rest",
+      "api_breadth": "broad",
+      "composio_status": "existing_toolkit",
+      "composio_actions": [],
+      "composio_actions_count": 0,
+      "buildability": "ready",
+      "main_blocker": "Research error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kxyx4xf3fbvrt299w086kd83` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99836, Requested 585. Please try again in 6m3.744s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+      "confidence": 0.9,
+      "needs_human_review": true,
+      "evidence": [
+        {
+          "claim": "Composio toolkit exists",
+          "value": "monday",
+          "url": "https://docs.composio.dev/toolkits/monday",
+          "source_title": "Composio Toolkits",
+          "supporting_text": "Composio provides monday toolkit",
+          "source_quality": "composio_toolkit"
+        }
+      ],
+      "composio_toolkit_slug": "monday",
+      "composio_toolkit_url": "https://docs.composio.dev/toolkits/monday",
+      "composio_match_quality": "exact",
+      "native_mcp_status": "unknown"
+    },
+    {
+      "app": "ClickUp",
+      "category": "Productivity and Project Management",
+      "description": "Research failed for ClickUp",
+      "auth_methods": [
+        "OAuth2",
+        "API Key"
+      ],
+      "access": "self_serve",
+      "api_type": "rest",
+      "api_breadth": "broad",
+      "composio_status": "existing_toolkit",
+      "composio_actions": [],
+      "composio_actions_count": 0,
+      "buildability": "ready",
+      "main_blocker": "Research error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kxyx4xf3fbvrt299w086kd83` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99835, Requested 797. Please try again in 9m6.048s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+      "confidence": 0.8,
+      "needs_human_review": true,
+      "evidence": [
+        {
+          "claim": "Composio toolkit exists",
+          "value": "clickup",
+          "url": "https://docs.composio.dev/toolkits/clickup",
+          "source_title": "Composio Toolkits",
+          "supporting_text": "Composio provides clickup toolkit",
+          "source_quality": "composio_toolkit"
+        }
+      ],
+      "composio_toolkit_slug": "clickup",
+      "composio_toolkit_url": "https://docs.composio.dev/toolkits/clickup",
+      "composio_match_quality": "exact",
+      "native_mcp_status": "unknown"
+    },
+    {
+      "app": "Coda",
+      "category": "Productivity and Project Management",
+      "description": "Research failed for Coda",
+      "auth_methods": [
+        "OAuth2"
+      ],
+      "access": "self_serve",
+      "api_type": "rest",
+      "api_breadth": "broad",
+      "composio_status": "existing_toolkit",
+      "composio_actions": [],
+      "composio_actions_count": 0,
+      "buildability": "ready",
+      "main_blocker": "Research error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kxyx4xf3fbvrt299w086kd83` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99835, Requested 773. Please try again in 8m45.312s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+      "confidence": 0.8,
+      "needs_human_review": true,
+      "evidence": [
+        {
+          "claim": "Composio toolkit exists",
+          "value": "coda",
+          "url": "https://docs.composio.dev/toolkits/coda",
+          "source_title": "Composio Toolkits",
+          "supporting_text": "Composio provides coda toolkit",
+          "source_quality": "composio_toolkit"
+        }
+      ],
+      "composio_toolkit_slug": "coda",
+      "composio_toolkit_url": "https://docs.composio.dev/toolkits/coda",
+      "composio_match_quality": "exact",
+      "native_mcp_status": "unknown"
+    },
+    {
+      "app": "Smartsheet",
+      "category": "Productivity and Project Management",
+      "description": "Research failed for Smartsheet",
+      "auth_methods": [
+        "unknown"
+      ],
+      "access": "self_serve",
+      "api_type": "rest",
+      "api_breadth": "broad",
+      "composio_status": "toolkit_gap",
+      "composio_actions": [],
+      "composio_actions_count": 0,
+      "buildability": "ready",
+      "main_blocker": "Research error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kxyx4xf3fbvrt299w086kd83` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99834, Requested 588. Please try again in 6m4.608s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+      "confidence": 0.9,
+      "needs_human_review": true,
+      "evidence": [],
+      "composio_toolkit_slug": null,
+      "composio_toolkit_url": null,
+      "composio_match_quality": "not_found",
+      "native_mcp_status": "unknown"
+    },
+    {
+      "app": "Harvest",
+      "category": "Productivity and Project Management",
+      "description": "Research failed for Harvest",
+      "auth_methods": [
+        "OAuth2"
+      ],
+      "access": "self_serve",
+      "api_type": "rest",
+      "api_breadth": "moderate",
+      "composio_status": "existing_toolkit",
+      "composio_actions": [],
+      "composio_actions_count": 0,
+      "buildability": "ready",
+      "main_blocker": "Research error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kxyx4xf3fbvrt299w086kd83` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99834, Requested 775. Please try again in 8m46.176s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+      "confidence": 0.8,
+      "needs_human_review": true,
+      "evidence": [
+        {
+          "claim": "Composio toolkit exists",
+          "value": "harvest",
+          "url": "https://docs.composio.dev/toolkits/harvest",
+          "source_title": "Composio Toolkits",
+          "supporting_text": "Composio provides harvest toolkit",
+          "source_quality": "composio_toolkit"
+        }
+      ],
+      "composio_toolkit_slug": "harvest",
+      "composio_toolkit_url": "https://docs.composio.dev/toolkits/harvest",
+      "composio_match_quality": "exact",
+      "native_mcp_status": "unknown"
+    },
+    {
+      "app": "Stripe",
+      "category": "Finance and Fintech",
+      "description": "Online payment processing",
+      "auth_methods": [
+        "API Key",
+        "OAuth2"
+      ],
+      "access": "self_serve",
+      "api_type": "rest",
+      "api_breadth": "unknown",
+      "composio_status": "existing_toolkit",
+      "composio_actions": [],
+      "composio_actions_count": 0,
+      "buildability": "ready",
+      "main_blocker": "",
+      "confidence": 0.9,
+      "needs_human_review": false,
+      "evidence": [
+        {
+          "claim": "auth_methods",
+          "value": "API Key",
+          "url": "https://stripe.com/docs/api",
+          "source_title": "Stripe API Documentation",
+          "supporting_text": "You can authenticate to the Stripe API by providing your API keys in the request.",
+          "source_quality": "official_docs"
+        },
+        {
+          "claim": "api_type",
+          "value": "rest",
+          "url": "https://stripe.com/docs/api",
+          "source_title": "Stripe API Documentation",
+          "supporting_text": "The Stripe API is a RESTful API.",
+          "source_quality": "official_docs"
+        },
+        {
+          "claim": "access",
+          "value": "self_serve",
+          "url": "https://stripe.com/docs/api",
+          "source_title": "Stripe API Documentation",
+          "supporting_text": "You can sign up for a Stripe account and start using the API immediately.",
+          "source_quality": "official_docs"
+        },
+        {
+          "claim": "Composio toolkit exists",
+          "value": "stripe",
+          "url": "https://docs.composio.dev/toolkits/stripe",
+          "source_title": "Composio Toolkits",
+          "supporting_text": "Composio provides stripe toolkit",
+          "source_quality": "composio_toolkit"
+        }
+      ],
+      "composio_toolkit_slug": "stripe",
+      "composio_toolkit_url": "https://docs.composio.dev/toolkits/stripe",
+      "composio_match_quality": "exact",
+      "native_mcp_status": "official"
+    },
+    {
+      "app": "Plaid",
+      "category": "Finance and Fintech",
+      "description": "Financial data platform",
+      "auth_methods": [
+        "OAuth2",
+        "API Key"
+      ],
+      "access": "self_serve",
+      "api_type": "rest",
+      "api_breadth": "unknown",
+      "composio_status": "existing_toolkit",
+      "composio_actions": [],
+      "composio_actions_count": 0,
+      "buildability": "ready",
+      "main_blocker": "",
+      "confidence": 0.8,
+      "needs_human_review": false,
+      "evidence": [
+        {
+          "claim": "auth_methods",
+          "value": "OAuth2",
+          "url": "https://plaid.com/docs/#authentication",
+          "source_title": "Plaid API Documentation",
+          "supporting_text": "Plaid uses OAuth 2.0 for authentication",
+          "source_quality": "official_docs"
+        },
+        {
+          "claim": "api_type",
+          "value": "rest",
+          "url": "https://plaid.com/docs/api/",
+          "source_title": "Plaid API Reference",
+          "supporting_text": "Plaid API is a RESTful API",
+          "source_quality": "official_docs"
+        },
+        {
+          "claim": "access",
+          "value": "self_serve",
+          "url": "https://plaid.com/docs/getting-started/",
+          "source_title": "Plaid Getting Started",
+          "supporting_text": "Sign up for a Plaid account to get started",
+          "source_quality": "official_docs"
+        },
+        {
+          "claim": "Composio toolkit exists",
+          "value": "plaid",
+          "url": "https://docs.composio.dev/toolkits/plaid",
+          "source_title": "Composio Toolkits",
+          "supporting_text": "Composio provides plaid toolkit",
+          "source_quality": "composio_toolkit"
+        }
+      ],
+      "composio_toolkit_slug": "plaid",
+      "composio_toolkit_url": "https://docs.composio.dev/toolkits/plaid",
+      "composio_match_quality": "exact",
+      "native_mcp_status": "official"
+    },
+    {
+      "app": "Binance",
+      "category": "Finance and Fintech",
+      "description": "Crypto exchange",
+      "auth_methods": [
+        "API Key",
+        "OAuth2"
+      ],
+      "access": "self_serve",
+      "api_type": "rest",
+      "api_breadth": "broad",
+      "composio_status": "toolkit_gap",
+      "composio_actions": [],
+      "composio_actions_count": 0,
+      "buildability": "ready",
+      "main_blocker": "",
+      "confidence": 0.9,
+      "needs_human_review": false,
+      "evidence": [
+        {
+          "claim": "API Key auth method",
+          "value": "API Key",
+          "url": "https://binance-docs.github.io/apidocs/spot/en/#general-information",
+          "source_title": "Binance API Documentation",
+          "supporting_text": "API keys can be created and managed in the API management section of the user dashboard.",
+          "source_quality": "official_docs"
+        },
+        {
+          "claim": "REST API type",
+          "value": "rest",
+          "url": "https://binance-docs.github.io/apidocs/spot/en/#public-api-endpoints",
+          "source_title": "Binance API Documentation",
+          "supporting_text": "Public API endpoints are available for retrieving market data.",
+          "source_quality": "official_docs"
+        },
+        {
+          "claim": "Broad API breadth",
+          "value": "broad",
+          "url": "https://binance-docs.github.io/apidocs/spot/en/#public-api-endpoints",
+          "source_title": "Binance API Documentation",
+          "supporting_text": "API endpoints are available for market data, account management, and trading.",
+          "source_quality": "official_docs"
+        }
+      ],
+      "composio_toolkit_slug": null,
+      "composio_toolkit_url": null,
+      "composio_match_quality": "not_found",
+      "native_mcp_status": "official"
+    },
+    {
+      "app": "Paygent Connect",
+      "category": "Finance and Fintech",
+      "description": "Payment processing",
+      "auth_methods": [
+        "API Key"
+      ],
+      "access": "unknown",
+      "api_type": "unknown",
+      "api_breadth": "unknown",
+      "composio_status": "toolkit_gap",
+      "composio_actions": [],
+      "composio_actions_count": 0,
+      "buildability": "unknown",
+      "main_blocker": "",
+      "confidence": 0.2,
+      "needs_human_review": true,
+      "evidence": [
+        {
+          "claim": "App exists",
+          "value": "Paygent Connect",
+          "url": "https://paygent.com/",
+          "source_title": "Paygent",
+          "supporting_text": "Payment solutions for businesses",
+          "source_quality": "official_docs"
+        }
+      ],
+      "composio_toolkit_slug": null,
+      "composio_toolkit_url": null,
+      "composio_match_quality": "not_found",
+      "native_mcp_status": "unknown"
+    },
+    {
+      "app": "iPayX",
+      "category": "Finance and Fintech",
+      "description": "Payment processing",
+      "auth_methods": [
+        "API Key"
+      ],
+      "access": "unknown",
+      "api_type": "rest",
+      "api_breadth": "unknown",
+      "composio_status": "toolkit_gap",
+      "composio_actions": [],
+      "composio_actions_count": 0,
+      "buildability": "unknown",
+      "main_blocker": "",
+      "confidence": 0.2,
+      "needs_human_review": true,
+      "evidence": [
+        {
+          "claim": "API documentation exists",
+          "value": "ipayx.ai/docs",
+          "url": "https://ipayx.ai/docs",
+          "source_title": "iPayX API Documentation",
+          "supporting_text": "API documentation is available",
+          "source_quality": "official_docs"
+        }
+      ],
+      "composio_toolkit_slug": null,
+      "composio_toolkit_url": null,
+      "composio_match_quality": "not_found",
+      "native_mcp_status": "unknown"
+    },
+    {
+      "app": "QuickBooks",
+      "category": "Finance and Fintech",
+      "description": "Accounting and finance management",
+      "auth_methods": [
+        "OAuth2"
+      ],
+      "access": "self_serve",
+      "api_type": "rest",
+      "api_breadth": "broad",
+      "composio_status": "existing_toolkit",
+      "composio_actions": [],
+      "composio_actions_count": 0,
+      "buildability": "ready",
+      "main_blocker": "",
+      "confidence": 0.9,
+      "needs_human_review": false,
+      "evidence": [
+        {
+          "claim": "auth_methods",
+          "value": "OAuth2",
+          "url": "https://developer.intuit.com/app/developer/qbo/docs/develop/authentication-and-authorization",
+          "source_title": "Authentication and Authorization",
+          "supporting_text": "QuickBooks uses OAuth 2.0 for authentication and authorization.",
+          "source_quality": "official_docs"
+        },
+        {
+          "claim": "api_type",
+          "value": "rest",
+          "url": "https://developer.intuit.com/app/developer/qbo/docs/api",
+          "source_title": "QuickBooks API",
+          "supporting_text": "The QuickBooks API is a RESTful API.",
+          "source_quality": "official_docs"
+        },
+        {
+          "claim": "api_breadth",
+          "value": "broad",
+          "url": "https://developer.intuit.com/app/developer/qbo/docs/api",
+          "source_title": "QuickBooks API",
+          "supporting_text": "The QuickBooks API provides a wide range of endpoints for managing accounting and finance data.",
+          "source_quality": "official_docs"
+        },
+        {
+          "claim": "Composio toolkit exists",
+          "value": "quickbooks",
+          "url": "https://docs.composio.dev/toolkits/quickbooks",
+          "source_title": "Composio Toolkits",
+          "supporting_text": "Composio provides quickbooks toolkit",
+          "source_quality": "composio_toolkit"
+        }
+      ],
+      "composio_toolkit_slug": "quickbooks",
+      "composio_toolkit_url": "https://docs.composio.dev/toolkits/quickbooks",
+      "composio_match_quality": "exact",
+      "native_mcp_status": "official"
+    },
+    {
+      "app": "Xero",
+      "category": "Finance and Fintech",
+      "description": "Cloud accounting software",
+      "auth_methods": [
+        "OAuth2"
+      ],
+      "access": "self_serve",
+      "api_type": "rest",
+      "api_breadth": "broad",
+      "composio_status": "existing_toolkit",
+      "composio_actions": [],
+      "composio_actions_count": 0,
+      "buildability": "ready",
+      "main_blocker": "",
+      "confidence": 0.9,
+      "needs_human_review": false,
+      "evidence": [
+        {
+          "claim": "auth_methods",
+          "value": "OAuth2",
+          "url": "https://developer.xero.com/documentation/auth-and-authz/authorizing",
+          "source_title": "Authorizing with Xero API",
+          "supporting_text": "Xero uses OAuth 2.0 for authorization",
+          "source_quality": "official_docs"
+        },
+        {
+          "claim": "api_type",
+          "value": "rest",
+          "url": "https://developer.xero.com/documentation/api-overview",
+          "source_title": "Xero API Overview",
+          "supporting_text": "The Xero API is a RESTful API",
+          "source_quality": "official_docs"
+        },
+        {
+          "claim": "api_breadth",
+          "value": "broad",
+          "url": "https://developer.xero.com/documentation/api/index",
+          "source_title": "Xero API Documentation",
+          "supporting_text": "The Xero API provides a wide range of endpoints for various operations",
+          "source_quality": "official_docs"
+        },
+        {
+          "claim": "Composio toolkit exists",
+          "value": "xero",
+          "url": "https://docs.composio.dev/toolkits/xero",
+          "source_title": "Composio Toolkits",
+          "supporting_text": "Composio provides xero toolkit",
+          "source_quality": "composio_toolkit"
+        }
+      ],
+      "composio_toolkit_slug": "xero",
+      "composio_toolkit_url": "https://docs.composio.dev/toolkits/xero",
+      "composio_match_quality": "exact",
+      "native_mcp_status": "official"
+    },
+    {
+      "app": "Brex",
+      "category": "Finance and Fintech",
+      "description": "Brex: corporate card and spend management",
+      "auth_methods": [
+        "OAuth2",
+        "API Key"
+      ],
+      "access": "self_serve",
+      "api_type": "rest",
+      "api_breadth": "unknown",
+      "composio_status": "existing_toolkit",
+      "composio_actions": [],
+      "composio_actions_count": 0,
+      "buildability": "ready",
+      "main_blocker": "",
+      "confidence": 0.8,
+      "needs_human_review": false,
+      "evidence": [
+        {
+          "claim": "API type",
+          "value": "REST",
+          "url": "https://developer.brex.com/reference/getting-started",
+          "source_title": "Brex API Documentation",
+          "supporting_text": "The Brex API is a RESTful API.",
+          "source_quality": "official_docs"
+        },
+        {
+          "claim": "Auth methods",
+          "value": "OAuth2",
+          "url": "https://developer.brex.com/reference/authentication",
+          "source_title": "Brex API Documentation",
+          "supporting_text": "Brex uses OAuth 2.0 for authentication.",
+          "source_quality": "official_docs"
+        },
+        {
+          "claim": "Access",
+          "value": "self_serve",
+          "url": "https://developer.brex.com/",
+          "source_title": "Brex Developer Portal",
+          "supporting_text": "Developers can sign up for an account and access the API directly.",
+          "source_quality": "official_docs"
+        },
+        {
+          "claim": "Composio toolkit exists",
+          "value": "brex",
+          "url": "https://docs.composio.dev/toolkits/brex",
+          "source_title": "Composio Toolkits",
+          "supporting_text": "Composio provides brex toolkit",
+          "source_quality": "composio_toolkit"
+        }
+      ],
+      "composio_toolkit_slug": "brex",
+      "composio_toolkit_url": "https://docs.composio.dev/toolkits/brex",
+      "composio_match_quality": "exact",
+      "native_mcp_status": "official"
+    },
+    {
+      "app": "Ramp",
+      "category": "Finance and Fintech",
+      "description": "Ramp: automation and integration",
+      "auth_methods": [
+        "OAuth2",
+        "API Key"
+      ],
+      "access": "admin_gated",
+      "api_type": "rest",
+      "api_breadth": "moderate",
+      "composio_status": "existing_toolkit",
+      "composio_actions": [],
+      "composio_actions_count": 0,
+      "buildability": "ready_with_constraints",
+      "main_blocker": "",
+      "confidence": 0.7,
+      "needs_human_review": false,
+      "evidence": [
+        {
+          "claim": "API documentation exists",
+          "value": "https://docs.ramp.com/api",
+          "url": "https://docs.ramp.com/api",
+          "source_title": "Ramp API Documentation",
+          "supporting_text": "The Ramp API allows you to automate and integrate with Ramp",
+          "source_quality": "official_docs"
+        },
+        {
+          "claim": "OAuth2 authentication method",
+          "value": "OAuth2",
+          "url": "https://docs.ramp.com/api/authentication",
+          "source_title": "Ramp API Authentication",
+          "supporting_text": "Ramp uses OAuth2 for authentication",
+          "source_quality": "official_docs"
+        },
+        {
+          "claim": "Composio toolkit exists",
+          "value": "ramp",
+          "url": "https://docs.composio.dev/toolkits/ramp",
+          "source_title": "Composio Toolkits",
+          "supporting_text": "Composio provides ramp toolkit",
+          "source_quality": "composio_toolkit"
+        }
+      ],
+      "composio_toolkit_slug": "ramp",
+      "composio_toolkit_url": "https://docs.composio.dev/toolkits/ramp",
+      "composio_match_quality": "exact",
+      "native_mcp_status": "none"
+    },
+    {
+      "app": "PitchBook",
+      "category": "Finance and Fintech",
+      "description": "Financial data and analytics",
+      "auth_methods": [
+        "API Key"
+      ],
+      "access": "paid",
+      "api_type": "rest",
+      "api_breadth": "broad",
+      "composio_status": "toolkit_gap",
+      "composio_actions": [],
+      "composio_actions_count": 0,
+      "buildability": "ready_with_constraints",
+      "main_blocker": "Requires a paid subscription for full access",
+      "confidence": 0.8,
+      "needs_human_review": false,
+      "evidence": [
+        {
+          "claim": "API Key authentication method",
+          "value": "API Key",
+          "url": "https://docs.pitchbook.com/",
+          "source_title": "PitchBook API Documentation",
+          "supporting_text": "API keys are used to authenticate API requests",
+          "source_quality": "official_docs"
+        },
+        {
+          "claim": "Paid access",
+          "value": "paid",
+          "url": "https://pitchbook.com/plans-and-pricing",
+          "source_title": "PitchBook Plans and Pricing",
+          "supporting_text": "Access to the PitchBook platform requires a paid subscription",
+          "source_quality": "official_pricing"
+        }
+      ],
+      "composio_toolkit_slug": null,
+      "composio_toolkit_url": null,
+      "composio_match_quality": "not_found",
+      "native_mcp_status": "official"
+    },
+    {
+      "app": "NotebookLM",
+      "category": "AI Research and Media-native",
+      "description": "AI-powered notebook",
+      "auth_methods": [
+        "OAuth2"
+      ],
+      "access": "admin_gated",
+      "api_type": "rest",
+      "api_breadth": "moderate",
+      "composio_status": "toolkit_gap",
+      "composio_actions": [],
+      "composio_actions_count": 0,
+      "buildability": "ready_with_constraints",
+      "main_blocker": "Requires Google Cloud account",
+      "confidence": 0.8,
+      "needs_human_review": false,
+      "evidence": [
+        {
+          "claim": "auth_methods",
+          "value": "OAuth2",
+          "url": "https://cloud.google.com/docs/authentication",
+          "source_title": "Authentication Overview",
+          "supporting_text": "OAuth 2.0 is an authorization framework",
+          "source_quality": "official_docs"
+        },
+        {
+          "claim": "access",
+          "value": "admin_gated",
+          "url": "https://cloud.google.com/gemini",
+          "source_title": "Gemini",
+          "supporting_text": "Access to Gemini requires admin approval",
+          "source_quality": "official_docs"
+        },
+        {
+          "claim": "api_type",
+          "value": "rest",
+          "url": "https://cloud.google.com/gemini/docs/reference/rest",
+          "source_title": "Gemini REST API",
+          "supporting_text": "The Gemini API is a REST API",
+          "source_quality": "official_docs"
+        }
+      ],
+      "composio_toolkit_slug": null,
+      "composio_toolkit_url": null,
+      "composio_match_quality": "not_found",
+      "native_mcp_status": "official"
+    },
+    {
+      "app": "Otter AI",
+      "category": "AI Research and Media-native",
+      "description": "AI meeting notes",
+      "auth_methods": [
+        "OAuth2"
+      ],
+      "access": "self_serve",
+      "api_type": "rest",
+      "api_breadth": "moderate",
+      "mcp_status": "none",
+      "composio_status": "toolkit_gap",
+      "composio_actions": [],
+      "composio_actions_count": 0,
+      "buildability": "ready_with_constraints",
+      "main_blocker": "",
+      "confidence": 0.7,
+      "needs_human_review": false,
+      "evidence": [
+        {
+          "claim": "auth_methods",
+          "value": "OAuth2",
+          "url": "https://help.otter.ai/en/collections/24-support",
+          "source_title": "Otter AI Support",
+          "supporting_text": "Otter AI uses OAuth 2.0 for authentication",
+          "source_quality": "official_docs"
+        },
+        {
+          "claim": "api_type",
+          "value": "rest",
+          "url": "https://help.otter.ai/en/collections/24-support",
+          "source_title": "Otter AI Support",
+          "supporting_text": "API documentation is available",
+          "source_quality": "official_docs"
+        }
+      ],
+      "composio_toolkit_slug": null,
+      "composio_toolkit_url": null,
+      "composio_match_quality": "not_found",
+      "native_mcp_status": "official"
+    },
+    {
+      "app": "Fathom",
+      "category": "AI Research and Media-native",
+      "description": "Video analytics",
+      "auth_methods": [
+        "API Key"
+      ],
+      "access": "self_serve",
+      "api_type": "rest",
+      "api_breadth": "moderate",
+      "composio_status": "existing_toolkit",
+      "composio_actions": [],
+      "composio_actions_count": 0,
+      "buildability": "ready_with_constraints",
+      "main_blocker": "",
+      "confidence": 0.8,
+      "needs_human_review": true,
+      "evidence": [
+        {
+          "claim": "API Type",
+          "value": "rest",
+          "url": "https://docs.fathom.video/",
+          "source_title": "Fathom API Documentation",
+          "supporting_text": "Fathom provides a REST API for accessing video analytics data.",
+          "source_quality": "official_docs"
+        },
+        {
+          "claim": "Auth Methods",
+          "value": "API Key",
+          "url": "https://docs.fathom.video/",
+          "source_title": "Fathom API Documentation",
+          "supporting_text": "API key authentication is used to access the Fathom API.",
+          "source_quality": "official_docs"
+        },
+        {
+          "claim": "Composio toolkit exists",
+          "value": "fathom",
+          "url": "https://docs.composio.dev/toolkits/fathom",
+          "source_title": "Composio Toolkits",
+          "supporting_text": "Composio provides fathom toolkit",
+          "source_quality": "composio_toolkit"
+        }
+      ],
+      "composio_toolkit_slug": "fathom",
+      "composio_toolkit_url": "https://docs.composio.dev/toolkits/fathom",
+      "composio_match_quality": "exact",
+      "native_mcp_status": "none"
+    },
+    {
+      "app": "Consensus",
+      "category": "AI Research and Media-native",
+      "description": "Consensus AI agent integration",
+      "auth_methods": [
+        "API Key"
+      ],
+      "access": "unknown",
+      "api_type": "unknown",
+      "api_breadth": "unknown",
+      "composio_status": "toolkit_gap",
+      "composio_actions": [],
+      "composio_actions_count": 0,
+      "buildability": "unknown",
+      "main_blocker": "",
+      "confidence": 0.0,
+      "needs_human_review": true,
+      "evidence": [
+        {
+          "claim": "App exists",
+          "value": "Consensus",
+          "url": "https://consensus.app",
+          "source_title": "Consensus",
+          "supporting_text": "Consensus website",
+          "source_quality": "third_party"
+        }
+      ],
+      "composio_toolkit_slug": null,
+      "composio_toolkit_url": null,
+      "composio_match_quality": "not_found",
+      "native_mcp_status": "unknown"
+    },
+    {
+      "app": "Reducto",
+      "category": "AI Research and Media-native",
+      "description": "Video editing AI",
+      "auth_methods": [
+        "API Key"
+      ],
+      "access": "contact_sales",
+      "api_type": "rest",
+      "api_breadth": "moderate",
+      "composio_status": "toolkit_gap",
+      "composio_actions": [],
+      "composio_actions_count": 0,
+      "buildability": "ready_with_constraints",
+      "main_blocker": "Custom integration required",
+      "confidence": 0.6,
+      "needs_human_review": true,
+      "evidence": [
+        {
+          "claim": "API Key authentication",
+          "value": "API Key",
+          "url": "https://reducto.ai/docs/getting-started",
+          "source_title": "Reducto API Documentation",
+          "supporting_text": "To use the Reducto API, you need to obtain an API key.",
+          "source_quality": "official_docs"
+        },
+        {
+          "claim": "Access requires sales contact",
+          "value": "contact_sales",
+          "url": "https://reducto.ai/contact",
+          "source_title": "Reducto Contact Page",
+          "supporting_text": "Get in touch with our sales team to learn more about our API.",
+          "source_quality": "official_auth"
+        }
+      ],
+      "composio_toolkit_slug": null,
+      "composio_toolkit_url": null,
+      "composio_match_quality": "not_found",
+      "native_mcp_status": "none"
+    },
+    {
+      "app": "Devin",
+      "category": "AI Research and Media-native",
+      "description": "AI agent integration platform",
+      "auth_methods": [
+        "API Key",
+        "OAuth2"
+      ],
+      "access": "unknown",
+      "api_type": "rest",
+      "api_breadth": "unknown",
+      "mcp_status": "official",
+      "composio_status": "existing_toolkit",
+      "composio_actions": [],
+      "composio_actions_count": 0,
+      "buildability": "ready",
+      "main_blocker": "",
+      "confidence": 0.8,
+      "needs_human_review": false,
+      "evidence": [
+        {
+          "claim": "API type",
+          "value": "REST",
+          "url": "https://docs.devin.ai/api-reference",
+          "source_title": "Devin API Reference",
+          "supporting_text": "The Devin API is a RESTful API",
+          "source_quality": "official_docs"
+        },
+        {
+          "claim": "Authentication methods",
+          "value": "API Key, OAuth2",
+          "url": "https://docs.devin.ai/authentication",
+          "source_title": "Devin Authentication",
+          "supporting_text": "Devin supports API Key and OAuth2 authentication",
+          "source_quality": "official_docs"
+        },
+        {
+          "claim": "Composio toolkit exists",
+          "value": "devin_mcp",
+          "url": "https://docs.composio.dev/toolkits/devin_mcp",
+          "source_title": "Composio Toolkits",
+          "supporting_text": "Composio provides devin_mcp toolkit",
+          "source_quality": "composio_toolkit"
+        }
+      ],
+      "composio_toolkit_slug": "devin_mcp",
+      "composio_toolkit_url": "https://docs.composio.dev/toolkits/devin_mcp",
+      "composio_match_quality": "exact",
+      "native_mcp_status": "official"
+    },
+    {
+      "app": "higgsfield",
+      "category": "AI Research and Media-native",
+      "description": "AI agent integration platform",
+      "auth_methods": [
+        "API Key"
+      ],
+      "access": "self_serve",
+      "api_type": "rest",
+      "api_breadth": "moderate",
+      "composio_status": "toolkit_gap",
+      "composio_actions": [],
+      "composio_actions_count": 0,
+      "buildability": "ready_with_constraints",
+      "main_blocker": "",
+      "confidence": 0.7,
+      "needs_human_review": false,
+      "evidence": [
+        {
+          "claim": "API type",
+          "value": "REST",
+          "url": "https://higgsfield.ai/cli/docs/api",
+          "source_title": "Higgsfield API Documentation",
+          "supporting_text": "The Higgsfield API is a RESTful API.",
+          "source_quality": "official_docs"
+        },
+        {
+          "claim": "Auth method",
+          "value": "API Key",
+          "url": "https://higgsfield.ai/cli/docs/authentication",
+          "source_title": "Higgsfield Authentication Documentation",
+          "supporting_text": "You can authenticate using an API key.",
+          "source_quality": "official_docs"
+        }
+      ],
+      "composio_toolkit_slug": null,
+      "composio_toolkit_url": null,
+      "composio_match_quality": "not_found",
+      "native_mcp_status": "none"
+    },
+    {
+      "app": "Mermaid CLI",
+      "category": "AI Research and Media-native",
+      "description": "Generates diagrams from text",
+      "auth_methods": [
+        "unknown"
+      ],
+      "access": "self_serve",
+      "api_type": "none",
+      "api_breadth": "none",
+      "composio_status": "toolkit_gap",
+      "composio_actions": [],
+      "composio_actions_count": 0,
+      "buildability": "blocked",
+      "main_blocker": "No API available",
+      "confidence": 0.8,
+      "needs_human_review": false,
+      "evidence": [
+        {
+          "claim": "No API available",
+          "value": "none",
+          "url": "https://github.com/mermaid-js/mermaid-cli",
+          "source_title": "mermaid-cli",
+          "supporting_text": "Mermaid CLI is a command-line tool for generating diagrams from text via a JavaScript-based generation tool.",
+          "source_quality": "official_github"
+        },
+        {
+          "claim": "Self-serve access",
+          "value": "self_serve",
+          "url": "https://github.com/mermaid-js/mermaid-cli",
+          "source_title": "mermaid-cli",
+          "supporting_text": "The tool is open-source and available on GitHub.",
+          "source_quality": "official_github"
+        }
+      ],
+      "composio_toolkit_slug": null,
+      "composio_toolkit_url": null,
+      "composio_match_quality": "not_found",
+      "native_mcp_status": "none"
+    },
+    {
+      "app": "YouTube Transcript",
+      "category": "AI Research and Media-native",
+      "description": "Extracts transcripts from YouTube videos",
+      "auth_methods": [
+        "API Key"
+      ],
+      "access": "self_serve",
+      "api_type": "rest",
+      "api_breadth": "moderate",
+      "composio_status": "toolkit_gap",
+      "composio_actions": [],
+      "composio_actions_count": 0,
+      "buildability": "ready",
+      "main_blocker": "",
+      "confidence": 0.8,
+      "needs_human_review": false,
+      "evidence": [
+        {
+          "claim": "auth_methods",
+          "value": "API Key",
+          "url": "https://transcriptapi.com/docs/#authentication",
+          "source_title": "Transcript API Documentation",
+          "supporting_text": "You can authenticate using an API key.",
+          "source_quality": "official_docs"
+        },
+        {
+          "claim": "access",
+          "value": "self_serve",
+          "url": "https://transcriptapi.com/",
+          "source_title": "Transcript API",
+          "supporting_text": "Sign up for an API key to get started.",
+          "source_quality": "official_auth"
+        },
+        {
+          "claim": "api_type",
+          "value": "rest",
+          "url": "https://transcriptapi.com/docs/#endpoints",
+          "source_title": "Transcript API Documentation",
+          "supporting_text": "The API uses REST endpoints.",
+          "source_quality": "official_docs"
+        }
+      ],
+      "composio_toolkit_slug": null,
+      "composio_toolkit_url": null,
+      "composio_match_quality": "not_found",
+      "native_mcp_status": "none"
+    },
+    {
+      "app": "Grain",
+      "category": "AI Research and Media-native",
+      "description": "Video meeting notes",
+      "auth_methods": [
+        "OAuth2",
+        "API Key"
+      ],
+      "access": "self_serve",
+      "api_type": "rest",
+      "api_breadth": "moderate",
+      "composio_status": "toolkit_gap",
+      "composio_actions": [],
+      "composio_actions_count": 0,
+      "buildability": "ready",
+      "main_blocker": "",
+      "confidence": 0.8,
+      "needs_human_review": false,
+      "evidence": [
+        {
+          "claim": "API exists",
+          "value": "REST API",
+          "url": "https://developers.grain.com/docs/getting-started",
+          "source_title": "Grain API Documentation",
+          "supporting_text": "Grain provides a REST API for accessing and manipulating data",
+          "source_quality": "official_docs"
+        },
+        {
+          "claim": "Auth method",
+          "value": "OAuth2",
+          "url": "https://developers.grain.com/docs/authentication",
+          "source_title": "Grain API Authentication",
+          "supporting_text": "Grain uses OAuth2 for authentication",
+          "source_quality": "official_docs"
+        }
+      ],
+      "composio_toolkit_slug": null,
+      "composio_toolkit_url": null,
+      "composio_match_quality": "not_found",
+      "native_mcp_status": "none"
+    }
+  ],
+  "generated_at": "2026-07-27T18:18:29.295260"
+}
